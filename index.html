@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>나의 인생책갈피 만들기 | YES24</title>
+<title>2026 노벨문학상 x 나의 인생책갈피 만들기 | YES24</title>
 
 <!-- YES24 실제 헤더/푸터 스타일시트 (PC + 모바일) -->
 <link rel="stylesheet" type="text/css" href="https://image.yes24.com/sysimage/yesUI/yesCom.css?v=20260720">
@@ -19,228 +19,243 @@
 <link rel="stylesheet" type="text/css" href="https://image.yes24.com/sysimage/yesUI/mobile/comN/com.css?v=20260624">
 <link rel="stylesheet" type="text/css" href="https://image.yes24.com/sysimage/yesUI/mobile/comN/elem.css?v=20260624">
 <link rel="stylesheet" type="text/css" href="https://image.yes24.com/sysimage/yesUI/mobile/welcome/trans_w4.css?v=20260601b">
-<style>
-    #yHeader{
-        margin-bottom:0px !important;
-    }
-</style>
-<style>
-    #yesFooter {
-        margin-top: 0px !important;
-    }
-</style>
+
+<!-- 노벨문학상 전용 CSS -->
+<link rel="stylesheet" type="text/css" href="https://image.yes24.com/images/00_Event/2025/nobel/nobel.css?ver=0822a"/>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&family=Special+Elite&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
 <style>
+    #yesFooter {
+        margin-top: 0px !important;
+    }
+</style>
+
+<!-- 폰트 변경: Noto Serif / Special Elite 대신 Pretendard 일괄 적용 -->
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<style>
   :root{
-    --paper:#F1EAD8;
-    --ink:#241F16;
-    --green:#2F4538;
-    --green-deep:#22332A;
-    --red:#B3392B;
-    --gold:#B98A2E;
-    --card:#FFFCF5;
-    --line:#C9BC9C;
-  }
+        --paper:#F1EAD8;
+        --ink:#241F16;
+        --green:#2F4538;
+        --green-deep:#22332A;
+        --red:#B3392B;
+        --gold:#B98A2E;
+        --card:#FFFCF5;
+        --line:#C9BC9C;
+    }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;background:#ffffff;}
-  body{color:var(--ink);font-family:'Noto Sans KR', sans-serif;}
+  /* 전체 폰트 Pretendard로 변경 */
+  body{color:var(--ink);font-family:"Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;}
 
   .pc-only{display:block;}
-  .mobile-only{display:none;}
-  @media (max-width:767px){
-    .pc-only{display:none;}
-    .mobile-only{display:block;}
-  }
+    .mobile-only{display:none;}
+    @media (max-width:767px){
+        .pc-only{display:none;}
+        .mobile-only{display:block;}
+    }
 
-.event-page{
-    background: #ffffff; /* 헤더/푸터와 동일한 흰색으로 변경하여 경계 제거 */
-    padding:32px 16px 80px;
-  }
-  .wrap{max-width:1080px;margin:0 auto;}
+    /* 이벤트 영역 하얀색 배경 및 블랙 텍스트 테마 적용 */
+    .event-page{
+        background: #ffffff;
+        padding: 40px 16px 100px;
+        position: relative;
+        z-index: 10; 
+    }
+    .wrap{max-width:1080px;margin:0 auto;}
 
-  header.evt-head{text-align:center;margin-bottom:36px;}
-  .eyebrow{
-    font-family:'Special Elite', monospace;
-    font-size:12px;letter-spacing:0.35em;color:var(--red);
-    text-transform:uppercase;margin-bottom:10px;
-  }
-  h1{
-    font-family:'Noto Serif KR', serif;font-weight:900;
-    font-size:clamp(26px,5vw,42px);margin:0 0 12px;
-    color:var(--green-deep);letter-spacing:-0.01em;
-  }
-  header.evt-head p{font-size:15px;color:#5b5342;max-width:560px;margin:0 auto;line-height:1.6;}
-  .counter{
-    display:inline-block;margin-top:16px;font-family:'Special Elite', monospace;
-    font-size:13px;background:var(--green-deep);color:var(--paper);
-    padding:6px 16px;border-radius:999px;letter-spacing:0.05em;
-  }
+    header.evt-head{text-align:center;margin-bottom:36px;}
+    .eyebrow{
+        font-size:12px;letter-spacing:0.2em;color:#111;
+        text-transform:uppercase;margin-bottom:10px; font-weight: 700;
+    }
+    h1{
+        font-weight:900;
+        font-size:clamp(26px,5vw,42px);margin:0 0 12px;
+        color:#111;letter-spacing:-0.03em;
+    }
+    header.evt-head p{font-size:15px;color:#333;max-width:560px;margin:0 auto;line-height:1.6; word-break: keep-all;}
+    .counter{
+        display:inline-block;margin-top:16px;
+        font-size:13px;background:#111;color:#fff;
+        padding:6px 16px;border-radius:999px;letter-spacing:0.02em; font-weight: 600;
+    }
 
-  .shelf-title{
-    font-family:'Noto Serif KR', serif;font-weight:700;font-size:15px;
-    color:var(--green-deep);margin:0 0 6px;border-bottom:2px solid var(--line);
-    padding-bottom:8px;display:flex;justify-content:space-between;align-items:baseline;
-  }
-  .shelf-title span{font-family:'Special Elite', monospace;font-size:11px;color:#8a7f63;}
-  .shelf-hint{font-size:12px;color:#8a7f63;margin:0 0 16px;}
+    .shelf-title{
+        font-weight:700;font-size:16px;
+        color:#111;margin:0 0 6px;border-bottom:2px solid #eaeaea;
+        padding-bottom:8px;display:flex;justify-content:space-between;align-items:baseline; letter-spacing:-0.02em;
+    }
+    .shelf-title span{font-size:11px;color:#666; font-weight: 500; letter-spacing: 0.05em;}
+    .shelf-hint{font-size:13px;color:#666;margin:0 0 16px;}
 
-  .grid{
-    display:grid;grid-template-columns:repeat(auto-fill, minmax(120px, 1fr));
-    gap:14px;margin-bottom:44px;
-  }
-  .card{
-    position:relative;background:var(--card);border:1px solid var(--line);
-    border-radius:6px;padding:8px;transition:transform .15s ease, box-shadow .15s ease;
-  }
-  .card:hover{transform:translateY(-3px);box-shadow:0 8px 16px rgba(34,51,42,0.15);}
-  .card.selected{outline:2px solid var(--red);outline-offset:2px;}
-  .card.disabled .cover-box{opacity:0.4;cursor:not-allowed;}
+    .grid{
+        display:grid;grid-template-columns:repeat(auto-fill, minmax(130px, 1fr));
+        gap:16px;margin-bottom:50px;
+    }
+    .card{
+        position:relative;background:#fff;border:1px solid #eaeaea;
+        border-radius:8px;padding:10px;transition:transform .2s ease, box-shadow .2s ease;
+    }
+    .card:hover{transform:translateY(-4px);box-shadow:0 10px 20px rgba(0,0,0,0.1);}
+    .card.selected{outline:2px solid #111;outline-offset:2px;border-color:transparent;}
+    .card.disabled .cover-box{opacity:0.3;cursor:not-allowed;}
 
-  .cover-box{
-    position:relative;width:100%;aspect-ratio:3/4.3;overflow:hidden;
-    border-radius:3px;background:#ddd3b8;cursor:crosshair;
-  }
-  .cover-box img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;}
-  .stamp{
-    position:absolute;top:8px;right:8px;width:44px;height:44px;border-radius:50%;
-    border:2.5px solid var(--red);color:var(--red);display:flex;align-items:center;
-    justify-content:center;font-family:'Special Elite', monospace;font-size:9.5px;
-    font-weight:700;transform:rotate(-18deg);background:rgba(255,255,255,0.85);
-    opacity:0;transition:opacity .15s ease;pointer-events:none;line-height:1.1;text-align:center;
-  }
-  .card.selected .stamp{opacity:1;}
-  .order-badge{
-    position:absolute;top:8px;left:8px;width:24px;height:24px;border-radius:50%;
-    background:var(--green-deep);color:var(--paper);font-family:'Special Elite', monospace;
-    font-size:12px;display:flex;align-items:center;justify-content:center;
-    opacity:0;transition:opacity .15s ease;cursor:pointer;z-index:4;
-  }
-  .card.selected .order-badge{opacity:1;}
-  .order-badge:hover{background:var(--red);}
-  .focus-mark{
-    position:absolute;width:26px;height:26px;margin-left:-13px;margin-top:-13px;
-    border:2px solid #fff;border-radius:50%;box-shadow:0 0 0 2px var(--red), 0 2px 6px rgba(0,0,0,0.4);
-    pointer-events:none;display:none;
-  }
-  .card.selected .focus-mark{display:block;}
-  .tap-hint{
-    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-    background:rgba(34,51,42,0.0);color:transparent;font-size:11px;
-    font-family:'Special Elite', monospace;text-align:center;padding:10px;
-    transition:all .15s ease;pointer-events:none;
-  }
-  .card:not(.selected):not(.disabled) .cover-box:hover .tap-hint{
-    background:rgba(34,51,42,0.45);color:#fff;
-  }
-  .meta{margin-top:8px;font-size:12px;line-height:1.4;}
-  .meta .t{font-weight:700;color:var(--ink);}
-  .meta .a{color:#7b7057;font-size:11px;}
+    .cover-box{
+        position:relative;width:100%;aspect-ratio:3/4.3;overflow:hidden;
+        border-radius:4px;background:#f5f5f5;cursor:crosshair;
+    }
+    .cover-box img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;}
+    .stamp{
+        position:absolute;top:8px;right:8px;width:44px;height:44px;border-radius:50%;
+        border:2.5px solid #111;color:#111;display:flex;align-items:center;
+        justify-content:center;font-size:10px;
+        font-weight:800;transform:rotate(-18deg);background:rgba(255,255,255,0.95);
+        opacity:0;transition:opacity .15s ease;pointer-events:none;line-height:1.1;text-align:center;
+    }
+    .card.selected .stamp{opacity:1;}
+    .order-badge{
+        position:absolute;top:8px;left:8px;width:24px;height:24px;border-radius:50%;
+        background:#111;color:#fff;
+        font-size:12px; font-weight: 700; display:flex;align-items:center;justify-content:center;
+        opacity:0;transition:opacity .15s ease;cursor:pointer;z-index:4;
+    }
+    .card.selected .order-badge{opacity:1;}
+    .order-badge:hover{background:#555; color:#fff;}
+    
+    .focus-mark{
+        position:absolute;width:30px;height:30px;margin-left:-15px;margin-top:-15px;
+        border:2px solid #fff;border-radius:50%;box-shadow:0 0 0 2px #111, 0 2px 8px rgba(0,0,0,0.3);
+        pointer-events:none;display:none;
+    }
+    .card.selected .focus-mark{display:block;}
+    .tap-hint{
+        position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+        background:rgba(0,0,0,0.0);color:transparent;font-size:12px; font-weight: 600;
+        text-align:center;padding:10px;
+        transition:all .15s ease;pointer-events:none;
+    }
+    .card:not(.selected):not(.disabled) .cover-box:hover .tap-hint{
+        background:rgba(0,0,0,0.6);color:#fff;
+    }
+    
+    .meta{margin-top:10px;font-size:13px;line-height:1.4;}
+    .meta .t{font-weight:700;color:#111;}
+    .meta .a{color:#666;font-size:12px; margin-top:3px;}
 
-  .preview-section{
-    background:var(--card);border:1px solid var(--line);border-radius:10px;
-    padding:26px 20px;
-  }
-  .preview-head{display:flex;justify-content:space-between;align-items:baseline;
-    border-bottom:2px solid var(--line);padding-bottom:8px;margin-bottom:20px;flex-wrap:wrap;gap:8px;}
-  .preview-head h2{font-family:'Noto Serif KR', serif;font-size:16px;margin:0;color:var(--green-deep);}
-  .preview-head span{font-family:'Special Elite', monospace;font-size:11px;color:#8a7f63;}
+    .preview-section{
+        background:#fcfcfc;border:1px solid #eaeaea;border-radius:10px;
+        padding:26px 20px;
+    }
+    .preview-head{display:flex;justify-content:space-between;align-items:baseline;
+        border-bottom:2px solid #eaeaea;padding-bottom:8px;margin-bottom:20px;flex-wrap:wrap;gap:8px;}
+    .preview-head h2{font-weight:700;font-size:17px;margin:0;color:#111; letter-spacing:-0.03em;}
+    .preview-head span{font-size:12px;color:#666; font-weight: 600;}
 
-  .shelf-display{
-    position:relative;
-    padding:20px 10px 0;
-  }
-  #bookmarkRow{
-    display:flex;justify-content:center;align-items:flex-end;gap:8px;flex-wrap:nowrap;
-    padding:0 6px;position:relative;z-index:2;
-  }
-  .shelf-plank{
-    height:16px;margin:0 2px;border-radius:1px;
-    background:
-      repeating-linear-gradient(90deg, rgba(0,0,0,0.06) 0 2px, transparent 2px 26px),
-      linear-gradient(180deg,#a9784a,#7c5530);
-    box-shadow:0 10px 16px rgba(34,51,42,0.35), inset 0 2px 0 rgba(255,255,255,0.18), inset 0 -3px 0 rgba(0,0,0,0.25);
-    position:relative;z-index:1;
-  }
-  .shelf-book{
-    position:relative;width:100px;background:#e9dfc4;flex:0 0 auto;
-    border-radius:4px 4px 1px 1px;
-    box-shadow:0 10px 16px rgba(34,51,42,0.22), inset -4px 0 8px rgba(0,0,0,0.14);
-    overflow:hidden;
-  }
-  .shelf-book:nth-child(1){height:300px;}
-  .shelf-book:nth-child(2){height:328px;width:106px;}
-  .shelf-book:nth-child(3){height:288px;width:96px;}
-  .shelf-book:nth-child(4){height:316px;width:102px;}
-  .shelf-book .art{position:absolute;inset:0;z-index:1;}
-  .shelf-book .art img{width:100%;height:100%;object-fit:cover;display:block;}
-  .shelf-book .spine{
-    position:absolute;top:0;bottom:0;left:0;width:7px;z-index:2;
-    background:linear-gradient(90deg, rgba(0,0,0,0.45), rgba(0,0,0,0));
-  }
-  .shelf-book .pages{
-    position:absolute;top:3px;bottom:3px;right:0;width:5px;z-index:2;
-    background:repeating-linear-gradient(180deg,#f4ecd8 0 2px,#e3d8bc 2px 3px);
-    box-shadow:inset 1px 0 2px rgba(0,0,0,0.25);
-  }
-  .shelf-book .edition{
-    position:absolute;top:10px;left:12px;right:10px;background:rgba(20,20,10,0.45);color:#fff;
-    font-family:'Special Elite', monospace;font-size:8px;line-height:1.5;padding:3px 6px;
-    z-index:3;letter-spacing:0.02em;display:inline-block;width:fit-content;
-  }
-  .shelf-book .title-bar{
-    position:absolute;left:0;right:5px;bottom:0;z-index:3;
-    background:linear-gradient(transparent, rgba(15,15,8,0.75) 60%);
-    padding:26px 10px 10px 12px;
-  }
-  .shelf-book .title-bar .ttl{
-    color:#fff;font-family:'Noto Serif KR', serif;font-weight:700;font-size:11.5px;
-    line-height:1.35;text-shadow:0 1px 3px rgba(0,0,0,0.5);
-  }
-  .shelf-book.empty{
-    background:transparent;border:2px dashed var(--line);border-bottom:none;
-    display:flex;align-items:center;justify-content:center;
-  }
-  .shelf-book.empty .placeholder{
-    font-family:'Special Elite', monospace;font-size:10.5px;color:#a89a72;text-align:center;
-    line-height:2;padding:0 8px;
-  }
-  @media (max-width:480px){
-    .shelf-book{width:74px !important;}
-    .shelf-book:nth-child(1){height:230px;}
-    .shelf-book:nth-child(2){height:252px;width:80px !important;}
-    .shelf-book:nth-child(3){height:220px;width:70px !important;}
-    .shelf-book:nth-child(4){height:242px;width:76px !important;}
-  }
+    .shelf-display{
+        position:relative;
+        padding:20px 10px 0; margin-bottom: 40px;
+    }
+    #bookmarkRow{
+        display:flex;justify-content:center;align-items:flex-end;gap:12px;flex-wrap:nowrap;
+        padding:0 10px;position:relative;z-index:2;
+    }
+    
+    .shelf-plank{
+        height:20px;margin:0;border-radius:2px;
+        background:
+            repeating-linear-gradient(90deg, rgba(0,0,0,0.05) 0 2px, transparent 2px 26px),
+            linear-gradient(180deg,#e0d8c8,#c4baa3);
+        box-shadow:0 10px 15px rgba(0,0,0,0.1), inset 0 2px 0 rgba(255,255,255,0.4), inset 0 -3px 0 rgba(0,0,0,0.1);
+        position:relative;z-index:1; border:1px solid #d4cbb8;
+    }
+    
+    .shelf-book{
+        position:relative;width:115px;background:#e9dfc4;flex:0 0 auto;
+        border-radius:4px 4px 1px 1px;
+        box-shadow:0 12px 20px rgba(0,0,0,0.15), inset -4px 0 8px rgba(0,0,0,0.05);
+        overflow:hidden;
+    }
+    .shelf-book:nth-child(1){height:340px;}
+    .shelf-book:nth-child(2){height:370px;width:120px;}
+    .shelf-book:nth-child(3){height:320px;width:110px;}
+    .shelf-book:nth-child(4){height:355px;width:118px;}
+    .shelf-book .art{position:absolute;inset:0;z-index:1;}
+    .shelf-book .art img{width:100%;height:100%;object-fit:cover;display:block;}
+    .shelf-book .spine{
+        position:absolute;top:0;bottom:0;left:0;width:8px;z-index:2;
+        background:linear-gradient(90deg, rgba(0,0,0,0.4), rgba(0,0,0,0));
+    }
+    .shelf-book .pages{
+        position:absolute;top:3px;bottom:3px;right:0;width:5px;z-index:2;
+        background:repeating-linear-gradient(180deg,#f4ecd8 0 2px,#e3d8bc 2px 3px);
+        box-shadow:inset 1px 0 2px rgba(0,0,0,0.25);
+    }
+    .shelf-book .edition{
+        position:absolute;top:10px;left:12px;right:10px;background:rgba(255,255,255,0.85);color:#111;
+        font-size:9px; font-weight:700; line-height:1.5;padding:3px 6px;
+        z-index:3;letter-spacing:0.02em;display:inline-block;width:fit-content; border-radius: 2px;
+    }
+    .shelf-book .title-bar{
+        position:absolute;left:0;right:5px;bottom:0;z-index:3;
+        background:linear-gradient(transparent, rgba(0,0,0,0.85) 60%);
+        padding:26px 10px 10px 12px;
+    }
+    .shelf-book .title-bar .ttl{
+        color:#fff;font-weight:700;font-size:12px;
+        line-height:1.35;text-shadow:0 1px 3px rgba(0,0,0,0.8); letter-spacing:-0.02em;
+    }
+    .shelf-book.empty{
+        background:transparent;border:2px dashed #ccc;border-bottom:none;
+        display:flex;align-items:center;justify-content:center;
+    }
+    .shelf-book.empty .placeholder{
+        font-size:11px; font-weight: 600; color:#888;text-align:center;
+        line-height:1.8;padding:0 8px;
+    }
+    @media (max-width:480px){
+        .shelf-book{width:80px !important;}
+        .shelf-book:nth-child(1){height:250px;}
+        .shelf-book:nth-child(2){height:275px;width:86px !important;}
+        .shelf-book:nth-child(3){height:240px;width:76px !important;}
+        .shelf-book:nth-child(4){height:265px;width:84px !important;}
+        .shelf-book .edition{font-size:8px; padding:3px 5px;}
+        .shelf-book .title-bar .ttl{font-size:11px;}
+    }
 
-  .actions{display:flex;gap:10px;justify-content:center;margin-bottom:24px;}
-  button.act{
-    font-family:'Noto Sans KR', sans-serif;font-weight:700;font-size:13px;
-    padding:11px 22px;border-radius:6px;border:1.5px solid var(--green-deep);
-    background:transparent;color:var(--green-deep);cursor:pointer;
-    transition:background .15s ease, color .15s ease;
-  }
-  button.act.primary{background:var(--green-deep);color:var(--paper);}
-  button.act:hover{opacity:0.85;}
-  button.act:disabled{opacity:0.35;cursor:not-allowed;}
+    .actions{display:flex;gap:10px;justify-content:center;margin-bottom:24px;}
+    button.act{
+        font-family: inherit; font-weight:700;font-size:14px; letter-spacing: -0.02em;
+        padding:11px 22px;border-radius:6px;border:1.5px solid #111;
+        background:transparent;color:#111;cursor:pointer;
+        transition:background .15s ease, color .15s ease;
+    }
+    button.act.primary{background:#111;color:#fff;}
+    button.act:hover{opacity:0.85;}
+    button.act:disabled{opacity:0.35;cursor:not-allowed; border-color: #ccc;}
 
-  .cta-box{max-width:420px;margin:0 auto;}
-  .cta-box h4{margin:0 0 10px;font-family:'Noto Serif KR', serif;font-size:13px;
-    color:var(--green-deep);text-align:center;}
-  .cta-empty{font-size:12px;color:#a89a72;font-family:'Special Elite', monospace;text-align:center;}
-  .cta-item{display:flex;justify-content:space-between;align-items:center;font-size:12px;
-    padding:7px 4px;border-bottom:1px dashed var(--line);}
-  .cta-item:last-child{border-bottom:none;}
-  .cta-item a{color:var(--red);text-decoration:none;font-weight:700;white-space:nowrap;}
-  .cta-item a:hover{text-decoration:underline;}
+    .cta-box{max-width:420px;margin:0 auto;}
+    .cta-box h4{margin:0 0 10px;font-weight:700;font-size:14px;
+        color:#111;text-align:center; letter-spacing:-0.02em;}
+    .cta-empty{font-size:12px;color:#888;font-weight:500;text-align:center;}
+    .cta-item{display:flex;justify-content:space-between;align-items:center;font-size:13px; font-weight: 500;
+        padding:7px 4px;border-bottom:1px dashed #eaeaea;}
+    .cta-item:last-child{border-bottom:none;}
+    .cta-item .ttl{color:#333;}
+    .cta-item a{color:#111;text-decoration:none;font-weight:700;white-space:nowrap; transition:color 0.2s;}
+    .cta-item a:hover{color:#000; text-decoration:underline;}
+
+    /* 기존 노벨문학상 템플릿 수정 */
+    .nobelBotSec.secCon0101 { padding-bottom: 20px; } /* 굿즈 섹션과 책갈피 영역 간격 조절 */
 </style>
 </head>
 <body>
 
-<!-- ===================== PC 헤더 (원본 그대로) ===================== -->
 <div class="pc-only">
 <div id="yesHeaderArea">
     <div id="yHeader">
@@ -255,166 +270,54 @@
             <div class="yHeaderTop">
                 <h2 class="yBlind">YES24 카테고리 리스트</h2>
                 <ul class="cateLi" id="ulCategoryList">
-                    <li class="cate001 cateOn"><a title="국내도서"
-                            href="https://www.yes24.com/Mall/Main/Book/001?CategoryNumber=001"><em
-                                class="txt">국내도서</em></a>
-                    </li>
-                    <li class="cate002"><a title="외국도서"
-                            href="https://www.yes24.com/Mall/Main/Foreign/002?CategoryNumber=002"><em
-                                class="txt">외국도서</em></a></li>
-                    <li class="cate018"><a title="중고샵"
-                            href="https://www.yes24.com/Mall/Main/used/018?CategoryNumber=018"><em
-                                class="txt">중고샵</em></a>
-                    </li>
-                    <li class="cate017"><a title="eBook"
-                            href="https://www.yes24.com/Mall/Main/eBook/017?CategoryNumber=017"><em
-                                class="txt">eBook</em></a></li>
-                    <li class="cateCrC"><a title="크레마클럽" href="https://cremaclub.yes24.com/BookClub/Main"><em
-                                class="txt">크레마클럽</em></a></li>
-                    <li class="cate003"><a title="CD/LP"
-                            href="https://www.yes24.com/Mall/Main/Music/003?CategoryNumber=003"><em
-                                class="txt">CD/LP</em></a></li>
-                    <li class="cate004"><a title="DVD/Blu-ray"
-                            href="https://www.yes24.com/Mall/Main/Dvd/004?CategoryNumber=004"><em
-                                class="txt">DVD/BD</em></a></li>
-                    <li class="cate006"><a title="GIFT"
-                            href="https://www.yes24.com/Mall/Main/Gift/006?CategoryNumber=006"><em
-                                class="txt"><u>문구</u>/GIFT</em></a>
-                    </li>
-                    <li class="cateENT"><a title="티켓" href="http://ticket.yes24.com/" target="_blank"><em
-                                class="txt">티켓</em><em class="ico_newW bgGNB">새창이동</em></a></li>
+                    <li class="cate001 cateOn"><a title="국내도서" href="https://www.yes24.com/Mall/Main/Book/001?CategoryNumber=001"><em class="txt">국내도서</em></a></li>
+                    <li class="cate002"><a title="외국도서" href="https://www.yes24.com/Mall/Main/Foreign/002?CategoryNumber=002"><em class="txt">외국도서</em></a></li>
+                    <li class="cate018"><a title="중고샵" href="https://www.yes24.com/Mall/Main/used/018?CategoryNumber=018"><em class="txt">중고샵</em></a></li>
+                    <li class="cate017"><a title="eBook" href="https://www.yes24.com/Mall/Main/eBook/017?CategoryNumber=017"><em class="txt">eBook</em></a></li>
+                    <li class="cateCrC"><a title="크레마클럽" href="https://cremaclub.yes24.com/BookClub/Main"><em class="txt">크레마클럽</em></a></li>
+                    <li class="cate003"><a title="CD/LP" href="https://www.yes24.com/Mall/Main/Music/003?CategoryNumber=003"><em class="txt">CD/LP</em></a></li>
+                    <li class="cate004"><a title="DVD/Blu-ray" href="https://www.yes24.com/Mall/Main/Dvd/004?CategoryNumber=004"><em class="txt">DVD/BD</em></a></li>
+                    <li class="cate006"><a title="GIFT" href="https://www.yes24.com/Mall/Main/Gift/006?CategoryNumber=006"><em class="txt"><u>문구</u>/GIFT</em></a></li>
+                    <li class="cateENT"><a title="티켓" href="http://ticket.yes24.com/" target="_blank"><em class="txt">티켓</em><em class="ico_newW bgGNB">새창이동</em></a></li>
                 </ul>
                 <h2 class="yBlind">YES24 유틸메뉴</h2>
                 <ul class="utilLi">
-                    <li id="LoginText">
-                        <a href="https://www.yes24.com/Templates/FTLogin.aspx"><em class="txt">로그인</em></a>
-                    </li>
+                    <li id="LoginText"><a href="https://www.yes24.com/Templates/FTLogin.aspx"><em class="txt">로그인</em></a></li>
                     <li><a href="https://www.yes24.com/Member/Join/Accept.aspx">회원가입</a></li>
                     <li class="myPgGrp">
-                        <a href="javascript:void(0);"><em class="txt">마이페이지</em><em
-                                class="ico_arrD bgGNB">하위메뉴보기</em></a>
-                        <dl class="myPgDl">
-                            <dt><a href="https://www.yes24.com/Member/FTMypageMain.aspx"><em class="txt">마이페이지</em><em
-                                        class="ico_arrU bgGNB">이동</em></a></dt>
-                            <dd>
-                                <ul>
-                                    <li><a href="https://ssl.yes24.com/MyPageOrderList/MyPageOrderList">주문내역 </a></li>
-                                    <li><a href="https://www.yes24.com/Member/FTGoMyBlog.aspx?type=list"
-                                            target="_blank">마이리스트 </a>
-                                    </li>
-                                    <li><a href="https://www.yes24.com/Templates/FTMyAccount_1YESPoint.aspx">YES포인트 </a>
-                                    </li>
-                                    <li><a href="https://www.yes24.com/Templates/FTMyAccount_1YESMoney.aspx">YES머니 </a>
-                                    </li>
-                                    <li><a href="https://www.yes24.com/Templates/FTMyAccount_3GiftCard.aspx">YES상품권 </a>
-                                    </li>
-                                    <li><a href="https://www.yes24.com/Templates/FTMyAccount_4Coupon.aspx">쿠폰 </a></li>
-                                    <li><a href="https://www.yes24.com/Member/MyPage_reconfirmPW.aspx">회원정보 </a></li>
-                                </ul>
-                            </dd>
-                        </dl>
+                        <a href="javascript:void(0);"><em class="txt">마이페이지</em><em class="ico_arrD bgGNB">하위메뉴보기</em></a>
                     </li>
                     <li><a href="https://ssl.yes24.com/Cart/Cart"><em class="txt">카트</em></a></li>
-                    <li><a href="https://ssl.yes24.com/MyPageOrderList/MyPageOrderList"><em class="txt">주문/배송</em></a>
-                    </li>
-                    <li class="lastLi"><a href="https://www.yes24.com/Templates/FTCusMain.aspx?Wcode=001_003_012"><em
-                                class="txt">고객센터</em></a></li>
+                    <li><a href="https://ssl.yes24.com/MyPageOrderList/MyPageOrderList"><em class="txt">주문/배송</em></a></li>
+                    <li class="lastLi"><a href="https://www.yes24.com/Templates/FTCusMain.aspx?Wcode=001_003_012"><em class="txt">고객센터</em></a></li>
                 </ul>
             </div>
-            <!-- %%%%%%%%%% 해더 Top 영역 끝 %%%%%%%%%% -->
             <hr>
-            <!-- %%%%%%%%%% 해더 Mid 영역 시작 %%%%%%%%%% -->
             <div class="yHeaderMid">
                 <div class="yesSearch">
-                    <form id="yesSForm" method="get" name="HeadForm" action="https://www.yes24.com/product/search?"
-                        onsubmit="return check_search();" accept-charset="utf-8">
+                    <form id="yesSForm" method="get" name="HeadForm" action="https://www.yes24.com/product/search?" onsubmit="return check_search();" accept-charset="utf-8">
                         <fieldset>
                             <legend>검색</legend>
                             <span class="schIpt">
-                                <label>
-                                    <input type="text" title="YES24 검색어 입력" class="iptTxt iptTxtAd" accesskey="s" id="query" name="query" maxlength="80" value="" style="ime-mode: active;"autocomplete="off">
-                                </label>
+                                <label><input type="text" title="YES24 검색어 입력" class="iptTxt iptTxtAd" accesskey="s" id="query" name="query" maxlength="80" value="" style="ime-mode: active;"autocomplete="off"></label>
                             </span>
-                            <div style="position:absolute;top:-1000em;left:0;width:1px;height:1px;overflow:hidden;">
-                            </div>
+                            <div style="position:absolute;top:-1000em;left:0;width:1px;height:1px;overflow:hidden;"></div>
                             <span class="schBtn"><button type="submit" title="검색"><span class="yBlind">검색</span></button></span>
                         </fieldset>
                     </form>
                 </div>
                 <hr>
-                <div id="gnbBnWrap" class="bnAdArea">
-                    <div class="bnAd">
-                        <h2 class="yBlind">어깨배너</h2>
-                        <!-- 어깨배너 -->
-                        <div id="gnbBnList">
-                            <div style=""><a href="https://event.yes24.com/yesbenefit" target="_self" onclick=""><img
-                                        src="https://image.yes24.com/dms/202011/GNB어깨배너_180x112(2).jpg" width="180"
-                                        height="112" border="0" alt="이달의 혜택 모음"></a></div>
-                        </div>
-                        <div class="bnNav">
-                            <span class="pagenNum"><strong>1</strong>/3</span>
-                            <button type="button" value="이전 광고 보기" title="이전 광고 보기" class="bgGNB prev">이전 광고
-                                보기</button>
-                            <button type="button" value="다음 광고 보기" title="다음 광고 보기" class="bgGNB next">다음 광고
-                                보기</button>
-                        </div>
-                    </div>
-                </div>
             </div>
-            <!-- %%%%%%%%%% 해더 Mid 영역 끝 %%%%%%%%%% -->
             <hr>
-            <!-- %%%%%%%%%% 해더 Bot 영역 시작 %%%%%%%%%% -->
-            <div class="yHeaderBot">
-                <!-- ********** 빠른 분야 찾기 영역 시작 ********** -->
-                <div class="quickCateZone">
-                    <h2><a href="javascript:void(0);" class="quickCateBtn" id="quickCateBtn">빠른분야찾기</a></h2>
-                </div>
-                <!-- ********** 빠른 분야 찾기 영역 끝 ********** -->
-                <!-- ********** 코너/서비스 영역 시작  ********** -->
-                <div id="yesFixCorner" class="yesCornerServ">
-                    <dl>
-                        <dt class="yBlind">YES24 코너/서비스</dt>
-                        <dd>
-                            <ul class="yesCornerLi">
-                                <li><a
-                                        href="https://www.yes24.com/product/category/daybestseller?CategoryNumber=001">베스트</a>
-                                </li>
-                                <li><a
-                                        href="https://www.yes24.com/product/category/attentionnewproduct?categoryNumber=001">신상품</a>
-                                </li>
-                                <li><a href="https://event.yes24.com/main?mainCateId=001">이벤트</a></li>
-                                <li><a href="https://www.yes24.com/Mall/Buyback/Search?CategoryNumber=018">바이백</a></li>
-                                <li><a href="https://www.yes24.com/Mall/UsedStore/Main">매장안내</a></li>
-                            </ul>
-                            <em class="divi"></em>
-                            <ul class="yesServLi">
-                                <li><a title="채널예스" href="https://ch.yes24.com/" qdomain="채널예스" target="_blank"><em
-                                            class="txt">채널예스</em></a></li>
-                                <li><a title="사락" href="https://sarak.yes24.com/" target="_blank">사락</a></li>
-                                <li><a href="https://www.yes24.com/Mall/YesFunding/Main">예스펀딩</a></li>
-                                <li><a title="클래스24" href="https://www.yes24.com/Product/Class">클래스24</a></li>
-                                <li><a title="독서유형검사" href="https://rbti.yes24.com/" class="promotion" target="_blank">
-                                    <span class="txt_promotion"><span class="txt_mnu">독서유형검사</span>
-                                            <span class="txt_mnu"><em class="rbti">RBTI Lab</em>
-                                                <em class="ico_newSup"></em></span><span
-                                                class="txt_mnu">독서유형검사</span></span></a></li>
-                            </ul>
-                        </dd>
-                    </dl>
-                </div>
-                <!-- ********** 코너/서비스 영역 끝 ********** -->
-            </div>
         </div>
     </div>
     <hr>
 </div>
 </div>
 
-<!-- ===================== 모바일 헤더 (원본 그대로) ===================== -->
 <div class="mobile-only">
 <div id="yesWrap">
     <div id="yHdWrap" class="subMod">
-                
         <div id="yHd">
             <h1 class="logo">
                 <a href="https://m.yes24.com/home/main" class="logo_lnk"></a>
@@ -425,74 +328,94 @@
             <div class="sch">
                 <div class="ipt">
                     <label>
-                        <input type="search" placeholder="뱀파이어와 늑대인간의 고향" id="query" name="searchquery" title="YES24 검색" maxlength="80" value="" autocapitalize="off" autocomplete="off" class="ipt_box" onkeypress="if (event.keyCode === 13) { searchGoods(); return false; }">
+                        <input type="search" placeholder="뱀파이어와 늑대인간의 고향" id="query" name="searchquery" title="YES24 검색" maxlength="80" value="" autocapitalize="off" autocomplete="off" class="ipt_box">
                         <button type="button" id="btn_del_schKWord" class="ipt_del"><span class="txt">입력삭제</span></button>
                     </label>
                 </div>
                 <span class="btn"><button type="button" id="search_real_search" class="btn_sch"><span class="txt">검색하기</span></button></span>
-                <span class="ad"><button type="button" id="btn_ad_search" class="btn_ad"><span class="txt">광고이동</span></button></span>
-                <span class="app">
-                    <button type="button" id="btn_app_search" class="btn_qr">
-                        <span class="txt">QR/바코드 검색</span>
-                    </button>
-                </span>
-                <span class="appTip">이미지 검색을 사용해 보세요</span>
                 <input id="hdSearchCategory" type="hidden">
-            </div>
-            <span class="prev">
-                <a href="javascript:void(0);" class="prev_rset" id="prevSch">
-                    <span class="txt">검색창 이전화면</span>
-                </a>
-                <a href="javascript:void(0);" class="prev_back" onclick="commonPrevBtn();">
-                    <span class="txt">이전화면</span>
-                </a>
-            </span>
-        </div>
-        <div id="yKeyWrap">
-            <div id="yKWD" class="yKeywords">
-                
-                <dl class="keyDl keyPop">
-                    <dt>
-                        <strong class="keyTit">인기 검색어</strong>
-                        <span id="date_search_popular" class="date"></span>
-                    </dt>
-                    <dd>
-                        <div id="search_popular_nodata" class="noData" style="display:none;">
-                        </div>
-                        <ol id="search_popular" class="popOl" style="display:none;">
-                        </ol>
-                    </dd>
-                </dl>
-            </div>
-            <div id="ySGST" class="ySuggest" style="display:none;">
-                <ul id="search_suggest" class="sgstLi">
-                </ul>
-            </div>
-            <div class="yKEtc">
-                <a href="javascript:void(0);" id="search_close" class="lnk_close"><em class="txt">닫기</em><em class="ico"></em></a>
             </div>
         </div>
     </div>
 </div>
 </div>
 
-<!-- ===================== 이벤트 콘텐츠 ===================== -->
+<div class="nobelTop">
+    <div class="topBg"><video src="https://image.yes24.com/images/00_Event/2025/nobel/bgTop.mp4" autoplay loop muted playsinline width="100%" height="auto"></video></div>
+    <div class="topImg">
+        <div class="light"></div>
+        <div class="logo"><img src="https://image.yes24.com/images/00_Event/2025/nobel/imgTop01.png?v=250821" border="0" alt=""></div>
+        <div class="shadow"></div>
+        <div class="img"><img src="https://image.yes24.com/images/00_Event/2025/nobel/imgTop02.png?v=250821" border="0" alt=""></div>
+    </div>
+    <div class="topMsg" style="opacity: 1; transform: translateZ(0);">
+        세계 최고 권위의 노벨문학상.<br/>
+        2026년 10월, 최고의 영예를 거머쥘 주인공은?
+    </div>
+    <div class="topBox">
+        <div class="boxTit" style="opacity: 1; transform: translateZ(0);">
+            2026 노벨문학상 관심알림 신청 시,<br/>
+            YES상품권 500원 증정!
+        </div>
+        <div class="boxDes" style="opacity: 1; transform: translateZ(0);">
+            수상작가 선정 시, 발표일 오전에<br/>
+            작가와 작품 관련 알림을 보내드려요!
+        </div>
+        <div class="yesCardRow eGuideYesCard eGuideSet">
+            <div class="yesCardRow" style="opacity: 1; transform: translateZ(0);">
+                <div class="yesCardSet">
+                    <div class="yesCardBig card01">
+                        <p class="card_num">500</p>
+                    </div>
+                </div>
+            </div>
+            <div class="eGuideSecBtn" style="opacity: 1; transform: translateZ(0);">
+                <a href="javascript:void(0);" class="eGBtn btn_black"><span class="bWrap"><em class="txt">노벨문학상 관심알림 신청</em></span></a>
+            </div>
+            <div class="yesEveAlertDl toggleOff" style="opacity: 1; transform: translateZ(0);">
+                <dl>
+                    <dt><a href="javascript:void(0);" onclick="this.parentNode.parentNode.parentNode.classList.toggle('toggleOff')"><em class="ico_info"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><g style="fill:none"><circle cx="10" cy="10" r="10" style="stroke:none"></circle><circle cx="10" cy="10" r="9.5" style="fill:none"></circle></g><path data-name="선 1" transform="translate(10 6)" style="stroke-linecap:round;stroke-width:2px;fill:none" d="M0 0h0"></path><path data-name="선 2" transform="translate(10 9)" style="stroke-linecap:round;stroke-width:2px;fill:none" d="M0 0v5"></path></svg></em>꼭 읽어주세요<em class="ico_arr"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path data-name="패스 5" d="m15 9.127-6-6-6 6" transform="translate(1.5 4.373)" style="fill:none;stroke-linecap:round;stroke-linejoin:round"></path></svg></em></a></dt>
+                    <dd>
+                        <ul class="yesEveAlertLi">
+                            <li><em class="bl_rnd">&nbsp;</em>ID 당 1회만 발급 가능합니다.                                </li>
+                            <li><em class="bl_rnd">&nbsp;</em>YES상품권의 유효기간은 2026년 행사 종료 시점까지 입니다.         </li>
+                            <li><em class="bl_rnd">&nbsp;</em>해당 상품권 증정은 당사의 사정으로 조기 종료 될 수 있습니다.</li>
+                            <li><em class="bl_rnd">&nbsp;</em>상품권 적용 분야 : 국내도서                                 </li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="nobelBot">
+    <div class="nobelBotSec secCon0101">
+        <div class="tit_txtGrp" style="opacity: 1; transform: translateZ(0);">
+            <div class="txt_tit">노벨문학상 특별 굿즈<br/>나의 인생책갈피</div>
+            <div class="txt_des">전세계가 주목하는 역대 수상 작가들의 빛나는 작품.<br/>그 안에서 당신만의 명장면을 골라<br/>커스텀 책갈피를 완성해 보세요.</div>
+        </div>
+    </div>
+</div>
+
+<!-- 인생책갈피 인터랙션 컨텐츠 -->
 <div class="event-page">
   <div class="wrap">
     <header class="evt-head">
-      <div class="eyebrow">NOBEL SEASON · READING RECORD CARD</div>
-      <h1>나의 인생책갈피 만들기</h1>
-      <p>표지에서 마음에 드는 장면을 직접 짚어보세요. 탭한 부분만 오려내 책 제목과 함께<br>진짜 책갈피 모양으로 완성해드려요.</p>
+      <div class="eyebrow">CUSTOM BOOKMARK EVENT</div>
+      <h1>나만의 인생책갈피 만들기</h1>
+      <p>아래 목록에서 마음에 드는 책 표지를 탭하여 장면을 캡처해보세요. 선택한 4개의 조각이 모여 당신만의 특별한 굿즈로 완성됩니다.</p>
       <div class="counter" id="counter">0 / 4 권 선택됨</div>
     </header>
 
-    <div class="shelf-title">이 책들 중에서 골라보세요 <span>TAP THE ART TO CAPTURE</span></div>
-    <div class="shelf-hint">표지의 원하는 부분을 탭하면 그 장면이 책갈피에 담겨요. 다시 탭하면 캡처 위치를 바꿀 수 있어요.</div>
+    <div class="shelf-title">노벨문학상 수상작 큐레이션 <span>TAP THE COVER TO CAPTURE</span></div>
+    <div class="shelf-hint">원하는 부분을 탭하면 해당 영역이 책갈피에 담깁니다. 다시 탭하여 위치를 수정할 수 있습니다.</div>
+    
     <div class="grid" id="grid"></div>
 
     <div class="preview-section">
       <div class="preview-head">
-        <h2>나의 인생책갈피</h2>
+        <h2>완성된 나의 컬렉션</h2>
         <span id="completeMsg">0 / 4 · IN PROGRESS</span>
       </div>
       <div class="shelf-display">
@@ -501,196 +424,75 @@
       </div>
       <div class="actions">
         <button class="act" id="resetBtn">다시 고르기</button>
-        <button class="act primary" id="downloadBtn" disabled>이미지로 저장</button>
+        <button class="act primary" id="downloadBtn" disabled>책갈피 이미지 저장</button>
       </div>
+      
       <div class="cta-box">
-        <h4>선택한 책 바로 만나보기</h4>
-        <div id="ctaList"><div class="cta-empty">아직 고른 책이 없어요</div></div>
+        <h4>선택한 도서 바로가기</h4>
+        <div id="ctaList"><div class="cta-empty">아직 선택된 책이 없습니다.</div></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ===================== PC 푸터 (원본 그대로) ===================== -->
 <div class="pc-only">
 <div id="yesFooter">
-        <div id="toolBtn" class="recentMaxH absBot">
-            <div class="toolBtnRow">
-                <div id="yAIBtn" class="yAIChatBtn" style="display:none;">
-                    <a class="lnk_ai" href="javascript:void(0);" onclick="goOepnChat();">
-                        <span class="ai_ico tp02"></span>
-                        <div class="ai_msg" style="display:none;">
-                            <div class="msg">
-                                <p>AI와 대화하며 도서를 추천받아 보시겠어요?</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            
-                <a class="sclTopBtn" href="javascript:void(0);" onclick="pgGoTop();setWcode('003_007');"><span class="ico"><img src="https://image.yes24.com/sysimage/renew/common/ico_top.svg" border="0" alt="맨위로"></span></a>
-            </div>
+    <div id="footerWrap">
+        <div class="yFootTop">
+            <ul id="yMnuLi" class="yFootMnuLi">
+                <li><a href="https://company.yes24.com/" target="_blank" class="bgFooter fMnu_corp">회사소개</a></li>
+                <li><a href="https://www.yes24.com/notice/service.aspx" class="bgFooter fMnu_agre">이용약관</a></li>
+                <li><a href="https://www.yes24.com/notice/privacypolicy.aspx" class="bgFooter fMnu_priv"><strong>개인정보처리방침</strong></a></li>
+                <li><a href="https://www.yes24.com/campaign/00_corp/store/store_gangNam.aspx" class="bgFooter fMnu_used">매장안내</a></li>
+            </ul>
         </div>
-        <div id="footerWrap">
-            <div class="yFootTop">
-                <ul id="yMnuLi" class="yFootMnuLi">
-                    <li><a href="https://company.yes24.com/" onclick="setWcode('027_001')" target="_blank" class="bgFooter fMnu_corp">회사소개</a></li>
-                    <li><a href="https://company.yes24.com/career" onclick="setWcode('027_002')" target="_blank" class="bgFooter fMnu_recu">인재채용</a></li>
-                    <li><a href="https://www.yes24.com/notice/service.aspx" onclick="setWcode('027_003')" class="bgFooter fMnu_agre">이용약관</a></li>
-                    <li><a href="https://www.yes24.com/notice/privacypolicy.aspx" onclick="setWcode('027_004')" class="bgFooter fMnu_priv"><strong>개인정보처리방침</strong></a></li>
-                    <li><a href="https://www.yes24.com/notice/youthpolicy.aspx" onclick="setWcode('027_004')" class="bgFooter fMnu_boy">청소년보호정책</a></li>
-                    <li><a href="https://www.yes24.com/company/Publish.aspx" onclick="setWcode('027_006')" class="bgFooter fMnu_book">도서홍보안내</a></li>
-                    <li><a href="https://www.yes24.com/company/AdInfo.aspx" onclick="setWcode('027_007')" class="bgFooter fMnu_ad">광고안내</a></li>
-                    <li><a href="https://www.yes24.com/company/InfoCoopProgram.aspx" onclick="setWcode('027_008')" class="bgFooter fMnu_part">제휴안내</a></li>
-                    <li><a href="https://www.yes24.com/CorpLargeOrder/infoPartner.aspx" onclick="setWcode('027_009')" class="bgFooter fMnu_bene">복지제휴</a></li>
-                    <li><a href="https://www.yes24.com/campaign/00_corp/store/store_gangNam.aspx" onclick="setWcode('027_011')" class="bgFooter fMnu_used">매장안내</a></li>
-                </ul>
-                <ul class="yFootSnsLi">
-                    <li><a class="bgFooter sns_ka" onclick="setWcode('027_015')" href="https://pf.kakao.com/_yxkZjR" target="_blank">YES24 카카오채널</a></li>
-                    <li><a class="bgFooter sns_fb" onclick="setWcode('027_012')" href="https://www.facebook.com/yes24/" target="_blank">YES24 페이스북</a></li>
-                    <li><a class="bgFooter sns_tw" onclick="setWcode('027_013')" href="https://twitter.com/yes24_official" target="_blank">YES24 트위터</a></li>
-                    <li><a class="bgFooter sns_ig" onclick="setWcode('027_014')" href="https://www.instagram.com/yes24_official/" target="_blank">YES24 인스타그램</a></li>
-                </ul>
-                <dl id="yFamDl" class="yFootFamDl">
-                    <dt class=""><a href="javascript:void(0);" class="bgFooter">가족회사 소개</a></dt>
-                    <dd style="display:none;">
-                        <ul>
-                            <li><a target="_blank" href="http://www.hansaeyes24.com/" onclick="setWcode('028')">한세예스24홀딩스</a></li>
-                            <li><a target="_blank" href="http://www.hansae.com/" onclick="setWcode('028')">한세실업</a></li>
-                            <li><a target="_blank" href="http://www.hansaedreams.co.kr/" onclick="setWcode('028')">한세드림</a></li>
-                            <li><a target="_blank" href="http://www.curlysue.co.kr/" onclick="setWcode('028')">컬리수</a></li>
-                            <li><a target="_blank" href="http://www.style24.com/" onclick="setWcode('028')">STYLE24</a></li>
-                            <li><a target="_blank" href="http://www.bookdonga.com/" onclick="setWcode('028')">동아출판</a></li>
-                        </ul>
-                    </dd>
-                </dl>
-            </div>
-            <div class="yFootCon">
-                <dl class="yFootAddr">
-                    <dt><a href="https://www.yes24.com/Main/default.aspx"><em class="fLogo bgFooter">&nbsp;</em></a><em class="bgFooter fCName">예스이십사(주)</em></dt>
-                    <dd>
-                        <address>
-                            <span class="addrRow">대표 : 김석환, 최세라</span>
-                            <span class="addrRow">주소 : 서울시 영등포구 은행로 11, 5층~6층(여의도동,일신빌딩)</span>
-                            <span class="addrRow">사업자등록번호 : 229-81-37000 &nbsp; 통신판매업신고 : 제 2005-02682호 <a id="corpNumLnk" href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=2298137000" target="_blank">사업자 정보확인</a></span>
-                            <span class="addrRow">이메일 : yes24help@yes24.com &nbsp; 호스팅 서비스사업자 : 예스이십사(주)</span>
-                            <p class="txt_copyright">Copyright ⓒ YES24 Corp. All Rights Reserved.</p>
-                        </address>
-                    </dd>
-                </dl>
-                <ul class="yFootCsLi">
-                    <li class="csTel">
-                        <dl>
-                            <dt style="">고객문의</dt>
-                            <dd>
-                                <p><span class="item">도서/음반</span> <span class="yes_b">1544-3800</span></p>
-                                <p><span class="item w35">중고도서</span> <span class="yes_b">1566-4295</span></p>
-                                <p><span class="item">티켓예매</span> <span class="yes_b">1544-6399</span></p>
-                                <p><span class="item w35"><a href="https://www.yes24.com/Mall/Help/CS/Apply?AplNo=45" class="txtLnk">eBook 1:1문의/채팅상담</a></span></p>
-                            </dd>
-                        </dl>
-                    </li>
-                    <li class="csFaq clearfix">
-                        <a href="https://www.yes24.com/Mall/Help/Main" class="btnCs1 bgFooter">1:1 문의하기</a>
-                        <a href="https://www.yes24.com/Mall/Help/Faq" class="btnCs2 bgFooter">자주 묻는 질문</a>
-                        <a href="javascript:void(0);" class="btnCs3 bgFooter">상담시간 안내</a>
-                    </li>
-                </ul>
-                <div id="footerCsInfoPop" class="csInfoD" style="display:none">
-                    <div class="csInfoDCon">
-                        <strong class="tit">상담시간 안내</strong>
-                        <ul class="infoDLi clearfix">
-                            <li><strong class="item">도서/음반 문의</strong> <em class="telNum">1544-3800</em> 평일 9시 ~
-                                18시<em class="des"> (토요일, 일요일 및 공휴일 휴무)</em></li>
-                            <li><strong class="item">중고도서 문의</strong> <em class="telNum">1566-4295</em> 평일 9시 ~
-                                18시<em class="des"> (토요일, 일요일 및 공휴일 휴무)</em></li>
-                            <li><strong class="item">티켓예매 문의</strong> <em class="telNum">1544-6399</em> 평일 9시 ~ 18시
-                                토요일 9시 ~ 17시 <em class="des">(일요일 및 공휴일 휴무)</em></li>
-                            <li><strong class="item">eBook 문의</strong> <a href="https://www.yes24.com/Mall/Help/CS/Apply?AplNo=45" class="txtLnk">1:1문의하기</a></li>
-                        </ul>
-                        <p class="csInfoCmt">점심시간 안내 &nbsp; 12:00 ~ 13:00</p>
-                        <a href="javascript:void(0);" class="btnCloseCsInfo">상담시간 안내 레이어 닫기</a>
-                    </div>
-                </div>
-            </div>
-            <div class="yes24Glory">
-                <img src="https://image.yes24.com/sysimage/renew/footer/img_awards.gif?v260105 " width="1200" border="0" alt="YES24 수상내역" usemap="#mapFootGlory">
-                <map name="mapFootGlory" id="mapFootGlory">
-                    <area shape="rect" coords="886,0,1011,88" href="javascript:void(0);" onclick="ismsPopupE();" alt="정보보호 관리체계 ISMS인증획득">
-                    <area shape="rect" coords="1070,0,1185,88" href="javascript:void(0);" onclick="javascript:markPopupE('2025-EP-R046');" alt="개인정보보호 우수사이트">
-                </map>
-            </div>
+        <div class="yFootCon">
+            <dl class="yFootAddr">
+                <dt><a href="https://www.yes24.com/Main/default.aspx"><em class="fLogo bgFooter">&nbsp;</em></a><em class="bgFooter fCName">예스이십사(주)</em></dt>
+                <dd>
+                    <address>
+                        <span class="addrRow">대표 : 김석환, 최세라</span>
+                        <span class="addrRow">주소 : 서울시 영등포구 은행로 11, 5층~6층(여의도동,일신빌딩)</span>
+                        <p class="txt_copyright">Copyright ⓒ YES24 Corp. All Rights Reserved.</p>
+                    </address>
+                </dd>
+            </dl>
+            <ul class="yFootCsLi">
+                <li class="csTel">
+                    <dl>
+                        <dt style="">고객문의</dt>
+                        <dd>
+                            <p><span class="item">도서/음반</span> <span class="yes_b">1544-3800</span></p>
+                            <p><span class="item w35">중고도서</span> <span class="yes_b">1566-4295</span></p>
+                        </dd>
+                    </dl>
+                </li>
+            </ul>
         </div>
+    </div>
 </div>
 </div>
 
-<!-- ===================== 모바일 푸터 (원본 그대로) ===================== -->
 <div class="mobile-only">
 <div id="yesWrap">
-        <footer>
-            <div id="footer" class="tBarOn">
-                <div class="footMnu">
-                    <div class="mnuLnk">
-                        <span class="lnkSet">
-                            <a id="loginOutLink" href="javascript:setMcodeNRedirection('https://m.yes24.com/Momo/Templates/FTLogOut.aspx', '003_001')" onclick="brazeHelper.logout(); airbridgeHelper.logout();">
-                                <em class="txt">로그인</em>
-                            </a>
-                        </span>
-                        <span class="lnkSet">
-                            <a href="https://m.yes24.com/Category/RecentGoods" onclick="setMcode('003_002');">
-                                <em class="txt">최근 본 상품</em>
-                            </a>
-                        </span>
-                        <span class="lnkSet">
-                            <a href="javascript:setMcodeNRedirection('https://ssl.yes24.com/MMyPageOrderList/MMyPageOrderList', '003_003');">
-                                <em class="txt">주문/배송</em>
-                            </a>
-                        </span>
-                        </div>
-                    </div>
-                    <div class="footCs">
-                    <div class="csTel">
-                        <span class="telSet"><a href="tel:15443800" onclick="setMcode('003_004');" class="txt">고객센터 1544-3800</a></span>
-                        <span class="telSet"><a href="tel:1544-6399" class="txt">티켓 1544-6399</a></span>
-                        <span class="telSet"><a href="tel:15664295" onclick="setMcode('003_009');" class="txt">중고샵 1566-4295</a></span>
-                        <span class="telSet lastSet"><a href="https://m.yes24.com/Help/Cs/Apply?AplNo=45" class="lnk">eBook 1:1문의/채팅상담</a></span>
-                    </div>                        
-                </div>
-                
-                <div id="yFootInfo" class="footTxt">
-                    <button type="button" class="btn_fToggle" onclick="toggleFootInfo();">
-                        <span class="txt">예스이십사(주) 사업자 정보</span>
-                        <span class="ico">자세히 보기</span>
-                    </button>
-                    <div class="txtInfo">
-                        <dl><dt>대표</dt><dd>김석환, 최세라</dd></dl>
-                        <dl><dt>주소</dt><dd>서울시 영등포구 은행로 11, 5층~ 6층 (여의도동,일신빌딩)</dd></dl>
-                        <dl><dt>사업자등록번호</dt><dd>229-81-37000</dd></dl>
-                        <dl><dt>통신판매업신고</dt><dd>제 2005-02682</dd></dl>
-                        <dl><dt>이메일</dt><dd><a href="mailto:yes24help@yes24.com">yes24help@yes24.com</a></dd></dl>
-                        <dl><dt>호스팅 서비스사업자</dt><dd>예스이십사(주)</dd></dl>
-                    </div>
-                </div>
-                <div class="footCorp">
-                    <div class="corpLnk">
-                        <span class="lnkSet"><a href="https://m.yes24.com/Momo/Member/agree.aspx" onclick="setMcode('003_008');">이용약관</a></span>
-                        <span class="lnkSet"><a href="https://m.yes24.com/Momo/Member/clause_privacy.aspx" onclick="setMcode('003_007');"><strong>개인정보처리방침</strong></a></span>
-                        <span class="lnkSet"><a href="https://m.yes24.com/Momo/Member/youthpolicy.aspx">청소년보호정책</a></span>
-                    </div>
-                    <div class="corpLnk">
-                        <span class="lnkSet" id="viewPcLink"><a href="javascript:void(0);" onclick="setMcode('003_005');goPcWeb();">PC버전</a></span>
-                        <span class="lnkSet"><a href="https://company.yes24.com/">회사소개</a></span>
-                        <span class="lnkSet"><a href="https://m.yes24.com/Company">거래처관계자께</a></span>
-                    </div>
-                    <div class="corpLnk">
-                        <span class="lnkSet"><a href="https://m.yes24.com/Company/Publish">도서홍보</a></span>
-                        <span class="lnkSet"><a href="https://m.yes24.com/Company/AdGuide">광고</a></span>
-                    </div>
-                </div>
-                <div class="footCopy">
-                    <p>Copyright © YES24 Corp. All Rights Reserved.</p>
+    <footer>
+        <div id="footer" class="tBarOn">
+            <div class="footCs">
+                <div class="csTel">
+                    <span class="telSet"><a href="tel:15443800" class="txt">고객센터 1544-3800</a></span>
+                </div>                        
+            </div>
+            <div class="footCorp">
+                <div class="corpLnk">
+                    <span class="lnkSet"><a href="https://m.yes24.com/Momo/Member/agree.aspx">이용약관</a></span>
+                    <span class="lnkSet"><a href="https://m.yes24.com/Momo/Member/clause_privacy.aspx"><strong>개인정보처리방침</strong></a></span>
                 </div>
             </div>
-        </footer>
+            <div class="footCopy">
+                <p>Copyright © YES24 Corp. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
 </div>
 </div>
 
@@ -731,7 +533,7 @@ function renderGrid(){
       <div class="cover-box">
         <img src="${book.cover}" alt="${book.title}" loading="lazy">
         <div class="tap-hint">탭해서<br>캡처하기</div>
-        <div class="stamp">대출<br>완료</div>
+        <div class="stamp">선택<br>완료</div>
         <div class="order-badge" title="탭하면 제외">${order || ''}</div>
         <div class="focus-mark" style="left:${book.fx}%;top:${book.fy}%;"></div>
       </div>
@@ -755,11 +557,13 @@ function renderGrid(){
       renderAll();
     });
 
-    orderBadge.addEventListener('click', (e) => {
-      e.stopPropagation();
-      selected = selected.filter(b => b.id !== book.id);
-      renderAll();
-    });
+    if(orderBadge) {
+        orderBadge.addEventListener('click', (e) => {
+          e.stopPropagation();
+          selected = selected.filter(b => b.id !== book.id);
+          renderAll();
+        });
+    }
 
     grid.appendChild(card);
   });
@@ -776,7 +580,7 @@ function renderBookmarks(){
         <div class="art"><img src="${b.cover}" alt="${b.title}" style="object-position:${b.fx}% ${b.fy}%;"></div>
         <div class="spine"></div>
         <div class="pages"></div>
-        <div class="edition">세계문학전집 ${b.edition}</div>
+        <div class="edition">NOBEL COLLECTION</div>
         <div class="title-bar"><div class="ttl">${b.title}</div></div>
       `;
     } else {
@@ -787,7 +591,7 @@ function renderBookmarks(){
   }
   const done = selected.length === MAX;
   completeMsg.textContent = done ? '4 / 4 · COMPLETE' : `${selected.length} / 4 · IN PROGRESS`;
-  completeMsg.style.color = done ? '#B3392B' : '#8a7f63';
+  completeMsg.style.color = done ? '#111' : '#888';
   downloadBtn.disabled = !done;
 }
 
@@ -797,13 +601,13 @@ function renderCounter(){
 
 function renderCta(){
   if(selected.length === 0){
-    ctaList.innerHTML = '<div class="cta-empty">아직 고른 책이 없어요</div>';
+    ctaList.innerHTML = '<div class="cta-empty">아직 선택된 책이 없습니다.</div>';
     return;
   }
   ctaList.innerHTML = selected.map(b => `
     <div class="cta-item">
-      <span>${b.title}</span>
-      <a href="${b.url}" target="_blank" rel="noopener">보러가기 →</a>
+      <span class="ttl">${b.title}</span>
+      <a href="${b.url}" target="_blank" rel="noopener">도서 보러가기 →</a>
     </div>
   `).join('');
 }
@@ -823,15 +627,20 @@ document.getElementById('resetBtn').addEventListener('click', () => {
 
 downloadBtn.addEventListener('click', () => {
   if(downloadBtn.disabled) return;
-  html2canvas(bookmarkRow, {backgroundColor:'#FFFCF5', scale:2}).then(canvas => {
+  
+  // 이미지 저장 시 배경을 하얀색 톤으로 설정
+  html2canvas(bookmarkRow, {backgroundColor:'#ffffff', scale:2}).then(canvas => {
     const link = document.createElement('a');
-    link.download = '나의_인생책갈피.png';
+    link.download = '2026_노벨문학상_인생책갈피.png';
     link.href = canvas.toDataURL('image/png');
     link.click();
   });
 });
 
-renderAll();
+// 초기 렌더링
+window.onload = () => {
+    renderAll();
+};
 </script>
 </body>
 </html>
