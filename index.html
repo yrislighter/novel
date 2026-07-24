@@ -23,6 +23,7 @@
 <!-- 노벨문학상 템플릿 기본 CSS -->
 <link rel="stylesheet" type="text/css" href="https://image.yes24.com/images/00_Event/2025/nobel/nobel.css?ver=0822a"/>
 
+<!-- 폰트: 전역 Pretendard 적용 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -32,20 +33,21 @@
   #yHeader { margin-bottom: 0px !important; }
   #yesFooter { margin-top: 0px !important; }
 
+  /* 블랙 & 화이트 테마 컬러 변수 */
   :root {
-    --paper: #ffffff;      /* 배경을 완전 흰색으로 */
-    --ink: #111111;        /* 텍스트는 짙은 검정으로 */
-    --green: #333333;      /* 포인트 컬러도 다크 그레이/블랙 톤으로 */
-    --green-deep: #000000; /* 완전 검정 */
-    --red: #000000;        /* 레드 컬러도 블랙으로 통일 */
-    --gold: #B98A2E;
-    --card: #f9f9f9;       /* 카드는 아주 옅은 회색으로 구분감만 부여 */
-    --line: #e0e0e0;       /* 선 색상도 연한 회색으로 */
+    --paper: #ffffff;      
+    --ink: #111111;        
+    --green: #333333;      
+    --green-deep: #000000; 
+    --red: #000000;        
+    --gold: #d4af37;
+    --card: #f9f9f9;       
+    --line: #e0e0e0;       
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; background: #ffffff; }
   
-  /* 전역 폰트 통일: Pretendard */
+  /* 전역 폰트 통일 */
   body, button, input, select, textarea, h1, h2, h3, h4, p, span, div {
       font-family: 'Pretendard', sans-serif !important;
   }
@@ -59,29 +61,288 @@
     .mobile-only { display: block; }
   }
 
-  /* 불필요한 중간 빈 공간(기존 굿즈 영역 고정 높이 및 패딩) 완전 제거 */
-  .nobelBotSec.secCon0101 {
-      height: auto !important;
-      min-height: 0 !important;
-      padding-top: 40px !important; 
-      padding-bottom: 0 !important; /* 하단 여백 완전 제거 */
+  /* ------------------------------------------------------------------
+     1. 노벨문학상 상단 영역 (검정 배경 완전 제거 & 영상 노출)
+     ------------------------------------------------------------------ */
+  .nobelTop {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      position: relative !important;
+      min-height: 850px !important; /* 영상이 충분히 보이도록 높이 확보 */
+      background: transparent !important; /* 검정 배경 제거! */
+      padding-top: 10vh !important; /* 상단 월계관 여백 */
+      overflow: hidden !important;
   }
-  .nobelBot {
+  
+  /* 비디오를 전체 화면 배경으로 깔기 */
+  .nobelTop .topBg {
+      position: absolute !important;
+      top: 0 !important; left: 0 !important;
+      width: 100% !important; height: 100% !important;
+      z-index: 1 !important;
+  }
+  .nobelTop .topBg video {
+      width: 100% !important; height: 100% !important;
+      object-fit: cover !important;
+  }
+
+  /* 외부 CSS(nobel.css)의 절대좌표(position: absolute) 강제 해제! 
+     요소들이 겹치지 않고 세로로 자연스럽게 쌓이도록 만듭니다. */
+  .custom-title-area, 
+  .nobelTop .topMsg, 
+  .nobelTop .topBox,
+  .nobelTop .boxTit,
+  .nobelTop .boxDes,
+  .nobelTop .yesCardRow,
+  .nobelTop .eGuideSecBtn,
+  .nobelTop .yesEveAlertDl {
+      position: relative !important;
+      z-index: 10 !important;
+      top: auto !important; bottom: auto !important;
+      left: auto !important; right: auto !important;
+      transform: none !important;
+      margin-left: 0 !important; margin-right: 0 !important;
+  }
+
+  /* ------------------------------------------------------------------
+     2. 상단 타이틀 및 월계관 영역
+     ------------------------------------------------------------------ */
+  .custom-title-area {
+      text-align: center;
+      width: 100%;
+      pointer-events: none;
+      margin-bottom: 50px !important;
+  }
+
+  .laurel-wreath {
+      width: 160px;
+      height: auto;
+      margin-bottom: 25px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
+  }
+
+  .custom-main-title {
+      font-size: clamp(48px, 8vw, 82px);
+      font-weight: 900;
+      color: #ffffff;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.9);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+  }
+
+  /* 중앙 텍스트 (영상 하단) */
+  .nobelTop .topMsg {
+      text-align: center !important;
+      width: 100% !important;
+      font-size: clamp(20px, 3vw, 26px) !important;
+      font-weight: 600 !important;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.9) !important;
+      color: #fff !important;
+      line-height: 1.5 !important;
+      margin-bottom: 50px !important;
+  }
+
+  /* ------------------------------------------------------------------
+     3. 관심알림신청 & 500원 상품권 영역 - 강제 세로 정렬
+     ------------------------------------------------------------------ */
+  .nobelTop .topBox {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      width: 100% !important;
+      padding: 0 20px 80px !important;
+      background: transparent !important; /* 여기도 검정 배경 제거 */
+  }
+
+  .nobelTop .boxTit {
+      color: #fff !important;
+      font-size: clamp(24px, 4vw, 32px) !important;
+      font-weight: 700 !important;
+      text-align: center !important;
+      line-height: 1.4 !important;
+      margin-bottom: 15px !important;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+  }
+
+  .nobelTop .boxDes {
+      color: #ddd !important;
+      font-size: 16px !important;
+      text-align: center !important;
+      line-height: 1.6 !important;
+      margin-bottom: 40px !important;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.8);
+  }
+
+  /* 상품권 -> 버튼 -> 유의사항 순서 고정! */
+  .yesCardRow.eGuideSet {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      width: 100% !important;
+      gap: 25px !important; 
+  }
+
+  /* 상품권 카드 디자인 */
+  .yesCardBig.card01 {
+      width: 260px !important;
+      height: 160px !important;
+      background: rgba(17, 17, 17, 0.8) !important; /* 영상 위에서 살짝 비치게 */
+      border: 2px solid var(--gold) !important;
+      border-radius: 12px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      box-shadow: 0 10px 30px rgba(212,175,55,0.2) !important;
+      backdrop-filter: blur(5px);
+  }
+  
+  .yesCardBig.card01 .card_num {
+      color: var(--gold) !important;
+      font-size: 50px !important;
+      font-weight: 900 !important;
+      letter-spacing: -0.05em !important;
+  }
+  
+  .yesCardBig.card01 .card_num::before {
+      content: "YES상품권 ";
+      font-size: 18px !important;
+      display: block !important;
+      text-align: center !important;
+      margin-bottom: -5px !important;
+      color: #fff !important;
+      font-weight: 500 !important;
+  }
+
+  .yesCardBig.card01 .card_num::after {
+      content: "원";
+      font-size: 30px !important;
+      margin-left: 5px !important;
+  }
+
+  /* 관심알림 버튼 */
+  .eGuideSecBtn {
+      width: 100% !important;
+      text-align: center !important;
+  }
+
+  .eGuideSecBtn a {
+      background: var(--gold) !important;
+      color: #000 !important;
+      padding: 18px 45px !important;
+      border-radius: 50px !important;
+      font-size: 18px !important;
+      font-weight: 800 !important;
+      display: inline-block !important;
+      text-decoration: none !important;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  }
+
+  /* 유의사항 아코디언 디자인 */
+  .yesEveAlertDl {
+      width: 100% !important;
+      max-width: 600px !important;
+      background: rgba(17, 17, 17, 0.85) !important;
+      border: 1px solid #333 !important;
+      border-radius: 8px !important;
       padding: 0 !important;
-      margin: 0 !important;
+      overflow: hidden !important;
+      backdrop-filter: blur(5px);
   }
-  .nobelBotSec .tit_txtGrp {
-      padding-bottom: 40px !important;
-      margin-bottom: 0 !important;
+
+  .yesEveAlertDl dt a {
+      padding: 20px !important;
+      color: #fff !important;
+      font-size: 16px !important;
+      font-weight: bold !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      text-decoration: none !important;
+      background: rgba(0,0,0,0.5) !important;
   }
-  /* 외부 CSS의 가상 요소(빈 공간) 강제 차단 */
-  .nobelBot::after, .nobelBotSec.secCon0101::after {
+  
+  .yesEveAlertDl dt a .ico_info svg, .yesEveAlertDl dt a .ico_arr svg {
+      width: 20px !important; height: 20px !important;
+      stroke: var(--gold) !important; fill: none !important;
+  }
+
+  .yesEveAlertDl dd {
+      padding: 20px !important;
+      display: block !important;
+      background: rgba(10,10,10,0.5) !important;
+  }
+
+  .yesEveAlertDl.toggleOff dd {
       display: none !important;
   }
 
+  .yesEveAlertLi li {
+      color: #aaa !important;
+      font-size: 14px !important;
+      margin-bottom: 10px !important;
+      display: flex !important;
+      align-items: flex-start !important;
+      text-align: left !important;
+  }
+  .yesEveAlertLi li::before {
+      content: "•";
+      color: var(--gold) !important;
+      margin-right: 8px !important;
+  }
+  .yesEveAlertLi li .bl_rnd { display: none !important; }
+
+
+  /* ------------------------------------------------------------------
+     4. 중간 굿즈 소개 영역 - 크림색 배경 복구 및 여백 최적화
+     ------------------------------------------------------------------ */
+  .nobelBot {
+      background-color: #F8F6F0 !important; /* 크림색 배경 복구 */
+      padding: 70px 20px 40px !important;  
+      margin: 0 !important;
+      text-align: center !important;
+      position: relative !important;
+      z-index: 10 !important;
+  }
+  
+  .nobelBotSec.secCon0101 {
+      height: auto !important;
+      min-height: 0 !important;
+      padding: 0 !important;
+      background: transparent !important;
+  }
+
+  /* 외부 CSS 가상요소(빈 공간 만드는 원인) 차단 */
+  .nobelBot::after, .nobelBotSec.secCon0101::after,
+  .nobelBot::before, .nobelBotSec.secCon0101::before {
+      display: none !important;
+  }
+
+  .nobelBotSec .tit_txtGrp {
+      padding: 0 !important;
+      margin: 0 !important;
+  }
+
+  .nobelBotSec .txt_tit {
+      font-size: clamp(26px, 5vw, 36px) !important;
+      font-weight: 800 !important;
+      color: #222 !important;
+      margin-bottom: 15px !important;
+      line-height: 1.4 !important;
+  }
+
+  .nobelBotSec .txt_des {
+      font-size: 17px !important;
+      color: #666 !important;
+      line-height: 1.6 !important;
+  }
+
+  /* ------------------------------------------------------------------
+     5. 하단 인생책갈피 이벤트 영역 - 하얀색 배경
+     ------------------------------------------------------------------ */
   .event-page {
-    background: #ffffff; /* 하얀색 배경 */
-    padding: 20px 16px 80px; /* 위쪽 여백 대폭 축소 */
+    background: #ffffff; /* 순백색 배경 */
+    padding: 20px 16px 80px;
     position: relative;
     z-index: 10;
   }
@@ -181,7 +442,6 @@
     padding: 0 10px; position: relative; z-index: 2;
   }
   
-  /* 심플한 모던 선반 디자인 */
   .shelf-plank {
     height: 12px; margin: 0 2px; border-radius: 2px; background: #222;
     box-shadow: 0 10px 20px rgba(0,0,0,0.15); position: relative; z-index: 1;
@@ -249,229 +509,6 @@
   .cta-item:last-child { border-bottom: none; padding-bottom: 0; }
   .cta-item a { color: var(--ink); text-decoration: none; font-weight: 700; white-space: nowrap; background: #fff; padding: 4px 10px; border-radius: 4px; border: 1px solid #ccc; font-size: 11px;}
   .cta-item a:hover { background: #e0e0e0; }
-
-  .custom-title-area {
-      position: absolute;
-      top: 15%; /* 상단으로 끌어올림 */
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-      z-index: 20;
-      width: 100%;
-      pointer-events: none; /* 클릭 방해 금지 */
-  }
-
-  .laurel-wreath {
-      width: 120px;
-      height: auto;
-      margin-bottom: 15px;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
-  }
-
-  .custom-main-title {
-      font-size: clamp(36px, 6vw, 64px); /* 글자 크기 대폭 상향 */
-      font-weight: 900;
-      color: #ffffff;
-      text-shadow: 0 4px 15px rgba(0,0,0,0.8);
-      letter-spacing: -0.02em;
-      margin-bottom: 15px;
-      line-height: 1.2;
-  }
-
-  /* ------------------------------------------------------------------
-     외부 CSS(nobel.css)의 absolute 폭주 차단 및 관심알림신청 레이아웃 정상화
-     ------------------------------------------------------------------ */
-  [data-aos] {
-      opacity: 1 !important;
-      transform: none !important;
-  }
-  
-  .nobelTop {
-      display: flex !important;
-      flex-direction: column !important;
-      position: relative !important;
-      height: auto !important;
-      background: #000 !important;
-  }
-  
-  .nobelTop .topBg {
-      position: relative !important;
-      width: 100% !important;
-      height: auto !important;
-  }
-  
-  .nobelTop .topBg video {
-      display: block !important;
-      width: 100% !important;
-      height: auto !important;
-  }
-
-  /* 기존 중앙 텍스트(.topMsg) 정렬 덮어쓰기 */
-  .nobelTop .topMsg {
-      position: absolute !important;
-      top: 80% !important; /* 상단 타이틀 아래쪽 중앙으로 위치 이동 */
-      left: 50% !important;
-      transform: translate(-50%, -50%) !important;
-      text-align: center !important;
-      width: 100% !important;
-      font-size: clamp(18px, 3vw, 24px) !important;
-      font-family: 'Pretendard', sans-serif !important;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.9) !important;
-      z-index: 20;
-      color: #fff !important;
-  }
-
-  /* 500원 알림 신청 영역 (모든 요소를 블록/플렉스로 풀어서 세로로 차곡차곡 배치) */
-  .nobelTop .topBox, .nobelTop .topBox * {
-      position: relative !important;
-      top: auto !important;
-      bottom: auto !important;
-      left: auto !important;
-      right: auto !important;
-      transform: none !important;
-      margin-left: 0 !important;
-      margin-right: 0 !important;
-  }
-
-  .nobelTop .topBox {
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: center !important;
-      width: 100% !important;
-      padding: 60px 20px 80px !important;
-      background: #000 !important;
-      z-index: 10 !important;
-  }
-
-  .nobelTop .boxTit {
-      color: #fff !important;
-      font-size: clamp(24px, 4vw, 32px) !important;
-      font-weight: 700 !important;
-      text-align: center !important;
-      line-height: 1.4 !important;
-      margin-bottom: 20px !important;
-  }
-
-  .nobelTop .boxDes {
-      color: #aaa !important;
-      font-size: 16px !important;
-      text-align: center !important;
-      line-height: 1.6 !important;
-      margin-bottom: 40px !important;
-  }
-
-  .yesCardRow {
-      display: flex !important;
-      justify-content: center !important;
-      margin-bottom: 30px !important;
-      width: 100% !important;
-  }
-
-  /* 상품권 카드 디자인 강제 생성 */
-  .yesCardBig.card01 {
-      width: 260px !important;
-      height: 160px !important;
-      background: #1a1a1a !important;
-      border: 2px solid #d4af37 !important;
-      border-radius: 12px !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      box-shadow: 0 10px 30px rgba(212,175,55,0.1) !important;
-  }
-  
-  .yesCardBig.card01 .card_num {
-      color: #d4af37 !important;
-      font-size: 50px !important;
-      font-weight: 900 !important;
-      letter-spacing: -0.05em !important;
-  }
-  
-  .yesCardBig.card01 .card_num::before {
-      content: "YES상품권 ";
-      font-size: 18px !important;
-      display: block !important;
-      text-align: center !important;
-      margin-bottom: -5px !important;
-      color: #fff !important;
-      font-weight: 500 !important;
-  }
-
-  .yesCardBig.card01 .card_num::after {
-      content: "원";
-      font-size: 30px !important;
-      margin-left: 5px !important;
-  }
-
-  .eGuideSecBtn {
-      width: 100% !important;
-      text-align: center !important;
-  }
-
-  .eGuideSecBtn a {
-      background: #d4af37 !important;
-      color: #000 !important;
-      padding: 16px 40px !important;
-      border-radius: 50px !important;
-      font-size: 18px !important;
-      font-weight: 700 !important;
-      display: inline-block !important;
-      text-decoration: none !important;
-      margin-bottom: 40px !important;
-  }
-
-  /* 아코디언 유의사항 디자인 */
-  .yesEveAlertDl {
-      width: 100% !important;
-      max-width: 600px !important;
-      background: #111 !important;
-      border: 1px solid #333 !important;
-      border-radius: 8px !important;
-      padding: 0 !important;
-      overflow: hidden !important;
-  }
-
-  .yesEveAlertDl dt a {
-      padding: 20px !important;
-      color: #fff !important;
-      font-size: 16px !important;
-      font-weight: bold !important;
-      display: flex !important;
-      justify-content: space-between !important;
-      align-items: center !important;
-      text-decoration: none !important;
-      background: #1a1a1a !important;
-  }
-  
-  .yesEveAlertDl dt a .ico_info svg, .yesEveAlertDl dt a .ico_arr svg {
-      width: 20px !important; height: 20px !important;
-      stroke: #d4af37 !important; fill: none !important;
-  }
-
-  .yesEveAlertDl dd {
-      padding: 20px !important;
-      display: block !important;
-      background: #0a0a0a !important;
-  }
-
-  .yesEveAlertDl.toggleOff dd {
-      display: none !important;
-  }
-
-  .yesEveAlertLi li {
-      color: #999 !important;
-      font-size: 14px !important;
-      margin-bottom: 10px !important;
-      display: flex !important;
-      align-items: flex-start !important;
-      text-align: left !important;
-  }
-  .yesEveAlertLi li::before {
-      content: "•";
-      color: #d4af37 !important;
-      margin-right: 8px !important;
-  }
-  .yesEveAlertLi li .bl_rnd { display: none !important; }
 </style>
 </head>
 <body>
@@ -490,40 +527,107 @@
             <div class="yHeaderTop">
                 <h2 class="yBlind">YES24 카테고리 리스트</h2>
                 <ul class="cateLi" id="ulCategoryList">
-                    <li class="cate001 cateOn"><a title="국내도서" href="https://www.yes24.com/Mall/Main/Book/001?CategoryNumber=001"><em class="txt">국내도서</em></a></li>
-                    <li class="cate002"><a title="외국도서" href="https://www.yes24.com/Mall/Main/Foreign/002?CategoryNumber=002"><em class="txt">외국도서</em></a></li>
-                    <li class="cate018"><a title="중고샵" href="https://www.yes24.com/Mall/Main/used/018?CategoryNumber=018"><em class="txt">중고샵</em></a></li>
-                    <li class="cate017"><a title="eBook" href="https://www.yes24.com/Mall/Main/eBook/017?CategoryNumber=017"><em class="txt">eBook</em></a></li>
-                    <li class="cateCrC"><a title="크레마클럽" href="https://cremaclub.yes24.com/BookClub/Main"><em class="txt">크레마클럽</em></a></li>
-                    <li class="cate003"><a title="CD/LP" href="https://www.yes24.com/Mall/Main/Music/003?CategoryNumber=003"><em class="txt">CD/LP</em></a></li>
-                    <li class="cate004"><a title="DVD/Blu-ray" href="https://www.yes24.com/Mall/Main/Dvd/004?CategoryNumber=004"><em class="txt">DVD/BD</em></a></li>
-                    <li class="cate006"><a title="GIFT" href="https://www.yes24.com/Mall/Main/Gift/006?CategoryNumber=006"><em class="txt"><u>문구</u>/GIFT</em></a></li>
-                    <li class="cateENT"><a title="티켓" href="http://ticket.yes24.com/" target="_blank"><em class="txt">티켓</em><em class="ico_newW bgGNB">새창이동</em></a></li>
+                    <li class="cate001 cateOn"><a title="국내도서"
+                            href="https://www.yes24.com/Mall/Main/Book/001?CategoryNumber=001"><em
+                                class="txt">국내도서</em></a>
+                    </li>
+                    <li class="cate002"><a title="외국도서"
+                            href="https://www.yes24.com/Mall/Main/Foreign/002?CategoryNumber=002"><em
+                                class="txt">외국도서</em></a></li>
+                    <li class="cate018"><a title="중고샵"
+                            href="https://www.yes24.com/Mall/Main/used/018?CategoryNumber=018"><em
+                                class="txt">중고샵</em></a>
+                    </li>
+                    <li class="cate017"><a title="eBook"
+                            href="https://www.yes24.com/Mall/Main/eBook/017?CategoryNumber=017"><em
+                                class="txt">eBook</em></a></li>
+                    <li class="cateCrC"><a title="크레마클럽" href="https://cremaclub.yes24.com/BookClub/Main"><em
+                                class="txt">크레마클럽</em></a></li>
+                    <li class="cate003"><a title="CD/LP"
+                            href="https://www.yes24.com/Mall/Main/Music/003?CategoryNumber=003"><em
+                                class="txt">CD/LP</em></a></li>
+                    <li class="cate004"><a title="DVD/Blu-ray"
+                            href="https://www.yes24.com/Mall/Main/Dvd/004?CategoryNumber=004"><em
+                                class="txt">DVD/BD</em></a></li>
+                    <li class="cate006"><a title="GIFT"
+                            href="https://www.yes24.com/Mall/Main/Gift/006?CategoryNumber=006"><em
+                                class="txt"><u>문구</u>/GIFT</em></a>
+                    </li>
+                    <li class="cateENT"><a title="티켓" href="http://ticket.yes24.com/" target="_blank"><em
+                                class="txt">티켓</em><em class="ico_newW bgGNB">새창이동</em></a></li>
                 </ul>
                 <h2 class="yBlind">YES24 유틸메뉴</h2>
                 <ul class="utilLi">
-                    <li id="LoginText"><a href="https://www.yes24.com/Templates/FTLogin.aspx"><em class="txt">로그인</em></a></li>
+                    <li id="LoginText">
+                        <a href="https://www.yes24.com/Templates/FTLogin.aspx"><em class="txt">로그인</em></a>
+                    </li>
                     <li><a href="https://www.yes24.com/Member/Join/Accept.aspx">회원가입</a></li>
                     <li class="myPgGrp">
-                        <a href="javascript:void(0);"><em class="txt">마이페이지</em><em class="ico_arrD bgGNB">하위메뉴보기</em></a>
+                        <a href="javascript:void(0);"><em class="txt">마이페이지</em><em
+                                class="ico_arrD bgGNB">하위메뉴보기</em></a>
+                        <dl class="myPgDl">
+                            <dt><a href="https://www.yes24.com/Member/FTMypageMain.aspx"><em class="txt">마이페이지</em><em
+                                        class="ico_arrU bgGNB">이동</em></a></dt>
+                            <dd>
+                                <ul>
+                                    <li><a href="https://ssl.yes24.com/MyPageOrderList/MyPageOrderList">주문내역 </a></li>
+                                    <li><a href="https://www.yes24.com/Member/FTGoMyBlog.aspx?type=list"
+                                            target="_blank">마이리스트 </a>
+                                    </li>
+                                    <li><a href="https://www.yes24.com/Templates/FTMyAccount_1YESPoint.aspx">YES포인트 </a>
+                                    </li>
+                                    <li><a href="https://www.yes24.com/Templates/FTMyAccount_1YESMoney.aspx">YES머니 </a>
+                                    </li>
+                                    <li><a href="https://www.yes24.com/Templates/FTMyAccount_3GiftCard.aspx">YES상품권 </a>
+                                    </li>
+                                    <li><a href="https://www.yes24.com/Templates/FTMyAccount_4Coupon.aspx">쿠폰 </a></li>
+                                    <li><a href="https://www.yes24.com/Member/MyPage_reconfirmPW.aspx">회원정보 </a></li>
+                                </ul>
+                            </dd>
+                        </dl>
                     </li>
                     <li><a href="https://ssl.yes24.com/Cart/Cart"><em class="txt">카트</em></a></li>
-                    <li><a href="https://ssl.yes24.com/MyPageOrderList/MyPageOrderList"><em class="txt">주문/배송</em></a></li>
-                    <li class="lastLi"><a href="https://www.yes24.com/Templates/FTCusMain.aspx?Wcode=001_003_012"><em class="txt">고객센터</em></a></li>
+                    <li><a href="https://ssl.yes24.com/MyPageOrderList/MyPageOrderList"><em class="txt">주문/배송</em></a>
+                    </li>
+                    <li class="lastLi"><a href="https://www.yes24.com/Templates/FTCusMain.aspx?Wcode=001_003_012"><em
+                                class="txt">고객센터</em></a></li>
                 </ul>
             </div>
             <hr>
             <div class="yHeaderMid">
                 <div class="yesSearch">
-                    <form id="yesSForm" method="get" name="HeadForm" action="https://www.yes24.com/product/search?" onsubmit="return check_search();" accept-charset="utf-8">
+                    <form id="yesSForm" method="get" name="HeadForm" action="https://www.yes24.com/product/search?"
+                        onsubmit="return check_search();" accept-charset="utf-8">
                         <fieldset>
                             <legend>검색</legend>
                             <span class="schIpt">
-                                <label><input type="text" title="YES24 검색어 입력" class="iptTxt iptTxtAd" accesskey="s" id="query" name="query" maxlength="80" value="" style="ime-mode: active;"autocomplete="off"></label>
+                                <label>
+                                    <input type="text" title="YES24 검색어 입력" class="iptTxt iptTxtAd" accesskey="s" id="query" name="query" maxlength="80" value="" style="ime-mode: active;"autocomplete="off">
+                                </label>
                             </span>
+                            <div style="position:absolute;top:-1000em;left:0;width:1px;height:1px;overflow:hidden;">
+                            </div>
                             <span class="schBtn"><button type="submit" title="검색"><span class="yBlind">검색</span></button></span>
                         </fieldset>
                     </form>
+                </div>
+                <hr>
+                <div id="gnbBnWrap" class="bnAdArea">
+                    <div class="bnAd">
+                        <h2 class="yBlind">어깨배너</h2>
+                        <div id="gnbBnList">
+                            <div style=""><a href="https://event.yes24.com/yesbenefit" target="_self" onclick=""><img
+                                        src="https://image.yes24.com/dms/202011/GNB어깨배너_180x112(2).jpg" width="180"
+                                        height="112" border="0" alt="이달의 혜택 모음"></a></div>
+                        </div>
+                        <div class="bnNav">
+                            <span class="pagenNum"><strong>1</strong>/3</span>
+                            <button type="button" value="이전 광고 보기" title="이전 광고 보기" class="bgGNB prev">이전 광고
+                                보기</button>
+                            <button type="button" value="다음 광고 보기" title="다음 광고 보기" class="bgGNB next">다음 광고
+                                보기</button>
+                        </div>
+                    </div>
                 </div>
             </div>
             <hr>
@@ -536,14 +640,28 @@
                         <dt class="yBlind">YES24 코너/서비스</dt>
                         <dd>
                             <ul class="yesCornerLi">
-                                <li><a href="https://www.yes24.com/product/category/daybestseller?CategoryNumber=001">베스트</a></li>
-                                <li><a href="https://www.yes24.com/product/category/attentionnewproduct?categoryNumber=001">신상품</a></li>
+                                <li><a
+                                        href="https://www.yes24.com/product/category/daybestseller?CategoryNumber=001">베스트</a>
+                                </li>
+                                <li><a
+                                        href="https://www.yes24.com/product/category/attentionnewproduct?categoryNumber=001">신상품</a>
+                                </li>
                                 <li><a href="https://event.yes24.com/main?mainCateId=001">이벤트</a></li>
+                                <li><a href="https://www.yes24.com/Mall/Buyback/Search?CategoryNumber=018">바이백</a></li>
+                                <li><a href="https://www.yes24.com/Mall/UsedStore/Main">매장안내</a></li>
                             </ul>
                             <em class="divi"></em>
                             <ul class="yesServLi">
-                                <li><a title="채널예스" href="https://ch.yes24.com/" target="_blank"><em class="txt">채널예스</em></a></li>
+                                <li><a title="채널예스" href="https://ch.yes24.com/" qdomain="채널예스" target="_blank"><em
+                                            class="txt">채널예스</em></a></li>
                                 <li><a title="사락" href="https://sarak.yes24.com/" target="_blank">사락</a></li>
+                                <li><a href="https://www.yes24.com/Mall/YesFunding/Main">예스펀딩</a></li>
+                                <li><a title="클래스24" href="https://www.yes24.com/Product/Class">클래스24</a></li>
+                                <li><a title="독서유형검사" href="https://rbti.yes24.com/" class="promotion" target="_blank">
+                                    <span class="txt_promotion"><span class="txt_mnu">독서유형검사</span>
+                                            <span class="txt_mnu"><em class="rbti">RBTI Lab</em>
+                                                <em class="ico_newSup"></em></span><span
+                                                class="txt_mnu">독서유형검사</span></span></a></li>
                             </ul>
                         </dd>
                     </dl>
@@ -559,28 +677,72 @@
 <div id="yesWrap">
     <div id="yHdWrap" class="subMod">
         <div id="yHd">
-            <h1 class="logo"><a href="https://m.yes24.com/home/main" class="logo_lnk"></a></h1>
+            <h1 class="logo">
+                <a href="https://m.yes24.com/home/main" class="logo_lnk"></a>
+            </h1>
             <div class="mnu">
                 <a href="https://ssl.yes24.com/mMyCart/CartMain" class="mnu_cart">카트<span class="cnt" id="cartNum">14</span></a>
             </div>
             <div class="sch">
                 <div class="ipt">
                     <label>
-                        <input type="search" placeholder="검색어를 입력하세요" id="query" name="searchquery" title="YES24 검색" class="ipt_box">
+                        <input type="search" placeholder="뱀파이어와 늑대인간의 고향" id="query" name="searchquery" title="YES24 검색" maxlength="80" value="" autocapitalize="off" autocomplete="off" class="ipt_box" onkeypress="if (event.keyCode === 13) { searchGoods(); return false; }">
+                        <button type="button" id="btn_del_schKWord" class="ipt_del"><span class="txt">입력삭제</span></button>
                     </label>
                 </div>
                 <span class="btn"><button type="button" id="search_real_search" class="btn_sch"><span class="txt">검색하기</span></button></span>
+                <span class="ad"><button type="button" id="btn_ad_search" class="btn_ad"><span class="txt">광고이동</span></button></span>
+                <span class="app">
+                    <button type="button" id="btn_app_search" class="btn_qr">
+                        <span class="txt">QR/바코드 검색</span>
+                    </button>
+                </span>
+                <span class="appTip">이미지 검색을 사용해 보세요</span>
+                <input id="hdSearchCategory" type="hidden">
+            </div>
+            <span class="prev">
+                <a href="javascript:void(0);" class="prev_rset" id="prevSch">
+                    <span class="txt">검색창 이전화면</span>
+                </a>
+                <a href="javascript:void(0);" class="prev_back" onclick="commonPrevBtn();">
+                    <span class="txt">이전화면</span>
+                </a>
+            </span>
+        </div>
+        <div id="yKeyWrap">
+            <div id="yKWD" class="yKeywords">
+                
+                <dl class="keyDl keyPop">
+                    <dt>
+                        <strong class="keyTit">인기 검색어</strong>
+                        <span id="date_search_popular" class="date"></span>
+                    </dt>
+                    <dd>
+                        <div id="search_popular_nodata" class="noData" style="display:none;">
+                        </div>
+                        <ol id="search_popular" class="popOl" style="display:none;">
+                        </ol>
+                    </dd>
+                </dl>
+            </div>
+            <div id="ySGST" class="ySuggest" style="display:none;">
+                <ul id="search_suggest" class="sgstLi">
+                </ul>
+            </div>
+            <div class="yKEtc">
+                <a href="javascript:void(0);" id="search_close" class="lnk_close"><em class="txt">닫기</em><em class="ico"></em></a>
             </div>
         </div>
     </div>
 </div>
 </div>
 
-<div class="nobelTop" style="position: relative;">
-    
-    <!-- 추가된 월계관 및 거대 타이틀 영역 -->
+<div class="nobelTop">
+    <!-- 배경 영상: 투명하게 드러납니다 -->
+	<div class="topBg"><video src="https://image.yes24.com/images/00_Event/2025/nobel/bgTop.mp4" autoplay loop muted playsinline></video></div>
+	
+    <!-- 거대 타이틀 및 황금 월계관 -->
     <div class="custom-title-area">
-        <!-- SVG 황금 월계관 -->
         <svg class="laurel-wreath" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M50 85 C20 85, 10 50, 15 25 C25 40, 35 45, 50 65 C65 45, 75 40, 85 25 C90 50, 80 85, 50 85 Z" fill="url(#goldGradient)" opacity="0.9"/>
             <path d="M15 25 C10 15, 20 10, 30 15 C25 25, 20 30, 15 25 Z" fill="url(#goldGradient)"/>
@@ -599,12 +761,11 @@
         <div class="custom-main-title">2026 노벨문학상</div>
     </div>
 
-	<div class="topBg"><video src="https://image.yes24.com/images/00_Event/2025/nobel/bgTop.mp4" autoplay loop muted playsinline width="100%" height="auto"></video></div>
-	
 	<div class="topMsg">
 		세계 최고 권위의 노벨문학상.<br/>
 		2026년 10월, 최고의 영예를 거머쥘 주인공은?
 	</div>
+    
 	<div class="topBox">
 		<div class="boxTit">
 			2026 노벨문학상 관심알림 신청 시,<br/>
@@ -614,7 +775,9 @@
 			수상작가 선정 시, 발표 오전에<br/>
 			작가와 작품 관련 알림을 보내드려요!
 		</div>
-		<div class="yesCardRow eGuideYesCard eGuideSet">
+        
+        <!-- 세로 나열 그룹 -->
+		<div class="yesCardRow eGuideSet">
 			<div class="yesCardRow">
 				<div class="yesCardSet">
 					<div class="yesCardBig card01">
@@ -622,11 +785,11 @@
 					</div>
 				</div>
 			</div>
+			
 			<div class="eGuideSecBtn">
 				<a href="javascript:void(0);" class="eGBtn btn_black"><span class="bWrap"><em class="txt">노벨문학상 관심알림 신청</em></span></a>
 			</div>
 			
-			<!-- 복구된 유의사항(아코디언) 영역 -->
 			<div class="yesEveAlertDl toggleOff">
 				<dl>
 					<dt><a href="javascript:void(0);" onclick="toggleYEveAlert(this);"><em class="ico_info"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><g style="fill:none"><circle cx="10" cy="10" r="10" style="stroke:none"></circle><circle cx="10" cy="10" r="9.5" style="fill:none"></circle></g><path data-name="선 1" transform="translate(10 6)" style="stroke-linecap:round;stroke-width:2px;fill:none" d="M0 0h0"></path><path data-name="선 2" transform="translate(10 9)" style="stroke-linecap:round;stroke-width:2px;fill:none" d="M0 0v5"></path></svg></em>꼭 읽어주세요<em class="ico_arr"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path data-name="패스 5" d="m15 9.127-6-6-6 6" transform="translate(1.5 4.373)" style="fill:none;stroke-linecap:round;stroke-linejoin:round"></path></svg></em></a></dt>
@@ -640,8 +803,6 @@
 					</dd>
 				</dl>
 			</div>
-			<!-- //복구된 유의사항(아코디언) 영역 -->
-
 		</div>
 	</div>
 </div>
@@ -649,25 +810,13 @@
 <div class="nobelBot">
 	<div class="nobelMnuArea">
 		<script type="text/javascript">
-        // 1. 스크립트 에러 방지를 위해 기존 외부 JS(nobel.js) 로드 제거
-        
-        // 2. 안내문 토글 버튼 대체 동작
+        // 토글 버튼 스크립트 복구 및 불필요한 AOS 애니메이션 강제 해제
         window.toggleYEveAlert = function(el) {
             var dl = el.closest('.yesEveAlertDl');
             if (dl) dl.classList.toggle('toggleOff');
         };
         
-        // 3. 외부 스크립트(AOS) 부재 시 콘텐츠가 투명하게 숨겨진 채로 남는 현상 방지
-        document.addEventListener('DOMContentLoaded', function() {
-            var aosElements = document.querySelectorAll('[data-aos]');
-            aosElements.forEach(function(el) {
-                el.removeAttribute('data-aos');
-                el.style.opacity = '1';
-                el.style.transform = 'none';
-            });
-        });
-
-        // 4. 헤더/푸터 버튼 클릭 시 발생하는 자바스크립트 에러 방지용 더미 함수
+        // 헤더 에러 방지용 빈 함수 모음
         window.check_search = function(){ return false; };
         window.searchGoods = function(){};
         window.commonPrevBtn = function(){};
@@ -684,15 +833,16 @@
         window.airbridgeHelper = { logout: function(){} };
 		</script>
 	</div>
+	
 	<div class="nobelBotSec secCon0101">
 		<div class="tit_txtGrp">
 			<div class="txt_tit">노벨문학상 특별 굿즈<br/>나의 인생책갈피</div>
-			<div class="txt_des" style="margin-bottom:0;">전세계가 주목하는 노벨문학상,<br/>빛나는 작품들의 표지를 엮어<br/>나만의 책갈피를 완성해보세요.</div>
+			<div class="txt_des">전세계가 주목하는 노벨문학상,<br/>빛나는 작품들의 표지를 엮어<br/>나만의 책갈피를 완성해보세요.</div>
 		</div>
 	</div>
 </div>
 
-<!-- ===================== 이벤트 콘텐츠 ===================== -->
+<!-- ===================== 이벤트 콘텐츠 (순백색 배경) ===================== -->
 <div class="event-page">
   <div class="wrap">
     <header class="evt-head">
@@ -731,6 +881,17 @@
 <div id="yesFooter">
         <div id="toolBtn" class="recentMaxH absBot">
             <div class="toolBtnRow">
+                <div id="yAIBtn" class="yAIChatBtn" style="display:none;">
+                    <a class="lnk_ai" href="javascript:void(0);" onclick="goOepnChat();">
+                        <span class="ai_ico tp02"></span>
+                        <div class="ai_msg" style="display:none;">
+                            <div class="msg">
+                                <p>AI와 대화하며 도서를 추천받아 보시겠어요?</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            
                 <a class="sclTopBtn" href="javascript:void(0);" onclick="pgGoTop();setWcode('003_007');"><span class="ico"><img src="https://image.yes24.com/sysimage/renew/common/ico_top.svg" border="0" alt="맨위로"></span></a>
             </div>
         </div>
@@ -738,9 +899,35 @@
             <div class="yFootTop">
                 <ul id="yMnuLi" class="yFootMnuLi">
                     <li><a href="https://company.yes24.com/" onclick="setWcode('027_001')" target="_blank" class="bgFooter fMnu_corp">회사소개</a></li>
+                    <li><a href="https://company.yes24.com/career" onclick="setWcode('027_002')" target="_blank" class="bgFooter fMnu_recu">인재채용</a></li>
                     <li><a href="https://www.yes24.com/notice/service.aspx" onclick="setWcode('027_003')" class="bgFooter fMnu_agre">이용약관</a></li>
                     <li><a href="https://www.yes24.com/notice/privacypolicy.aspx" onclick="setWcode('027_004')" class="bgFooter fMnu_priv"><strong>개인정보처리방침</strong></a></li>
+                    <li><a href="https://www.yes24.com/notice/youthpolicy.aspx" onclick="setWcode('027_004')" class="bgFooter fMnu_boy">청소년보호정책</a></li>
+                    <li><a href="https://www.yes24.com/company/Publish.aspx" onclick="setWcode('027_006')" class="bgFooter fMnu_book">도서홍보안내</a></li>
+                    <li><a href="https://www.yes24.com/company/AdInfo.aspx" onclick="setWcode('027_007')" class="bgFooter fMnu_ad">광고안내</a></li>
+                    <li><a href="https://www.yes24.com/company/InfoCoopProgram.aspx" onclick="setWcode('027_008')" class="bgFooter fMnu_part">제휴안내</a></li>
+                    <li><a href="https://www.yes24.com/CorpLargeOrder/infoPartner.aspx" onclick="setWcode('027_009')" class="bgFooter fMnu_bene">복지제휴</a></li>
+                    <li><a href="https://www.yes24.com/campaign/00_corp/store/store_gangNam.aspx" onclick="setWcode('027_011')" class="bgFooter fMnu_used">매장안내</a></li>
                 </ul>
+                <ul class="yFootSnsLi">
+                    <li><a class="bgFooter sns_ka" onclick="setWcode('027_015')" href="https://pf.kakao.com/_yxkZjR" target="_blank">YES24 카카오채널</a></li>
+                    <li><a class="bgFooter sns_fb" onclick="setWcode('027_012')" href="https://www.facebook.com/yes24/" target="_blank">YES24 페이스북</a></li>
+                    <li><a class="bgFooter sns_tw" onclick="setWcode('027_013')" href="https://twitter.com/yes24_official" target="_blank">YES24 트위터</a></li>
+                    <li><a class="bgFooter sns_ig" onclick="setWcode('027_014')" href="https://www.instagram.com/yes24_official/" target="_blank">YES24 인스타그램</a></li>
+                </ul>
+                <dl id="yFamDl" class="yFootFamDl">
+                    <dt class=""><a href="javascript:void(0);" class="bgFooter">가족회사 소개</a></dt>
+                    <dd style="display:none;">
+                        <ul>
+                            <li><a target="_blank" href="http://www.hansaeyes24.com/" onclick="setWcode('028')">한세예스24홀딩스</a></li>
+                            <li><a target="_blank" href="http://www.hansae.com/" onclick="setWcode('028')">한세실업</a></li>
+                            <li><a target="_blank" href="http://www.hansaedreams.co.kr/" onclick="setWcode('028')">한세드림</a></li>
+                            <li><a target="_blank" href="http://www.curlysue.co.kr/" onclick="setWcode('028')">컬리수</a></li>
+                            <li><a target="_blank" href="http://www.style24.com/" onclick="setWcode('028')">STYLE24</a></li>
+                            <li><a target="_blank" href="http://www.bookdonga.com/" onclick="setWcode('028')">동아출판</a></li>
+                        </ul>
+                    </dd>
+                </dl>
             </div>
             <div class="yFootCon">
                 <dl class="yFootAddr">
@@ -749,10 +936,53 @@
                         <address>
                             <span class="addrRow">대표 : 김석환, 최세라</span>
                             <span class="addrRow">주소 : 서울시 영등포구 은행로 11, 5층~6층(여의도동,일신빌딩)</span>
+                            <span class="addrRow">사업자등록번호 : 229-81-37000 &nbsp; 통신판매업신고 : 제 2005-02682호 <a id="corpNumLnk" href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=2298137000" target="_blank">사업자 정보확인</a></span>
+                            <span class="addrRow">이메일 : yes24help@yes24.com &nbsp; 호스팅 서비스사업자 : 예스이십사(주)</span>
                             <p class="txt_copyright">Copyright ⓒ YES24 Corp. All Rights Reserved.</p>
                         </address>
                     </dd>
                 </dl>
+                <ul class="yFootCsLi">
+                    <li class="csTel">
+                        <dl>
+                            <dt style="">고객문의</dt>
+                            <dd>
+                                <p><span class="item">도서/음반</span> <span class="yes_b">1544-3800</span></p>
+                                <p><span class="item w35">중고도서</span> <span class="yes_b">1566-4295</span></p>
+                                <p><span class="item">티켓예매</span> <span class="yes_b">1544-6399</span></p>
+                                <p><span class="item w35"><a href="https://www.yes24.com/Mall/Help/CS/Apply?AplNo=45" class="txtLnk">eBook 1:1문의/채팅상담</a></span></p>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="csFaq clearfix">
+                        <a href="https://www.yes24.com/Mall/Help/Main" class="btnCs1 bgFooter">1:1 문의하기</a>
+                        <a href="https://www.yes24.com/Mall/Help/Faq" class="btnCs2 bgFooter">자주 묻는 질문</a>
+                        <a href="javascript:void(0);" class="btnCs3 bgFooter">상담시간 안내</a>
+                    </li>
+                </ul>
+                <div id="footerCsInfoPop" class="csInfoD" style="display:none">
+                    <div class="csInfoDCon">
+                        <strong class="tit">상담시간 안내</strong>
+                        <ul class="infoDLi clearfix">
+                            <li><strong class="item">도서/음반 문의</strong> <em class="telNum">1544-3800</em> 평일 9시 ~
+                                18시<em class="des"> (토요일, 일요일 및 공휴일 휴무)</em></li>
+                            <li><strong class="item">중고도서 문의</strong> <em class="telNum">1566-4295</em> 평일 9시 ~
+                                18시<em class="des"> (토요일, 일요일 및 공휴일 휴무)</em></li>
+                            <li><strong class="item">티켓예매 문의</strong> <em class="telNum">1544-6399</em> 평일 9시 ~ 18시
+                                토요일 9시 ~ 17시 <em class="des">(일요일 및 공휴일 휴무)</em></li>
+                            <li><strong class="item">eBook 문의</strong> <a href="https://www.yes24.com/Mall/Help/CS/Apply?AplNo=45" class="txtLnk">1:1문의하기</a></li>
+                        </ul>
+                        <p class="csInfoCmt">점심시간 안내 &nbsp; 12:00 ~ 13:00</p>
+                        <a href="javascript:void(0);" class="btnCloseCsInfo">상담시간 안내 레이어 닫기</a>
+                    </div>
+                </div>
+            </div>
+            <div class="yes24Glory">
+                <img src="https://image.yes24.com/sysimage/renew/footer/img_awards.gif?v260105 " width="1200" border="0" alt="YES24 수상내역" usemap="#mapFootGlory">
+                <map name="mapFootGlory" id="mapFootGlory">
+                    <area shape="rect" coords="886,0,1011,88" href="javascript:void(0);" onclick="ismsPopupE();" alt="정보보호 관리체계 ISMS인증획득">
+                    <area shape="rect" coords="1070,0,1185,88" href="javascript:void(0);" onclick="javascript:markPopupE('2025-EP-R046');" alt="개인정보보호 우수사이트">
+                </map>
             </div>
         </div>
 </div>
@@ -764,7 +994,60 @@
             <div id="footer" class="tBarOn">
                 <div class="footMnu">
                     <div class="mnuLnk">
-                        <span class="lnkSet"><a href="https://ssl.yes24.com/MMyPageOrderList/MMyPageOrderList"><em class="txt">주문/배송</em></a></span>
+                        <span class="lnkSet">
+                            <a id="loginOutLink" href="javascript:setMcodeNRedirection('https://m.yes24.com/Momo/Templates/FTLogOut.aspx', '003_001')" onclick="brazeHelper.logout(); airbridgeHelper.logout();">
+                                <em class="txt">로그인</em>
+                            </a>
+                        </span>
+                        <span class="lnkSet">
+                            <a href="https://m.yes24.com/Category/RecentGoods" onclick="setMcode('003_002');">
+                                <em class="txt">최근 본 상품</em>
+                            </a>
+                        </span>
+                        <span class="lnkSet">
+                            <a href="javascript:setMcodeNRedirection('https://ssl.yes24.com/MMyPageOrderList/MMyPageOrderList', '003_003');">
+                                <em class="txt">주문/배송</em>
+                            </a>
+                        </span>
+                        </div>
+                    </div>
+                    <div class="footCs">
+                    <div class="csTel">
+                        <span class="telSet"><a href="tel:15443800" onclick="setMcode('003_004');" class="txt">고객센터 1544-3800</a></span>
+                        <span class="telSet"><a href="tel:1544-6399" class="txt">티켓 1544-6399</a></span>
+                        <span class="telSet"><a href="tel:15664295" onclick="setMcode('003_009');" class="txt">중고샵 1566-4295</a></span>
+                        <span class="telSet lastSet"><a href="https://m.yes24.com/Help/Cs/Apply?AplNo=45" class="lnk">eBook 1:1문의/채팅상담</a></span>
+                    </div>                        
+                </div>
+                
+                <div id="yFootInfo" class="footTxt">
+                    <button type="button" class="btn_fToggle" onclick="toggleFootInfo();">
+                        <span class="txt">예스이십사(주) 사업자 정보</span>
+                        <span class="ico">자세히 보기</span>
+                    </button>
+                    <div class="txtInfo">
+                        <dl><dt>대표</dt><dd>김석환, 최세라</dd></dl>
+                        <dl><dt>주소</dt><dd>서울시 영등포구 은행로 11, 5층~ 6층 (여의도동,일신빌딩)</dd></dl>
+                        <dl><dt>사업자등록번호</dt><dd>229-81-37000</dd></dl>
+                        <dl><dt>통신판매업신고</dt><dd>제 2005-02682</dd></dl>
+                        <dl><dt>이메일</dt><dd><a href="mailto:yes24help@yes24.com">yes24help@yes24.com</a></dd></dl>
+                        <dl><dt>호스팅 서비스사업자</dt><dd>예스이십사(주)</dd></dl>
+                    </div>
+                </div>
+                <div class="footCorp">
+                    <div class="corpLnk">
+                        <span class="lnkSet"><a href="https://m.yes24.com/Momo/Member/agree.aspx" onclick="setMcode('003_008');">이용약관</a></span>
+                        <span class="lnkSet"><a href="https://m.yes24.com/Momo/Member/clause_privacy.aspx" onclick="setMcode('003_007');"><strong>개인정보처리방침</strong></a></span>
+                        <span class="lnkSet"><a href="https://m.yes24.com/Momo/Member/youthpolicy.aspx">청소년보호정책</a></span>
+                    </div>
+                    <div class="corpLnk">
+                        <span class="lnkSet" id="viewPcLink"><a href="javascript:void(0);" onclick="setMcode('003_005');goPcWeb();">PC버전</a></span>
+                        <span class="lnkSet"><a href="https://company.yes24.com/">회사소개</a></span>
+                        <span class="lnkSet"><a href="https://m.yes24.com/Company">거래처관계자께</a></span>
+                    </div>
+                    <div class="corpLnk">
+                        <span class="lnkSet"><a href="https://m.yes24.com/Company/Publish">도서홍보</a></span>
+                        <span class="lnkSet"><a href="https://m.yes24.com/Company/AdGuide">광고</a></span>
                     </div>
                 </div>
                 <div class="footCopy">
@@ -903,8 +1186,6 @@ document.getElementById('resetBtn').addEventListener('click', () => {
 
 downloadBtn.addEventListener('click', () => {
   if(downloadBtn.disabled) return;
-  
-  /* 저장 시 배경색을 하얀색으로 지정 */
   html2canvas(bookmarkRow, {backgroundColor:'#ffffff', scale:2}).then(canvas => {
     const link = document.createElement('a');
     link.download = '나의_인생책갈피.png';
