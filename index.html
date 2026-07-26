@@ -41,6 +41,9 @@
     --green-deep: #000000; 
     --red: #000000;        
     --gold: #d4af37;
+    --gold-deep: #A9822F;
+    --ivory-base: #F1ECDF;
+    --ivory-glow: #FBF8F0;
     --card: #f9f9f9;       
     --line: #e0e0e0;       
   }
@@ -69,22 +72,10 @@
       flex-direction: column !important;
       align-items: center !important;
       position: relative !important;
-      min-height: 850px !important; /* 영상이 충분히 보이도록 높이 확보 */
-      background: transparent !important; /* 검정 배경 제거! */
+      min-height: 850px !important;
+      background: radial-gradient(ellipse 900px 500px at 50% 15%, var(--ivory-glow) 0%, var(--ivory-base) 65%) !important;
       padding-top: 10vh !important; /* 상단 월계관 여백 */
       overflow: hidden !important;
-  }
-  
-  /* 비디오를 전체 화면 배경으로 깔기 */
-  .nobelTop .topBg {
-      position: absolute !important;
-      top: 0 !important; left: 0 !important;
-      width: 100% !important; height: 100% !important;
-      z-index: 1 !important;
-  }
-  .nobelTop .topBg video {
-      width: 100% !important; height: 100% !important;
-      object-fit: cover !important;
   }
 
   /* 외부 CSS(nobel.css)의 절대좌표(position: absolute) 강제 해제! 
@@ -119,26 +110,35 @@
       width: 160px;
       height: auto;
       margin-bottom: 25px;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
+      filter: drop-shadow(0 2px 3px rgba(0,0,0,0.12));
   }
 
   .custom-main-title {
       font-size: clamp(48px, 8vw, 82px);
       font-weight: 900;
-      color: #ffffff;
-      text-shadow: 0 4px 20px rgba(0,0,0,0.9);
+      color: var(--ink);
+      text-shadow: none;
       letter-spacing: -0.02em;
       line-height: 1.2;
   }
 
-  /* 중앙 텍스트 (영상 하단) */
+  .custom-main-title::after {
+      content: '';
+      display: block;
+      width: 48px;
+      height: 2px;
+      background: var(--gold-deep);
+      margin: 22px auto 0;
+  }
+
+  /* 중앙 텍스트 */
   .nobelTop .topMsg {
       text-align: center !important;
       width: 100% !important;
       font-size: clamp(20px, 3vw, 26px) !important;
       font-weight: 600 !important;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.9) !important;
-      color: #fff !important;
+      text-shadow: none !important;
+      color: var(--ink) !important;
       line-height: 1.5 !important;
       margin-bottom: 50px !important;
   }
@@ -152,26 +152,26 @@
       align-items: center !important;
       width: 100% !important;
       padding: 0 20px 80px !important;
-      background: transparent !important; /* 여기도 검정 배경 제거 */
+      background: transparent !important;
   }
 
   .nobelTop .boxTit {
-      color: #fff !important;
+      color: var(--ink) !important;
       font-size: clamp(24px, 4vw, 32px) !important;
       font-weight: 700 !important;
       text-align: center !important;
       line-height: 1.4 !important;
       margin-bottom: 15px !important;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+      text-shadow: none;
   }
 
   .nobelTop .boxDes {
-      color: #ddd !important;
+      color: #666666 !important;
       font-size: 16px !important;
       text-align: center !important;
       line-height: 1.6 !important;
       margin-bottom: 40px !important;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.8);
+      text-shadow: none;
   }
 
   /* 상품권 -> 버튼 -> 유의사항 순서 고정! */
@@ -187,14 +187,13 @@
   .yesCardBig.card01 {
       width: 260px !important;
       height: 160px !important;
-      background: rgba(17, 17, 17, 0.8) !important; /* 영상 위에서 살짝 비치게 */
+      background: rgba(17, 17, 17, 0.92) !important;
       border: 2px solid var(--gold) !important;
       border-radius: 12px !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
-      box-shadow: 0 10px 30px rgba(212,175,55,0.2) !important;
-      backdrop-filter: blur(5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15) !important;
   }
   
   .yesCardBig.card01 .card_num {
@@ -235,42 +234,41 @@
       font-weight: 800 !important;
       display: inline-block !important;
       text-decoration: none !important;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+      box-shadow: 0 4px 14px rgba(169,130,47,0.25);
   }
 
   /* 유의사항 아코디언 디자인 */
   .yesEveAlertDl {
       width: 100% !important;
       max-width: 600px !important;
-      background: rgba(17, 17, 17, 0.85) !important;
-      border: 1px solid #333 !important;
+      background: rgba(255, 255, 255, 0.6) !important;
+      border: 1px solid rgba(169,130,47,0.3) !important;
       border-radius: 8px !important;
       padding: 0 !important;
       overflow: hidden !important;
-      backdrop-filter: blur(5px);
   }
 
   .yesEveAlertDl dt a {
       padding: 20px !important;
-      color: #fff !important;
+      color: var(--ink) !important;
       font-size: 16px !important;
       font-weight: bold !important;
       display: flex !important;
       justify-content: space-between !important;
       align-items: center !important;
       text-decoration: none !important;
-      background: rgba(0,0,0,0.5) !important;
+      background: rgba(0,0,0,0.02) !important;
   }
   
   .yesEveAlertDl dt a .ico_info svg, .yesEveAlertDl dt a .ico_arr svg {
       width: 20px !important; height: 20px !important;
-      stroke: var(--gold) !important; fill: none !important;
+      stroke: var(--gold-deep) !important; fill: none !important;
   }
 
   .yesEveAlertDl dd {
       padding: 20px !important;
       display: block !important;
-      background: rgba(10,10,10,0.5) !important;
+      background: rgba(0,0,0,0.015) !important;
   }
 
   .yesEveAlertDl.toggleOff dd {
@@ -278,7 +276,7 @@
   }
 
   .yesEveAlertLi li {
-      color: #aaa !important;
+      color: #555555 !important;
       font-size: 14px !important;
       margin-bottom: 10px !important;
       display: flex !important;
@@ -287,7 +285,7 @@
   }
   .yesEveAlertLi li::before {
       content: "•";
-      color: var(--gold) !important;
+      color: var(--gold-deep) !important;
       margin-right: 8px !important;
   }
   .yesEveAlertLi li .bl_rnd { display: none !important; }
@@ -738,9 +736,6 @@
 </div>
 
 <div class="nobelTop">
-    <!-- 배경 영상: 투명하게 드러납니다 -->
-	<div class="topBg"><video src="https://image.yes24.com/images/00_Event/2025/nobel/bgTop.mp4" autoplay loop muted playsinline></video></div>
-	
     <!-- 거대 타이틀 및 황금 월계관 -->
     <div class="custom-title-area">
         <svg class="laurel-wreath" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -750,11 +745,9 @@
             <circle cx="50" cy="80" r="4" fill="#FFD700"/>
             <defs>
                 <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#BF953F" />
-                    <stop offset="25%" stop-color="#FCF6BA" />
-                    <stop offset="50%" stop-color="#B38728" />
-                    <stop offset="75%" stop-color="#FBF5B7" />
-                    <stop offset="100%" stop-color="#AA771C" />
+                    <stop offset="0%" stop-color="#8C7226" />
+                    <stop offset="50%" stop-color="#C9AD5C" />
+                    <stop offset="100%" stop-color="#8C7226" />
                 </linearGradient>
             </defs>
         </svg>
