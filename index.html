@@ -843,20 +843,20 @@
 <div class="event-page">
   <div class="wrap">
     <header class="evt-head">
-      <div class="eyebrow">NOBEL SEASON · READING RECORD CARD</div>
-      <h1>나만의 인생책갈피 만들기</h1>
-      <p>표지에서 마음에 드는 장면을 직접 짚어보세요. 탭한 부분만 오려내 책 제목과 함께<br>진짜 책갈피 모양으로 완성해드려요.</p>
-      <div class="counter" id="counter">0 / 4 권 선택됨</div>
+ <div class="eyebrow">NOBEL SEASON · MY BUCKET LIST</div>
+      <h1>나의 북킷리스트 만들기</h1>
+      <p>표지에서 마음에 드는 장면을 직접 짚어보세요. 탭한 부분만 오려내 책 제목과 함께<br>나만의 북킷리스트로 완성해드려요.</p>
+      <div class="counter" id="counter">0 / 3 권 선택됨</div>
     </header>
 
     <div class="shelf-title">이 책들 중에서 골라보세요 <span>TAP THE ART TO CAPTURE</span></div>
-    <div class="shelf-hint">표지의 원하는 부분을 탭하면 그 장면이 책갈피에 담겨요. 다시 탭하면 캡처 위치를 바꿀 수 있어요.</div>
+    <div class="shelf-hint">표지의 원하는 부분을 탭하면 그 장면이 북킷리스트에 담겨요. 다시 탭하면 캡처 위치를 바꿀 수 있어요.</div>
     <div class="grid" id="grid"></div>
 
     <div class="preview-section">
       <div class="preview-head">
-        <h2>나의 인생책갈피</h2>
-        <span id="completeMsg">0 / 4 · IN PROGRESS</span>
+        <h2>나의 북킷리스트</h2>
+        <span id="completeMsg">0 / 3 · IN PROGRESS</span>
       </div>
       <div class="shelf-display">
         <div id="bookmarkRow"></div>
@@ -865,7 +865,17 @@
       <div class="actions">
         <button class="act" id="resetBtn">다시 고르기</button>
         <button class="act primary" id="downloadBtn" disabled>이미지로 저장</button>
+        <button class="act" id="issueReceiptBtn" disabled>영수증 발급받기</button>
       </div>
+
+      <div class="receipt-wrap" id="receiptWrap" style="display:none;">
+        <div class="receipt" id="receiptCapture"></div>
+        <div class="actions">
+          <button class="act" id="rerollBtn">다시 발급받기</button>
+          <button class="act primary" id="receiptDownloadBtn">영수증 다운로드</button>
+        </div>
+      </div>
+
       <div class="cta-box">
         <h4>선택한 책 바로 만나보기</h4>
         <div id="ctaList"><div class="cta-empty">아직 고른 책이 없어요</div></div>
@@ -873,6 +883,7 @@
     </div>
   </div>
 </div>
+
 
 <div class="pc-only">
 <div id="yesFooter">
