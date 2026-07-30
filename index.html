@@ -1061,7 +1061,7 @@ const books = [
   {id:9, title:"루시", author:"저메이카 킨케이드", edition:"203", category:"future", tagline:"식민의 기억을 담담히 되짚는 목소리", cover:"https://image.yes24.com/goods/104804340/XL", url:"https://www.yes24.com/product/goods/104804340", fx:50, fy:50},
   {id:10, title:"디어 라이프", author:"앨리스 먼로", edition:"113", category:"done", tagline:"평범한 삶 속 비범한 순간을 포착한 단편의 대가", cover:"https://image.yes24.com/goods/11252909/XL", url:"https://www.yes24.com/product/goods/11252909", fx:50, fy:50}
 ];
-
+ 
 const MAX = 3;
 const EMPTY_LABELS = [
   "죽기 전에<br>읽어야 할 책",
@@ -1069,7 +1069,7 @@ const EMPTY_LABELS = [
   "언젠가는<br>읽어야 할 책"
 ];
 let selected = [];
-
+ 
 const grid = document.getElementById('grid');
 const bookmarkRow = document.getElementById('bookmarkRow');
 const counter = document.getElementById('counter');
@@ -1078,17 +1078,18 @@ const downloadBtn = document.getElementById('downloadBtn');
 const completeMsg = document.getElementById('completeMsg');
 const issueReceiptBtn = document.getElementById('issueReceiptBtn');
 const receiptWrap = document.getElementById('receiptWrap');
+const receiptStage = document.getElementById('receiptStage');
 const receiptCapture = document.getElementById('receiptCapture');
 const rerollBtn = document.getElementById('rerollBtn');
 const receiptDownloadBtn = document.getElementById('receiptDownloadBtn');
-
+ 
 function renderGrid(){
   grid.innerHTML = '';
   books.forEach(book => {
     const isSelected = !!selected.find(b => b.id === book.id);
     const order = isSelected ? selected.findIndex(b => b.id === book.id) + 1 : null;
     const disabled = !isSelected && selected.length >= MAX;
-
+ 
     const card = document.createElement('div');
     card.className = 'card' + (isSelected ? ' selected' : '') + (disabled ? ' disabled' : '');
     card.innerHTML = `
@@ -1106,7 +1107,7 @@ function renderGrid(){
     `;
     const coverBox = card.querySelector('.cover-box');
     const orderBadge = card.querySelector('.order-badge');
-
+ 
     coverBox.addEventListener('click', (e) => {
       if(disabled) return;
       const rect = coverBox.getBoundingClientRect();
@@ -1118,17 +1119,17 @@ function renderGrid(){
       }
       renderAll();
     });
-
+ 
     orderBadge.addEventListener('click', (e) => {
       e.stopPropagation();
       selected = selected.filter(b => b.id !== book.id);
       renderAll();
     });
-
+ 
     grid.appendChild(card);
   });
 }
-
+ 
 function renderBookmarks(){
   bookmarkRow.innerHTML = '';
   for(let i=0;i<MAX;i++){
@@ -1156,11 +1157,11 @@ function renderBookmarks(){
   issueReceiptBtn.disabled = !done;
   if(!done){ receiptWrap.style.display = 'none'; }
 }
-
+ 
 function renderCounter(){
   counter.textContent = `${selected.length} / ${MAX} 권 선택됨`;
 }
-
+ 
 function renderCta(){
   if(selected.length === 0){
     ctaList.innerHTML = '<div class="cta-empty">아직 고른 책이 없어요</div>';
@@ -1173,21 +1174,21 @@ function renderCta(){
     </div>
   `).join('');
 }
-
+ 
 function renderAll(){
   renderGrid();
   renderBookmarks();
   renderCounter();
   renderCta();
 }
-
+ 
 document.getElementById('resetBtn').addEventListener('click', () => {
   selected = [];
   books.forEach(b => { b.fx = 50; b.fy = 50; });
   receiptWrap.style.display = 'none';
   renderAll();
 });
-
+ 
 downloadBtn.addEventListener('click', () => {
   if(downloadBtn.disabled) return;
   html2canvas(bookmarkRow, {backgroundColor:'#FFFCF5', scale:2}).then(canvas => {
@@ -1197,92 +1198,73 @@ downloadBtn.addEventListener('click', () => {
     link.click();
   });
 });
-
-/* ===================== 영수증 ===================== */
-function zigzagClipPath(teeth){
-  const step = 100 / teeth;
-  const top = [];
-  const bottom = [];
-  for(let i=0;i<=teeth;i++){
-    const x = (i*step).toFixed(2)+'%';
-    top.push(`${x} ${i%2===0 ? '0px' : '7px'}`);
-  }
-  for(let i=teeth;i>=0;i--){
-    const x = (i*step).toFixed(2)+'%';
-    bottom.push(`${x} ${i%2===0 ? 'calc(100% - 0px)' : 'calc(100% - 7px)'}`);
-  }
-  return `polygon(${top.join(',')}, ${bottom.join(',')})`;
-}
-
+ 
 function fmtDateTime(){
   const d = new Date();
   const p = n => String(n).padStart(2,'0');
   return `${d.getFullYear()}.${p(d.getMonth()+1)}.${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`;
 }
-
+ 
 function buildDiaryLine(){
   const counts = {done:0, future:0, bucket:0};
   selected.forEach(b => counts[b.category]++);
   const parts = Object.keys(counts)
     .filter(k => counts[k] > 0)
     .map(k => `${CATS[k].label} ${counts[k]}권`);
-  return `오늘 북킷리스트에 담은 ${MAX}권 — ${parts.join(' · ')}`;
+  return parts.join(' · ');
 }
-
+ 
 function renderReceipt(){
   const receiptNo = Math.floor(1000 + Math.random()*9000);
   const pick = selected[Math.floor(Math.random()*selected.length)];
-
+ 
   const itemsHtml = selected.map(b => `
     <div class="r-item">
       <span class="name">${b.title}</span>
-      <span class="fill"></span>
       <span class="tag">${CATS[b.category].tag}</span>
     </div>
   `).join('');
-
+ 
   receiptCapture.innerHTML = `
-    <div class="r-line r-center r-bold">YES24 · NOBEL SEASON</div>
-    <div class="r-line r-center">나의 북킷리스트 영수증</div>
+    <div class="r-badge">YES24 · NOBEL SEASON</div>
+    <div class="r-line r-center r-bold">나의 북킷리스트</div>
+    <div class="r-line r-center r-small">발급일시 ${fmtDateTime()} · No.${receiptNo}</div>
     <div class="r-dashed"></div>
-    <div class="r-row"><span>발급일시</span><span>${fmtDateTime()}</span></div>
-    <div class="r-row"><span>영수증No.</span><span>${receiptNo}</span></div>
-    <div class="r-dashed"></div>
-    <div class="r-line r-bold">[담은 책]</div>
     ${itemsHtml}
     <div class="r-dashed"></div>
-    <div class="r-line r-small">${buildDiaryLine()}</div>
-    <div class="r-dashed"></div>
-    <div class="r-line r-small r-italic">오늘의 작가 · ${pick.author} — ${pick.tagline}</div>
-    <div class="r-barcode"></div>
-    <div class="r-no">${receiptNo} ${receiptNo} ${receiptNo}</div>
+    <div class="r-total">
+      <div class="r-row"><span>총 ${MAX}권</span><span>북킷리스트 완성</span></div>
+      <div class="r-row r-small"><span>구성</span><span>${buildDiaryLine()}</span></div>
+      <div class="r-row r-small r-italic"><span>오늘의 작가</span><span>${pick.author}</span></div>
+    </div>
+    <div class="r-line r-small" style="margin-top:6px;">"${pick.tagline}"</div>
     <div class="r-dashed"></div>
     <div class="r-line r-center r-small">이 영수증, 실제 구매에도 써보세요</div>
-    <div class="r-line r-center r-small r-bold">YES24에서 다시 만나는 나의 북킷리스트</div>
+    <div class="r-barcode"></div>
+    <div class="r-no">${receiptNo} ${receiptNo} ${receiptNo}</div>
   `;
-  receiptCapture.style.clipPath = zigzagClipPath(18);
   receiptWrap.style.display = 'flex';
 }
-
+ 
 issueReceiptBtn.addEventListener('click', () => {
   if(issueReceiptBtn.disabled) return;
   renderReceipt();
   receiptWrap.scrollIntoView({behavior:'smooth', block:'center'});
 });
-
+ 
 rerollBtn.addEventListener('click', () => {
   renderReceipt();
 });
-
+ 
 receiptDownloadBtn.addEventListener('click', () => {
-  html2canvas(receiptCapture, {backgroundColor:null, scale:2}).then(canvas => {
+  html2canvas(receiptStage, {backgroundColor:null, scale:2}).then(canvas => {
     const link = document.createElement('a');
     link.download = '나의_북킷리스트_영수증.png';
     link.href = canvas.toDataURL('image/png');
     link.click();
   });
 });
-
+ 
 renderAll();
 </script>
 </body>
