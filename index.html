@@ -900,7 +900,6 @@
       </div>
       <div class="actions">
         <button class="act" id="resetBtn">다시 고르기</button>
-        <button class="act primary" id="downloadBtn" disabled>이미지로 저장</button>
         <button class="act" id="issueReceiptBtn" disabled>영수증 발급받기</button>
       </div>
  
@@ -1136,7 +1135,7 @@ const grid = document.getElementById('grid');
 const bookmarkRow = document.getElementById('bookmarkRow');
 const counter = document.getElementById('counter');
 const ctaList = document.getElementById('ctaList');
-const downloadBtn = document.getElementById('downloadBtn');
+
 const completeMsg = document.getElementById('completeMsg');
 const issueReceiptBtn = document.getElementById('issueReceiptBtn');
 const receiptWrap = document.getElementById('receiptWrap');
@@ -1215,7 +1214,7 @@ function renderBookmarks(){
   const done = selected.length === MAX;
   completeMsg.textContent = done ? `${MAX} / ${MAX} · COMPLETE` : `${selected.length} / ${MAX} · IN PROGRESS`;
   completeMsg.style.color = done ? '#B3392B' : '#8a7f63';
-  downloadBtn.disabled = !done;
+
   issueReceiptBtn.disabled = !done;
   if(!done){ receiptWrap.style.display = 'none'; }
 }
@@ -1251,15 +1250,7 @@ document.getElementById('resetBtn').addEventListener('click', () => {
   renderAll();
 });
  
-downloadBtn.addEventListener('click', () => {
-  if(downloadBtn.disabled) return;
-  html2canvas(bookmarkRow, {backgroundColor:'#FFFCF5', scale:2}).then(canvas => {
-    const link = document.createElement('a');
-    link.download = '나의_북킷리스트.png';
-    link.href = canvas.toDataURL('image/png');
-    link.click();
-  });
-});
+
  
 function fmtDateTime(){
   const d = new Date();
