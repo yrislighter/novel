@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>나만의 북킷리스트 | YES24</title>
+<title>나만의 북킷리스트 만들기 | YES24</title>
 
 <!-- YES24 실제 헤더/푸터 스타일시트 (PC + 모바일) -->
 <link rel="stylesheet" type="text/css" href="https://image.yes24.com/sysimage/yesUI/yesCom.css?v=20260720">
@@ -29,7 +29,6 @@
 <!-- 폰트: 상단 히어로 타이틀 전용 세리프 -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600&display=swap">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdn.tailwindcss.com"></script>	
 
 <style>
   /* 헤더/푸터 여백 제거 */
@@ -68,7 +67,7 @@
   }
 
   /* ------------------------------------------------------------------
-     1. 노벨문학상 상단 영역 - 사진 히어로 밴드 + 하단 아이보리 패널
+     1. 노벨문학상 상단 영역 - 사진 히어로 밴드 + 하단 아이보리 패널 (원본 유지)
      ------------------------------------------------------------------ */
   .nobelTop {
       display: flex !important;
@@ -81,7 +80,7 @@
       overflow: hidden !important;
   }
 
-  /* 사진 히어로 밴드 - 노벨 메달 원본 base64 수록 */
+  /* 사진 히어로 밴드 - 노벨 메달 원본 소스 base64 수록 */
   .heroPhoto {
       width: 100% !important;
       min-height: clamp(460px, 62vh, 640px) !important;
@@ -93,7 +92,7 @@
       padding: 15% 24px 0 !important;
       background:
           linear-gradient(180deg, rgba(4,8,18,0.6) 0%, rgba(4,8,18,0.05) 35%, rgba(4,8,18,0.05) 65%, rgba(4,8,18,0.55) 100%),
-          url('data:image/jpeg;base64,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') !important;
+          url('data:image/jpeg;base64,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 AOD/e/z1S3/f?ver=0822a') !important;
       background-size: cover !important;
       background-position: center !important;
   }
@@ -294,7 +293,7 @@
   .yesEveAlertLi li .bl_rnd { display: none !important; }
 
   /* ------------------------------------------------------------------
-     2. 중간 굿즈 소개 영역
+     2. 중간 굿즈 소개 영역 (원래 소스)
      ------------------------------------------------------------------ */
   .nobelBot {
       background-color: #F8F6F0 !important;
@@ -337,7 +336,7 @@
   }
 
   /* ------------------------------------------------------------------
-     3. 노벨문학상 모의고사 (O/X 퀴즈) 전용 스타일 (중간 영역 배치)
+     3. [신규 중간 배치] 노벨문학상 모의고사 (O/X 퀴즈) 전용 격리 스타일
      ------------------------------------------------------------------ */
   .quiz-section {
       background: #F1ECDF;
@@ -716,40 +715,74 @@
 </head>
 <body>
 
-<!-- PC 헤더 -->
+<!-- PC 헤더 (원래 소스) -->
 <div class="pc-only">
 <div id="yesHeaderArea">
     <div id="yHeader">
-        <h1><a class="logo" href="https://www.yes24.com/main/default.aspx"><svg role="img" aria-label="YES24" type="image/svg+xml"><image src="https://image.yes24.com/sysimage/renew/gnb/logoN4.png" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://image.yes24.com/sysimage/renew/gnb/logoN4.svg" width="200" height="103" alt="YES24"></image></svg></a></h1>
+        <h1><a class="logo" href="https://www.yes24.com/main/default.aspx" onclick=""><svg role="img" aria-label="YES24"
+                    type="image/svg+xml">
+                    <image src="https://image.yes24.com/sysimage/renew/gnb/logoN4.png"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        xlink:href="https://image.yes24.com/sysimage/renew/gnb/logoN4.svg" width="200" height="103"
+                        alt="YES24"></image>
+                </svg></a></h1>
         <div id="yHeaderWrap">
             <div class="yHeaderTop">
                 <h2 class="yBlind">YES24 카테고리 리스트</h2>
                 <ul class="cateLi" id="ulCategoryList">
-                    <li class="cate001 cateOn"><a title="국내도서" href="https://www.yes24.com/Mall/Main/Book/001?CategoryNumber=001"><em class="txt">국내도서</em></a></li>
-                    <li class="cate002"><a title="외국도서" href="https://www.yes24.com/Mall/Main/Foreign/002?CategoryNumber=002"><em class="txt">외국도서</em></a></li>
-                    <li class="cate018"><a title="중고샵" href="https://www.yes24.com/Mall/Main/used/018?CategoryNumber=018"><em class="txt">중고샵</em></a></li>
-                    <li class="cate017"><a title="eBook" href="https://www.yes24.com/Mall/Main/eBook/017?CategoryNumber=017"><em class="txt">eBook</em></a></li>
-                    <li class="cateCrC"><a title="크레마클럽" href="https://cremaclub.yes24.com/BookClub/Main"><em class="txt">크레마클럽</em></a></li>
-                    <li class="cate003"><a title="CD/LP" href="https://www.yes24.com/Mall/Main/Music/003?CategoryNumber=003"><em class="txt">CD/LP</em></a></li>
-                    <li class="cate004"><a title="DVD/Blu-ray" href="https://www.yes24.com/Mall/Main/Dvd/004?CategoryNumber=004"><em class="txt">DVD/BD</em></a></li>
-                    <li class="cate006"><a title="GIFT" href="https://www.yes24.com/Mall/Main/Gift/006?CategoryNumber=006"><em class="txt"><u>문구</u>/GIFT</em></a></li>
-                    <li class="cateENT"><a title="티켓" href="http://ticket.yes24.com/" target="_blank"><em class="txt">티켓</em><em class="ico_newW bgGNB">새창이동</em></a></li>
+                    <li class="cate001 cateOn"><a title="국내도서"
+                            href="https://www.yes24.com/Mall/Main/Book/001?CategoryNumber=001"><em
+                                class="txt">국내도서</em></a>
+                    </li>
+                    <li class="cate002"><a title="외국도서"
+                            href="https://www.yes24.com/Mall/Main/Foreign/002?CategoryNumber=002"><em
+                                class="txt">외국도서</em></a></li>
+                    <li class="cate018"><a title="중고샵"
+                            href="https://www.yes24.com/Mall/Main/used/018?CategoryNumber=018"><em
+                                class="txt">중고샵</em></a>
+                    </li>
+                    <li class="cate017"><a title="eBook"
+                            href="https://www.yes24.com/Mall/Main/eBook/017?CategoryNumber=017"><em
+                                class="txt">eBook</em></a></li>
+                    <li class="cateCrC"><a title="크레마클럽" href="https://cremaclub.yes24.com/BookClub/Main"><em
+                                class="txt">크레마클럽</em></a></li>
+                    <li class="cate003"><a title="CD/LP"
+                            href="https://www.yes24.com/Mall/Main/Music/003?CategoryNumber=003"><em
+                                class="txt">CD/LP</em></a></li>
+                    <li class="cate004"><a title="DVD/Blu-ray"
+                            href="https://www.yes24.com/Mall/Main/Dvd/004?CategoryNumber=004"><em
+                                class="txt">DVD/BD</em></a></li>
+                    <li class="cate006"><a title="GIFT"
+                            href="https://www.yes24.com/Mall/Main/Gift/006?CategoryNumber=006"><em
+                                class="txt"><u>문구</u>/GIFT</em></a>
+                    </li>
+                    <li class="cateENT"><a title="티켓" href="http://ticket.yes24.com/" target="_blank"><em
+                                class="txt">티켓</em><em class="ico_newW bgGNB">새창이동</em></a></li>
                 </ul>
                 <h2 class="yBlind">YES24 유틸메뉴</h2>
                 <ul class="utilLi">
-                    <li id="LoginText"><a href="https://www.yes24.com/Templates/FTLogin.aspx"><em class="txt">로그인</em></a></li>
+                    <li id="LoginText">
+                        <a href="https://www.yes24.com/Templates/FTLogin.aspx"><em class="txt">로그인</em></a>
+                    </li>
                     <li><a href="https://www.yes24.com/Member/Join/Accept.aspx">회원가입</a></li>
                     <li class="myPgGrp">
-                        <a href="javascript:void(0);"><em class="txt">마이페이지</em><em class="ico_arrD bgGNB">하위메뉴보기</em></a>
+                        <a href="javascript:void(0);"><em class="txt">마이페이지</em><em
+                                class="ico_arrD bgGNB">하위메뉴보기</em></a>
                         <dl class="myPgDl">
-                            <dt><a href="https://www.yes24.com/Member/FTMypageMain.aspx"><em class="txt">마이페이지</em><em class="ico_arrU bgGNB">이동</em></a></dt>
+                            <dt><a href="https://www.yes24.com/Member/FTMypageMain.aspx"><em class="txt">마이페이지</em><em
+                                        class="ico_arrU bgGNB">이동</em></a></dt>
                             <dd>
                                 <ul>
                                     <li><a href="https://ssl.yes24.com/MyPageOrderList/MyPageOrderList">주문내역 </a></li>
-                                    <li><a href="https://www.yes24.com/Member/FTGoMyBlog.aspx?type=list" target="_blank">마이리스트 </a></li>
-                                    <li><a href="https://www.yes24.com/Templates/FTMyAccount_1YESPoint.aspx">YES포인트 </a></li>
-                                    <li><a href="https://www.yes24.com/Templates/FTMyAccount_1YESMoney.aspx">YES머니 </a></li>
-                                    <li><a href="https://www.yes24.com/Templates/FTMyAccount_3GiftCard.aspx">YES상품권 </a></li>
+                                    <li><a href="https://www.yes24.com/Member/FTGoMyBlog.aspx?type=list"
+                                            target="_blank">마이리스트 </a>
+                                    </li>
+                                    <li><a href="https://www.yes24.com/Templates/FTMyAccount_1YESPoint.aspx">YES포인트 </a>
+                                    </li>
+                                    <li><a href="https://www.yes24.com/Templates/FTMyAccount_1YESMoney.aspx">YES머니 </a>
+                                    </li>
+                                    <li><a href="https://www.yes24.com/Templates/FTMyAccount_3GiftCard.aspx">YES상품권 </a>
+                                    </li>
                                     <li><a href="https://www.yes24.com/Templates/FTMyAccount_4Coupon.aspx">쿠폰 </a></li>
                                     <li><a href="https://www.yes24.com/Member/MyPage_reconfirmPW.aspx">회원정보 </a></li>
                                 </ul>
@@ -757,19 +790,26 @@
                         </dl>
                     </li>
                     <li><a href="https://ssl.yes24.com/Cart/Cart"><em class="txt">카트</em></a></li>
-                    <li><a href="https://ssl.yes24.com/MyPageOrderList/MyPageOrderList"><em class="txt">주문/배송</em></a></li>
-                    <li class="lastLi"><a href="https://www.yes24.com/Templates/FTCusMain.aspx?Wcode=001_003_012"><em class="txt">고객센터</em></a></li>
+                    <li><a href="https://ssl.yes24.com/MyPageOrderList/MyPageOrderList"><em class="txt">주문/배송</em></a>
+                    </li>
+                    <li class="lastLi"><a href="https://www.yes24.com/Templates/FTCusMain.aspx?Wcode=001_003_012"><em
+                                class="txt">고객센터</em></a></li>
                 </ul>
             </div>
             <hr>
             <div class="yHeaderMid">
                 <div class="yesSearch">
-                    <form id="yesSForm" method="get" name="HeadForm" action="https://www.yes24.com/product/search?" onsubmit="return check_search();" accept-charset="utf-8">
+                    <form id="yesSForm" method="get" name="HeadForm" action="https://www.yes24.com/product/search?"
+                        onsubmit="return check_search();" accept-charset="utf-8">
                         <fieldset>
                             <legend>검색</legend>
                             <span class="schIpt">
-                                <label><input type="text" title="YES24 검색어 입력" class="iptTxt iptTxtAd" accesskey="s" id="query" name="query" maxlength="80" value="" style="ime-mode: active;" autocomplete="off"></label>
+                                <label>
+                                    <input type="text" title="YES24 검색어 입력" class="iptTxt iptTxtAd" accesskey="s" id="query" name="query" maxlength="80" value="" style="ime-mode: active;"autocomplete="off">
+                                </label>
                             </span>
+                            <div style="position:absolute;top:-1000em;left:0;width:1px;height:1px;overflow:hidden;">
+                            </div>
                             <span class="schBtn"><button type="submit" title="검색"><span class="yBlind">검색</span></button></span>
                         </fieldset>
                     </form>
@@ -779,103 +819,217 @@
                     <div class="bnAd">
                         <h2 class="yBlind">어깨배너</h2>
                         <div id="gnbBnList">
-                            <div><a href="https://event.yes24.com/yesbenefit" target="_self"><img src="https://image.yes24.com/dms/202011/GNB어깨배너_180x112(2).jpg" width="180" height="112" border="0" alt="이달의 혜택 모음"></a></div>
+                            <div style=""><a href="https://event.yes24.com/yesbenefit" target="_self" onclick=""><img
+                                        src="https://image.yes24.com/dms/202011/GNB어깨배너_180x112(2).jpg" width="180"
+                                        height="112" border="0" alt="이달의 혜택 모음"></a></div>
+                        </div>
+                        <div class="bnNav">
+                            <span class="pagenNum"><strong>1</strong>/3</span>
+                            <button type="button" value="이전 광고 보기" title="이전 광고 보기" class="bgGNB prev">이전 광고
+                                보기</button>
+                            <button type="button" value="다음 광고 보기" title="다음 광고 보기" class="bgGNB next">다음 광고
+                                보기</button>
                         </div>
                     </div>
                 </div>
             </div>
+            <hr>
+            <div class="yHeaderBot">
+                <div class="quickCateZone">
+                    <h2><a href="javascript:void(0);" class="quickCateBtn" id="quickCateBtn">빠른분야찾기</a></h2>
+                </div>
+                <div id="yesFixCorner" class="yesCornerServ">
+                    <dl>
+                        <dt class="yBlind">YES24 코너/서비스</dt>
+                        <dd>
+                            <ul class="yesCornerLi">
+                                <li><a
+                                        href="https://www.yes24.com/product/category/daybestseller?CategoryNumber=001">베스트</a>
+                                </li>
+                                <li><a
+                                        href="https://www.yes24.com/product/category/attentionnewproduct?categoryNumber=001">신상품</a>
+                                </li>
+                                <li><a href="https://event.yes24.com/main?mainCateId=001">이벤트</a></li>
+                                <li><a href="https://www.yes24.com/Mall/Buyback/Search?CategoryNumber=018">바이백</a></li>
+                                <li><a href="https://www.yes24.com/Mall/UsedStore/Main">매장안내</a></li>
+                            </ul>
+                            <em class="divi"></em>
+                            <ul class="yesServLi">
+                                <li><a title="채널예스" href="https://ch.yes24.com/" qdomain="채널예스" target="_blank"><em
+                                            class="txt">채널예스</em></a></li>
+                                <li><a title="사락" href="https://sarak.yes24.com/" target="_blank">사락</a></li>
+                                <li><a href="https://www.yes24.com/Mall/YesFunding/Main">예스펀딩</a></li>
+                                <li><a title="클래스24" href="https://www.yes24.com/Product/Class">클래스24</a></li>
+                                <li><a title="독서유형검사" href="https://rbti.yes24.com/" class="promotion" target="_blank">
+                                    <span class="txt_promotion"><span class="txt_mnu">독서유형검사</span>
+                                            <span class="txt_mnu"><em class="rbti">RBTI Lab</em>
+                                                <em class="ico_newSup"></em></span><span
+                                                class="txt_mnu">독서유형검사</span></span></a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
         </div>
     </div>
+    <hr>
 </div>
 </div>
 
-<!-- 모바일 헤더 -->
+<!-- 모바일 헤더 (원래 소스) -->
 <div class="mobile-only">
 <div id="yesWrap">
     <div id="yHdWrap" class="subMod">
         <div id="yHd">
-            <h1 class="logo"><a href="https://m.yes24.com/home/main" class="logo_lnk"></a></h1>
-            <div class="mnu"><a href="https://ssl.yes24.com/mMyCart/CartMain" class="mnu_cart">카트<span class="cnt" id="cartNum">14</span></a></div>
+            <h1 class="logo">
+                <a href="https://m.yes24.com/home/main" class="logo_lnk"></a>
+            </h1>
+            <div class="mnu">
+                <a href="https://ssl.yes24.com/mMyCart/CartMain" class="mnu_cart">카트<span class="cnt" id="cartNum">14</span></a>
+            </div>
+            <div class="sch">
+                <div class="ipt">
+                    <label>
+                        <input type="search" placeholder="뱀파이어와 늑대인간의 고향" id="query" name="searchquery" title="YES24 검색" maxlength="80" value="" autocapitalize="off" autocomplete="off" class="ipt_box" onkeypress="if (event.keyCode === 13) { searchGoods(); return false; }">
+                        <button type="button" id="btn_del_schKWord" class="ipt_del"><span class="txt">입력삭제</span></button>
+                    </label>
+                </div>
+                <span class="btn"><button type="button" id="search_real_search" class="btn_sch"><span class="txt">검색하기</span></button></span>
+                <span class="ad"><button type="button" id="btn_ad_search" class="btn_ad"><span class="txt">광고이동</span></button></span>
+                <span class="app">
+                    <button type="button" id="btn_app_search" class="btn_qr">
+                        <span class="txt">QR/바코드 검색</span>
+                    </button>
+                </span>
+                <span class="appTip">이미지 검색을 사용해 보세요</span>
+                <input id="hdSearchCategory" type="hidden">
+            </div>
+            <span class="prev">
+                <a href="javascript:void(0);" class="prev_rset" id="prevSch">
+                    <span class="txt">검색창 이전화면</span>
+                </a>
+                <a href="javascript:void(0);" class="prev_back" onclick="commonPrevBtn();">
+                    <span class="txt">이전화면</span>
+                </a>
+            </span>
+        </div>
+        <div id="yKeyWrap">
+            <div id="yKWD" class="yKeywords">
+                
+                <dl class="keyDl keyPop">
+                    <dt>
+                        <strong class="keyTit">인기 검색어</strong>
+                        <span id="date_search_popular" class="date"></span>
+                    </dt>
+                    <dd>
+                        <div id="search_popular_nodata" class="noData" style="display:none;">
+                        </div>
+                        <ol id="search_popular" class="popOl" style="display:none;">
+                        </ol>
+                    </dd>
+                </dl>
+            </div>
+            <div id="ySGST" class="ySuggest" style="display:none;">
+                <ul id="search_suggest" class="sgstLi">
+                </ul>
+            </div>
+            <div class="yKEtc">
+                <a href="javascript:void(0);" id="search_close" class="lnk_close"><em class="txt">닫기</em><em class="ico"></em></a>
+            </div>
         </div>
     </div>
 </div>
 </div>
 
-<!-- 1. 상단 히어로 및 알림 신청 영역 (원래 소스) -->
+<!-- 1. 상단 히어로 및 알림 신청 영역 (원래 소스 그대로 복구) -->
 <div class="nobelTop">
     <div class="heroPhoto">
-        <div class="custom-title-area">
-            <div class="custom-main-title">2026 노벨문학상</div>
-        </div>
-        <div class="topMsg">
-            세계 최고 권위의 노벨문학상.<br/>
-            2026년 10월, 최고의 영예를 거머쥘 주인공은?
-        </div>
+    <!-- 거대 타이틀 -->
+    <div class="custom-title-area">
+        <div class="custom-main-title">2026 노벨문학상</div>
+    </div>
+
+	<div class="topMsg">
+		세계 최고 권위의 노벨문학상.<br/>
+		2026년 10월, 최고의 영예를 거머쥘 주인공은?
+	</div>
     </div>
     
-    <div class="topBox">
-        <div class="boxTit">
-            2026 노벨문학상 관심알림 신청 시,<br/>
-            YES상품권 500원 증정!
-        </div>
-        <div class="boxDes">
-            수상작가 선정 시, 발표 오전에<br/>
-            작가와 작품 관련 알림을 보내드려요!
-        </div>
+	<div class="topBox">
+		<div class="boxTit">
+			2026 노벨문학상 관심알림 신청 시,<br/>
+			YES상품권 500원 증정!
+		</div>
+		<div class="boxDes">
+			수상작가 선정 시, 발표 오전에<br/>
+			작가와 작품 관련 알림을 보내드려요!
+		</div>
         
-        <div class="yesCardRow eGuideSet">
-            <div class="yesCardRow">
-                <div class="yesCardSet">
-                    <div class="yesCardBig card01">
-                        <p class="card_num">500</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="eGuideSecBtn">
-                <a href="javascript:void(0);" class="eGBtn btn_black"><span class="bWrap"><em class="txt">노벨문학상 관심알림 신청</em></span></a>
-            </div>
-            
-            <div class="yesEveAlertDl toggleOff">
-                <dl>
-                    <dt><a href="javascript:void(0);" onclick="toggleYEveAlert(this);"><em class="ico_info"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><g style="fill:none"><circle cx="10" cy="10" r="10" style="stroke:none"></circle><circle cx="10" cy="10" r="9.5" style="fill:none"></circle></g><path data-name="선 1" transform="translate(10 6)" style="stroke-linecap:round;stroke-width:2px;fill:none" d="M0 0h0"></path><path data-name="선 2" transform="translate(10 9)" style="stroke-linecap:round;stroke-width:2px;fill:none" d="M0 0v5"></path></svg></em>꼭 읽어주세요<em class="ico_arr"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path data-name="패스 5" d="m15 9.127-6-6-6 6" transform="translate(1.5 4.373)" style="fill:none;stroke-linecap:round;stroke-linejoin:round"></path></svg></em></a></dt>
-                    <dd>
-                        <ul class="yesEveAlertLi">
-                            <li><em class="bl_rnd">&nbsp;</em>ID 당 1회만 발급 가능합니다.</li>
-                            <li><em class="bl_rnd">&nbsp;</em>YES상품권의 유효기간은 2026년 10월 24일까지 입니다.</li>
-                            <li><em class="bl_rnd">&nbsp;</em>해당 상품권 증정은 당사의 사정으로 조기 종료 될 수 있습니다.</li>
-                            <li><em class="bl_rnd">&nbsp;</em>상품권 적용 분야 : 국내도서</li>
-                        </ul>
-                    </dd>
-                </dl>
-            </div>
-        </div>
-    </div>
+        <!-- 세로 나열 그룹 -->
+		<div class="yesCardRow eGuideSet">
+			<div class="yesCardRow">
+				<div class="yesCardSet">
+					<div class="yesCardBig card01">
+						<p class="card_num">500</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="eGuideSecBtn">
+				<a href="javascript:void(0);" class="eGBtn btn_black"><span class="bWrap"><em class="txt">노벨문학상 관심알림 신청</em></span></a>
+			</div>
+			
+			<div class="yesEveAlertDl toggleOff">
+				<dl>
+					<dt><a href="javascript:void(0);" onclick="toggleYEveAlert(this);"><em class="ico_info"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><g style="fill:none"><circle cx="10" cy="10" r="10" style="stroke:none"></circle><circle cx="10" cy="10" r="9.5" style="fill:none"></circle></g><path data-name="선 1" transform="translate(10 6)" style="stroke-linecap:round;stroke-width:2px;fill:none" d="M0 0h0"></path><path data-name="선 2" transform="translate(10 9)" style="stroke-linecap:round;stroke-width:2px;fill:none" d="M0 0v5"></path></svg></em>꼭 읽어주세요<em class="ico_arr"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path data-name="패스 5" d="m15 9.127-6-6-6 6" transform="translate(1.5 4.373)" style="fill:none;stroke-linecap:round;stroke-linejoin:round"></path></svg></em></a></dt>
+					<dd>
+						<ul class="yesEveAlertLi">
+							<li><em class="bl_rnd">&nbsp;</em>ID 당 1회만 발급 가능합니다.</li>
+							<li><em class="bl_rnd">&nbsp;</em>YES상품권의 유효기간은 2026년 10월 24일까지 입니다.</li>
+							<li><em class="bl_rnd">&nbsp;</em>해당 상품권 증정은 당사의 사정으로 조기 종료 될 수 있습니다.</li>
+							<li><em class="bl_rnd">&nbsp;</em>상품권 적용 분야 : 국내도서</li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
 </div>
 
 <!-- 2. 중간 굿즈 소개 영역 (원래 소스) -->
 <div class="nobelBot">
-    <div class="nobelMnuArea">
-        <script type="text/javascript">
+	<div class="nobelMnuArea">
+		<script type="text/javascript">
+        // 토글 버튼 스크립트 복구 및 불필요한 AOS 애니메이션 강제 해제
         window.toggleYEveAlert = function(el) {
             var dl = el.closest('.yesEveAlertDl');
             if (dl) dl.classList.toggle('toggleOff');
         };
+        
+        // 헤더 에러 방지용 빈 함수 모음
         window.check_search = function(){ return false; };
         window.searchGoods = function(){};
         window.commonPrevBtn = function(){};
+        window.setMcodeNRedirection = function(){};
+        window.setMcode = function(){};
         window.goPcWeb = function(){};
         window.toggleFootInfo = function(){};
+        window.goOepnChat = function(){};
         window.pgGoTop = function(){ window.scrollTo(0,0); };
-        </script>
-    </div>
-    
-    <div class="nobelBotSec secCon0101">
-        <div class="tit_txtGrp">
-            <div class="txt_tit">노벨문학상 특별 굿즈<br/>2027 캘린더</div>
-            <div class="txt_des">전세계가 주목하는 노벨문학상,<br/>역대 노벨문학상을 받은 작가들을 담은<br/>특별한 2027 캘린더를 공개합니다.</div>
-        </div>
-    </div>
+        window.setWcode = function(){};
+        window.ismsPopupE = function(){};
+        window.markPopupE = function(){};
+        window.brazeHelper = { logout: function(){} };
+        window.airbridgeHelper = { logout: function(){} };
+		</script>
+	</div>
+	
+	<div class="nobelBotSec secCon0101">
+		<div class="tit_txtGrp">
+			<div class="txt_tit">노벨문학상 특별 굿즈<br/>나의 인생책갈피</div>
+			<div class="txt_des">전세계가 주목하는 노벨문학상,<br/>빛나는 작품들의 표지를 엮어<br/>나만의 책갈피를 완성해보세요.</div>
+		</div>
+	</div>
 </div>
 
 <!-- 3. [신규 중간 배치] 노벨문학상 모의고사 (O/X 퀴즈 & 해설) -->
@@ -1007,21 +1161,58 @@
   </div>
 </div>
 
-<!-- PC 푸터 -->
+<!-- PC 푸터 (원래 소스) -->
 <div class="pc-only">
 <div id="yesFooter">
         <div id="toolBtn" class="recentMaxH absBot">
             <div class="toolBtnRow">
-                <a class="sclTopBtn" href="javascript:void(0);" onclick="pgGoTop();"><span class="ico"><img src="https://image.yes24.com/sysimage/renew/common/ico_top.svg" border="0" alt="맨위로"></span></a>
+                <div id="yAIBtn" class="yAIChatBtn" style="display:none;">
+                    <a class="lnk_ai" href="javascript:void(0);" onclick="goOepnChat();">
+                        <span class="ai_ico tp02"></span>
+                        <div class="ai_msg" style="display:none;">
+                            <div class="msg">
+                                <p>AI와 대화하며 도서를 추천받아 보시겠어요?</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            
+                <a class="sclTopBtn" href="javascript:void(0);" onclick="pgGoTop();setWcode('003_007');"><span class="ico"><img src="https://image.yes24.com/sysimage/renew/common/ico_top.svg" border="0" alt="맨위로"></span></a>
             </div>
         </div>
         <div id="footerWrap">
             <div class="yFootTop">
                 <ul id="yMnuLi" class="yFootMnuLi">
-                    <li><a href="https://company.yes24.com/" target="_blank" class="bgFooter fMnu_corp">회사소개</a></li>
-                    <li><a href="https://www.yes24.com/notice/privacypolicy.aspx" class="bgFooter fMnu_priv"><strong>개인정보처리방침</strong></a></li>
-                    <li><a href="https://www.yes24.com/campaign/00_corp/store/store_gangNam.aspx" class="bgFooter fMnu_used">매장안내</a></li>
+                    <li><a href="https://company.yes24.com/" onclick="setWcode('027_001')" target="_blank" class="bgFooter fMnu_corp">회사소개</a></li>
+                    <li><a href="https://company.yes24.com/career" onclick="setWcode('027_002')" target="_blank" class="bgFooter fMnu_recu">인재채용</a></li>
+                    <li><a href="https://www.yes24.com/notice/service.aspx" onclick="setWcode('027_003')" class="bgFooter fMnu_agre">이용약관</a></li>
+                    <li><a href="https://www.yes24.com/notice/privacypolicy.aspx" onclick="setWcode('027_004')" class="bgFooter fMnu_priv"><strong>개인정보처리방침</strong></a></li>
+                    <li><a href="https://www.yes24.com/notice/youthpolicy.aspx" onclick="setWcode('027_004')" class="bgFooter fMnu_boy">청소년보호정책</a></li>
+                    <li><a href="https://www.yes24.com/company/Publish.aspx" onclick="setWcode('027_006')" class="bgFooter fMnu_book">도서홍보안내</a></li>
+                    <li><a href="https://www.yes24.com/company/AdInfo.aspx" onclick="setWcode('027_007')" class="bgFooter fMnu_ad">광고안내</a></li>
+                    <li><a href="https://www.yes24.com/company/InfoCoopProgram.aspx" onclick="setWcode('027_008')" class="bgFooter fMnu_part">제휴안내</a></li>
+                    <li><a href="https://www.yes24.com/CorpLargeOrder/infoPartner.aspx" onclick="setWcode('027_009')" class="bgFooter fMnu_bene">복지제휴</a></li>
+                    <li><a href="https://www.yes24.com/campaign/00_corp/store/store_gangNam.aspx" onclick="setWcode('027_011')" class="bgFooter fMnu_used">매장안내</a></li>
                 </ul>
+                <ul class="yFootSnsLi">
+                    <li><a class="bgFooter sns_ka" onclick="setWcode('027_015')" href="https://pf.kakao.com/_yxkZjR" target="_blank">YES24 카카오채널</a></li>
+                    <li><a class="bgFooter sns_fb" onclick="setWcode('027_012')" href="https://www.facebook.com/yes24/" target="_blank">YES24 페이스북</a></li>
+                    <li><a class="bgFooter sns_tw" onclick="setWcode('027_013')" href="https://twitter.com/yes24_official" target="_blank">YES24 트위터</a></li>
+                    <li><a class="bgFooter sns_ig" onclick="setWcode('027_014')" href="https://www.instagram.com/yes24_official/" target="_blank">YES24 인스타그램</a></li>
+                </ul>
+                <dl id="yFamDl" class="yFootFamDl">
+                    <dt class=""><a href="javascript:void(0);" class="bgFooter">가족회사 소개</a></dt>
+                    <dd style="display:none;">
+                        <ul>
+                            <li><a target="_blank" href="http://www.hansaeyes24.com/" onclick="setWcode('028')">한세예스24홀딩스</a></li>
+                            <li><a target="_blank" href="http://www.hansae.com/" onclick="setWcode('028')">한세실업</a></li>
+                            <li><a target="_blank" href="http://www.hansaedreams.co.kr/" onclick="setWcode('028')">한세드림</a></li>
+                            <li><a target="_blank" href="http://www.curlysue.co.kr/" onclick="setWcode('028')">컬리수</a></li>
+                            <li><a target="_blank" href="http://www.style24.com/" onclick="setWcode('028')">STYLE24</a></li>
+                            <li><a target="_blank" href="http://www.bookdonga.com/" onclick="setWcode('028')">동아출판</a></li>
+                        </ul>
+                    </dd>
+                </dl>
             </div>
             <div class="yFootCon">
                 <dl class="yFootAddr">
@@ -1030,24 +1221,119 @@
                         <address>
                             <span class="addrRow">대표 : 김석환, 최세라</span>
                             <span class="addrRow">주소 : 서울시 영등포구 은행로 11, 5층~6층(여의도동,일신빌딩)</span>
+                            <span class="addrRow">사업자등록번호 : 229-81-37000 &nbsp; 통신판매업신고 : 제 2005-02682호 <a id="corpNumLnk" href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=2298137000" target="_blank">사업자 정보확인</a></span>
+                            <span class="addrRow">이메일 : yes24help@yes24.com &nbsp; 호스팅 서비스사업자 : 예스이십사(주)</span>
                             <p class="txt_copyright">Copyright ⓒ YES24 Corp. All Rights Reserved.</p>
                         </address>
                     </dd>
                 </dl>
+                <ul class="yFootCsLi">
+                    <li class="csTel">
+                        <dl>
+                            <dt style="">고객문의</dt>
+                            <dd>
+                                <p><span class="item">도서/음반</span> <span class="yes_b">1544-3800</span></p>
+                                <p><span class="item w35">중고도서</span> <span class="yes_b">1566-4295</span></p>
+                                <p><span class="item">티켓예매</span> <span class="yes_b">1544-6399</span></p>
+                                <p><span class="item w35"><a href="https://www.yes24.com/Mall/Help/CS/Apply?AplNo=45" class="txtLnk">eBook 1:1문의/채팅상담</a></span></p>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="csFaq clearfix">
+                        <a href="https://www.yes24.com/Mall/Help/Main" class="btnCs1 bgFooter">1:1 문의하기</a>
+                        <a href="https://www.yes24.com/Mall/Help/Faq" class="btnCs2 bgFooter">자주 묻는 질문</a>
+                        <a href="javascript:void(0);" class="btnCs3 bgFooter">상담시간 안내</a>
+                    </li>
+                </ul>
+                <div id="footerCsInfoPop" class="csInfoD" style="display:none">
+                    <div class="csInfoDCon">
+                        <strong class="tit">상담시간 안내</strong>
+                        <ul class="infoDLi clearfix">
+                            <li><strong class="item">도서/음반 문의</strong> <em class="telNum">1544-3800</em> 평일 9시 ~
+                                18시<em class="des"> (토요일, 일요일 및 공휴일 휴무)</em></li>
+                            <li><strong class="item">중고도서 문의</strong> <em class="telNum">1566-4295</em> 평일 9시 ~
+                                18시<em class="des"> (토요일, 일요일 및 공휴일 휴무)</em></li>
+                            <li><strong class="item">티켓예매 문의</strong> <em class="telNum">1544-6399</em> 평일 9시 ~ 18시
+                                토요일 9시 ~ 17시 <em class="des">(일요일 및 공휴일 휴무)</em></li>
+                            <li><strong class="item">eBook 문의</strong> <a href="https://www.yes24.com/Mall/Help/CS/Apply?AplNo=45" class="txtLnk">1:1문의하기</a></li>
+                        </ul>
+                        <p class="csInfoCmt">점심시간 안내 &nbsp; 12:00 ~ 13:00</p>
+                        <a href="javascript:void(0);" class="btnCloseCsInfo">상담시간 안내 레이어 닫기</a>
+                    </div>
+                </div>
+            </div>
+            <div class="yes24Glory">
+                <img src="https://image.yes24.com/sysimage/renew/footer/img_awards.gif?v260105 " width="1200" border="0" alt="YES24 수상내역" usemap="#mapFootGlory">
+                <map name="mapFootGlory" id="mapFootGlory">
+                    <area shape="rect" coords="886,0,1011,88" href="javascript:void(0);" onclick="ismsPopupE();" alt="정보보호 관리체계 ISMS인증획득">
+                    <area shape="rect" coords="1070,0,1185,88" href="javascript:void(0);" onclick="javascript:markPopupE('2025-EP-R046');" alt="개인정보보호 우수사이트">
+                </map>
             </div>
         </div>
 </div>
 </div>
 
-<!-- 모바일 푸터 -->
+<!-- 모바일 푸터 (원래 소스) -->
 <div class="mobile-only">
 <div id="yesWrap">
         <footer>
             <div id="footer" class="tBarOn">
+                <div class="footMnu">
+                    <div class="mnuLnk">
+                        <span class="lnkSet">
+                            <a id="loginOutLink" href="javascript:setMcodeNRedirection('https://m.yes24.com/Momo/Templates/FTLogOut.aspx', '003_001')" onclick="brazeHelper.logout(); airbridgeHelper.logout();">
+                                <em class="txt">로그인</em>
+                            </a>
+                        </span>
+                        <span class="lnkSet">
+                            <a href="https://m.yes24.com/Category/RecentGoods" onclick="setMcode('003_002');">
+                                <em class="txt">최근 본 상품</em>
+                            </a>
+                        </span>
+                        <span class="lnkSet">
+                            <a href="javascript:setMcodeNRedirection('https://ssl.yes24.com/MMyPageOrderList/MMyPageOrderList', '003_003');">
+                                <em class="txt">주문/배송</em>
+                            </a>
+                        </span>
+                        </div>
+                    </div>
+                    <div class="footCs">
+                    <div class="csTel">
+                        <span class="telSet"><a href="tel:15443800" onclick="setMcode('003_004');" class="txt">고객센터 1544-3800</a></span>
+                        <span class="telSet"><a href="tel:1544-6399" class="txt">티켓 1544-6399</a></span>
+                        <span class="telSet"><a href="tel:15664295" onclick="setMcode('003_009');" class="txt">중고샵 1566-4295</a></span>
+                        <span class="telSet lastSet"><a href="https://m.yes24.com/Help/Cs/Apply?AplNo=45" class="lnk">eBook 1:1문의/채팅상담</a></span>
+                    </div>                        
+                </div>
+                
+                <div id="yFootInfo" class="footTxt">
+                    <button type="button" class="btn_fToggle" onclick="toggleFootInfo();">
+                        <span class="txt">예스이십사(주) 사업자 정보</span>
+                        <span class="ico">자세히 보기</span>
+                    </button>
+                    <div class="txtInfo">
+                        <dl><dt>대표</dt><dd>김석환, 최세라</dd></dl>
+                        <dl><dt>주소</dt><dd>서울시 영등포구 은행로 11, 5층~ 6층 (여의도동,일신빌딩)</dd></dl>
+                        <dl><dt>사업자등록번호</dt><dd>229-81-37000</dd></dl>
+                        <dl><dt>통신판매업신고</dt><dd>제 2005-02682</dd></dl>
+                        <dl><dt>이메일</dt><dd><a href="mailto:yes24help@yes24.com">yes24help@yes24.com</a></dd></dl>
+                        <dl><dt>호스팅 서비스사업자</dt><dd>예스이십사(주)</dd></dl>
+                    </div>
+                </div>
                 <div class="footCorp">
                     <div class="corpLnk">
-                        <span class="lnkSet"><a href="https://m.yes24.com/Momo/Member/agree.aspx">이용약관</a></span>
-                        <span class="lnkSet"><a href="https://m.yes24.com/Momo/Member/clause_privacy.aspx"><strong>개인정보처리방침</strong></a></span>
+                        <span class="lnkSet"><a href="https://m.yes24.com/Momo/Member/agree.aspx" onclick="setMcode('003_008');">이용약관</a></span>
+                        <span class="lnkSet"><a href="https://m.yes24.com/Momo/Member/clause_privacy.aspx" onclick="setMcode('003_007');"><strong>개인정보처리방침</strong></a></span>
+                        <span class="lnkSet"><a href="https://m.yes24.com/Momo/Member/youthpolicy.aspx">청소년보호정책</a></span>
+                    </div>
+                    <div class="corpLnk">
+                        <span class="lnkSet" id="viewPcLink"><a href="javascript:void(0);" onclick="setMcode('003_005');goPcWeb();">PC버전</a></span>
+                        <span class="lnkSet"><a href="https://company.yes24.com/">회사소개</a></span>
+                        <span class="lnkSet"><a href="https://m.yes24.com/Company">거래처관계자께</a></span>
+                    </div>
+                    <div class="corpLnk">
+                        <span class="lnkSet"><a href="https://m.yes24.com/Company/Publish">도서홍보</a></span>
+                        <span class="lnkSet"><a href="https://m.yes24.com/Company/AdGuide">광고</a></span>
                     </div>
                 </div>
                 <div class="footCopy">
@@ -1277,7 +1563,7 @@ async function shareQuizResult() {
       await navigator.share(shareData);
       quizShareMessage.textContent = "결과를 공유했습니다.";
     } else if (navigator.clipboard) {
-      await navigator.clipboard.writeText(`${shareData.text} ${shareData.url}`);
+      await navigator.clipboard-writeText(`${shareData.text} ${shareData.url}`);
       quizShareMessage.textContent = "공유 문구와 링크를 복사했습니다.";
     } else {
       quizShareMessage.textContent = "현재 브라우저에서는 자동 복사가 지원되지 않습니다.";
@@ -1296,7 +1582,7 @@ quizShareBtn.addEventListener("click", shareQuizResult);
 
 
 // ==========================================
-// 2. 나만의 북킷리스트 및 영수증 이벤트 스크립트
+// 2. 나만의 북킷리스트 및 영수증 이벤트 스크립트 (원래 소스)
 // ==========================================
 const CATS = {
   done:   { label:"인생고전이 된 책",   tag:"인생고전" },
