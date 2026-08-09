@@ -1316,9 +1316,9 @@ quizShareBtn.addEventListener("click", shareQuizResult);
 // 2. 나의 북킷리스트 이벤트 스크립트
 // ==========================================
 const CATS = {
-  done:   { label:"인생고전이 된 책",   tag:"인생고전" },
-  future: { label:"인생고전이 될 책",   tag:"미래고전" },
-  bucket: { label:"화제가 된 책",       tag:"화제고전" }
+  done:   { label:"올해 안에 읽어볼 책",   tag:"올해목표" },
+  future: { label:"단 한 권의 책",   tag:"인생작" },
+  bucket: { label:"제일 읽기 어려운 책",       tag:"도전" }
 };
 const books = [
   {id:1, title:"빌러비드", author:"토니 모리슨", edition:"116", category:"done", tagline:"고통과 존엄을 동시에 문장에 새긴 이야기꾼", cover:"https://image.yes24.com/goods/12531144/XL", url:"https://www.yes24.com/product/goods/12531144", fx:50, fy:50},
@@ -1335,9 +1335,9 @@ const books = [
  
 const MAX = 3;
 const EMPTY_LABELS = [
-  "죽기 전에<br>읽어야 할 책",
-  "평생 한 번은<br>만나야 할 책",
-  "언젠가는<br>읽어야 할 책"
+  "올해 안에<br>읽어볼 책",
+  "인생 단 한 번은<br>읽어야 할 책",
+  "제일 읽기<br>어려운 책"
 ];
 let selected = [];
  
