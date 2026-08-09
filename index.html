@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>나만의 북킷리스트 | YES24</title>
+<title>2026 노벨문학상 북킷리스트 | YES24</title>
 
 <!-- YES24 실제 헤더/푸터 스타일시트 (PC + 모바일) -->
 <link rel="stylesheet" type="text/css" href="https://image.yes24.com/sysimage/yesUI/yesCom.css?v=20260720">
@@ -29,7 +29,6 @@
 <!-- 폰트: 상단 히어로 타이틀 전용 세리프 -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600&display=swap">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdn.tailwindcss.com"></script>	
 
 <style>
   /* 헤더/푸터 여백 제거 */
@@ -38,21 +37,21 @@
 
   /* 블랙 & 화이트 테마 컬러 변수 */
   :root {
-    --paper: #ffffff;      
-    --ink: #111111;        
-    --green: #333333;      
-    --green-deep: #000000; 
-    --red: #000000;        
+    --paper: #ffffff;          
+    --ink: #111111;            
+    --green: #333333;          
+    --green-deep: #000000;     
+    --red: #000000;            
     --gold: #d4af37;
     --gold-deep: #A9822F;
     --ivory-base: #F1ECDF;
     --ivory-glow: #FBF8F0;
-    --card: #f9f9f9;       
-    --line: #e0e0e0;       
+    --card: #f9f9f9;           
+    --line: #e0e0e0;         
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; background: #ffffff; }
-  
+
   /* 전역 폰트 통일 */
   body, button, input, select, textarea, h1, h2, h3, h4, p, span, div {
       font-family: 'Pretendard', sans-serif !important;
@@ -68,7 +67,7 @@
   }
 
   /* ------------------------------------------------------------------
-     1. 노벨문학상 상단 영역 - 사진 히어로 밴드 (노벨 메달 이미지 복구)
+     1. 노벨문학상 상단 영역 - 사진 히어로 밴드 + 하단 아이보리 패널 (원래 소스)
      ------------------------------------------------------------------ */
   .nobelTop {
       display: flex !important;
@@ -81,7 +80,7 @@
       overflow: hidden !important;
   }
 
-  /* 노벨 메달 이미지 원본 URL 적용 */
+  /* 원본 이미지 복구 */
   .heroPhoto {
       width: 100% !important;
       min-height: clamp(460px, 62vh, 640px) !important;
@@ -294,7 +293,7 @@
   .yesEveAlertLi li .bl_rnd { display: none !important; }
 
   /* ------------------------------------------------------------------
-     2. 중간 굿즈 소개 영역
+     2. 중간 굿즈 소개 영역 (원래 소스)
      ------------------------------------------------------------------ */
   .nobelBot {
       background-color: #F8F6F0 !important;
@@ -337,7 +336,7 @@
   }
 
   /* ------------------------------------------------------------------
-     3. 노벨문학상 모의고사 (O/X 퀴즈) 전용 독립 스타일 (중간 배치)
+     3. 노벨문학상 모의고사 (O/X 퀴즈) 전용 스타일 (중간 영역)
      ------------------------------------------------------------------ */
   .quiz-section {
       background: #F1ECDF;
@@ -505,7 +504,7 @@
   }
 
   /* ------------------------------------------------------------------
-     4. 하단 인생책갈피 이벤트 영역 - 하얀색 배경
+     4. 하단 인생책갈피 이벤트 영역 - 하얀색 배경 (원래 소스)
      ------------------------------------------------------------------ */
   .event-page {
     background: #ffffff;
@@ -676,46 +675,11 @@
   .cta-item:last-child { border-bottom: none; padding-bottom: 0; }
   .cta-item a { color: var(--ink); text-decoration: none; font-weight: 700; white-space: nowrap; background: #fff; padding: 4px 10px; border-radius: 4px; border: 1px solid #ccc; font-size: 11px;}
   .cta-item a:hover { background: #e0e0e0; }
-  .receipt-wrap{margin:24px auto 28px;display:flex;flex-direction:column;align-items:center;gap:14px;}
-  .receipt-stage{
-    background:radial-gradient(circle at 50% 15%, #e8e8e8, #bdbdbd 150%);
-    border-radius:16px;padding:38px 22px 30px;display:flex;justify-content:center;
-  }
-  .receipt{
-    width:270px;max-width:100%;background:#ffffff;color:var(--ink);
-    padding:22px 22px 18px;position:relative;box-shadow:0 20px 34px rgba(0,0,0,0.28);
-  }
-  .receipt::before,.receipt::after{
-    content:"";position:absolute;left:0;right:0;height:11px;
-    background-size:22px 22px;background-repeat:repeat-x;
-  }
-  .receipt::before{top:-10px;background-image:radial-gradient(circle at 11px 11px, #ffffff 10.5px, transparent 11px);}
-  .receipt::after{bottom:-10px;background-image:radial-gradient(circle at 11px 0px, #ffffff 10.5px, transparent 11px);}
-  .r-badge{
-    display:block;width:fit-content;margin:2px auto 14px;background:var(--ink);color:#fff;
-    font-weight:700;font-size:11px;letter-spacing:0.06em;padding:6px 16px;border-radius:3px 3px 9px 9px;
-  }
-  .r-line{font-size:11px;line-height:1.7;}
-  .r-center{text-align:center;}
-  .r-bold{font-weight:700;}
-  .r-small{font-size:9.5px;color:#888;}
-  .r-italic{font-style:italic;}
-  .r-dashed{border-top:1.5px dashed #ddd;margin:12px 0;}
-  .r-row{display:flex;justify-content:space-between;gap:8px;font-size:11px;padding:3px 0;}
-  .r-item{display:flex;justify-content:space-between;gap:10px;font-size:11px;padding:4px 0;}
-  .r-item .name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-  .r-item .tag{white-space:nowrap;color:var(--gold-deep);font-weight:700;font-size:10px;}
-  .r-total{padding-top:2px;}
-  .r-total .r-row:first-child{font-weight:700;font-size:12.5px;}
-  .r-barcode{
-    height:38px;margin:16px 4px 4px;
-    background:repeating-linear-gradient(90deg,#111 0 1px, transparent 1px 3px, #111 3px 5px, transparent 5px 6px, #111 6px 9px, transparent 9px 12px, #111 12px 13px, transparent 13px 16px);
-  }
-  .r-no{font-size:9px;text-align:center;letter-spacing:0.15em;color:#888;margin-top:4px;}
 </style>
 </head>
 <body>
 
+<!-- PC 헤더 (원래 소스) -->
 <div class="pc-only">
 <div id="yesHeaderArea">
     <div id="yHeader">
@@ -788,6 +752,7 @@
 </div>
 </div>
 
+<!-- 모바일 헤더 (원래 소스) -->
 <div class="mobile-only">
 <div id="yesWrap">
     <div id="yHdWrap" class="subMod">
@@ -799,7 +764,7 @@
 </div>
 </div>
 
-<!-- 1. 상단 히어로 영역 (노벨 메달 이미지 원본) -->
+<!-- 1. 상단 히어로 및 알림 신청 영역 (원래 소스) -->
 <div class="nobelTop">
     <div class="heroPhoto">
         <div class="custom-title-area">
@@ -812,8 +777,14 @@
     </div>
     
     <div class="topBox">
-        <div class="boxTit">2026 노벨문학상 관심알림 신청 시,<br/>YES상품권 500원 증정!</div>
-        <div class="boxDes">수상작가 선정 시, 발표 오전에<br/>작가와 작품 관련 알림을 보내드려요!</div>
+        <div class="boxTit">
+            2026 노벨문학상 관심알림 신청 시,<br/>
+            YES상품권 500원 증정!
+        </div>
+        <div class="boxDes">
+            수상작가 선정 시, 발표 오전에<br/>
+            작가와 작품 관련 알림을 보내드려요!
+        </div>
         
         <div class="yesCardRow eGuideSet">
             <div class="yesCardRow">
@@ -823,6 +794,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="eGuideSecBtn">
                 <a href="javascript:void(0);" class="eGBtn btn_black"><span class="bWrap"><em class="txt">노벨문학상 관심알림 신청</em></span></a>
             </div>
@@ -844,7 +816,7 @@
     </div>
 </div>
 
-<!-- 2. 중간 굿즈 영역 -->
+<!-- 2. 중간 굿즈 소개 영역 (원래 소스) -->
 <div class="nobelBot">
     <div class="nobelMnuArea">
         <script type="text/javascript">
@@ -860,47 +832,16 @@
         window.pgGoTop = function(){ window.scrollTo(0,0); };
         </script>
     </div>
+    
     <div class="nobelBotSec secCon0101">
         <div class="tit_txtGrp">
-            <div class="txt_tit">노벨문학상 특별 굿즈<br/>2027 캘린더</div>
-            <div class="txt_des">전세계가 주목하는 노벨문학상,<br/>역대 노벨문학상을 받은 작가들을 담은<br/>특별한 2027 캘린더를 공개합니다.</div>
+            <div class="txt_tit">노벨문학상 특별 굿즈<br/>나의 인생책갈피</div>
+            <div class="txt_des">전세계가 주목하는 노벨문학상,<br/>빛나는 작품들의 표지를 엮어<br/>나만의 책갈피를 완성해보세요.</div>
         </div>
     </div>
 </div>
 
-<section class="w-full bg-[#F8F6F0] py-12 px-6">
-  <div class="w-full mb-0 relative max-w-5xl mx-auto">
-      <div class="text-center mb-10">
-          <div class="inline-flex items-center gap-2 px-3 py-1 border border-gray-700 rounded-full text-gray-400 text-[10px] tracking-[0.2em] uppercase font-bold mb-4">Special Gift</div>
-          <h3 class="text-3xl md:text-4xl font-serif text-white">노벨문학상 캘린더</h3>
-      </div>
-      <div class="relative w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden bg-gray-900 border border-gray-800 group">
-          <div id="slider-container" class="w-full h-full relative">
-              <div class="slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-100 z-10">
-                  <img src="https://image.yes24.com/momo/TopCate5157/MidCate009/515688936.jpg" class="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" alt="Gift 1">
-                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
-              </div>
-              <div class="slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 z-0">
-                  <img src="https://image.yes24.com/momo/TopCate5157/MidCate009/515689012.jpg" class="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" alt="Gift 2">
-                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
-              </div>
-              <div class="slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 z-0">
-                  <img src="https://image.yes24.com/momo/TopCate5157/MidCate009/515689795.jpg" class="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" alt="Gift 3">
-                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
-              </div>
-          </div>
-          <div class="absolute bottom-6 left-6 right-6 flex justify-between items-end z-20">
-              <div class="text-white font-serif text-4xl font-light"><span id="currentSlideNum">01</span> <span class="text-xs text-gray-500 align-middle ml-2">/ 03</span></div>
-              <div class="flex gap-2">
-                  <button onclick="changeSlide(-1)" class="p-3 border border-white/20 hover:bg-white hover:text-black transition-colors rounded-full backdrop-blur-sm text-white"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
-                  <button onclick="changeSlide(1)" class="p-3 border border-white/20 hover:bg-white hover:text-black transition-colors rounded-full backdrop-blur-sm text-white"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
-              </div>
-          </div>
-      </div>
-  </div>
-</section>
-
-<!-- ===================== 3. [신규 중간 배치] 노벨문학상 모의고사 (O/X 퀴즈) ===================== -->
+<!-- 3. [신규 중간 배치] 노벨문학상 모의고사 (O/X 퀴즈 & 해설) -->
 <section class="quiz-section">
   <div class="quiz-app-shell">
     <!-- 시작 화면 -->
@@ -940,8 +881,8 @@
     <div id="quizLoadingScreen" class="quiz-screen">
       <div class="quiz-card quiz-loading-card">
         <div class="quiz-loader-ring"></div>
-        <h3 class="text-xl font-bold mb-2">모의고사를 채점하고 있어요</h3>
-        <p id="quizLoadingText" class="text-sm text-gray-500">답안지를 꼼꼼히 확인하는 중...</p>
+        <h3 style="font-size: 20px; font-weight: bold; margin-bottom: 8px; color: #111;">모의고사를 채점하고 있어요</h3>
+        <p id="quizLoadingText" style="font-size: 14px; color: #666; margin: 0;">답안지를 꼼꼼히 확인하는 중...</p>
       </div>
     </div>
 
@@ -983,24 +924,24 @@
   </div>
 </section>
 
-<!-- ===================== 4. 하단 이벤트 콘텐츠 (영수증 이벤트) ===================== -->
+<!-- 4. 하단 인생책갈피 이벤트 콘텐츠 (원래 소스) -->
 <div class="event-page">
   <div class="wrap">
     <header class="evt-head">
-      <div class="eyebrow">NOBEL SEASON · MY BUCKET LIST</div>
-      <h1 class="txt_tit" style="font-size: clamp(26px, 5vw, 36px) !important; font-weight: 800 !important; color: #222 !important; line-height: 1.4 !important; margin-bottom: 15px !important;">나의 북킷리스트 만들기</h1>
-      <p>마음에 드는 책을 직접 골라보세요. 탭한 부분만 오려내 책 제목과 함께<br>나만의 북킷리스트로 완성해드려요.</p>
-      <div class="counter" id="counter">0 / 3 권 선택됨</div>
+      <div class="eyebrow">NOBEL SEASON · READING RECORD CARD</div>
+      <h1>나만의 인생책갈피 만들기</h1>
+      <p>표지에서 마음에 드는 장면을 직접 짚어보세요. 탭한 부분만 오려내 책 제목과 함께<br>진짜 책갈피 모양으로 완성해드려요.</p>
+      <div class="counter" id="counter">0 / 4 권 선택됨</div>
     </header>
-     
+
     <div class="shelf-title">이 책들 중에서 골라보세요 <span>TAP THE ART TO CAPTURE</span></div>
-    <div class="shelf-hint">표지의 원하는 부분을 탭하면 그 장면이 북킷리스트에 담겨요. 다시 탭하면 캡처 위치를 바꿀 수 있어요.</div>
+    <div class="shelf-hint">표지의 원하는 부분을 탭하면 그 장면이 책갈피에 담겨요. 다시 탭하면 캡처 위치를 바꿀 수 있어요.</div>
     <div class="grid" id="grid"></div>
- 
+
     <div class="preview-section">
       <div class="preview-head">
-        <h2>나의 북킷리스트</h2>
-        <span id="completeMsg">0 / 3 · IN PROGRESS</span>
+        <h2>나의 인생책갈피</h2>
+        <span id="completeMsg">0 / 4 · IN PROGRESS</span>
       </div>
       <div class="shelf-display">
         <div id="bookmarkRow"></div>
@@ -1008,19 +949,8 @@
       </div>
       <div class="actions">
         <button class="act" id="resetBtn">다시 고르기</button>
-        <button class="act" id="issueReceiptBtn" disabled>영수증 발급받기</button>
+        <button class="act primary" id="downloadBtn" disabled>이미지로 저장</button>
       </div>
- 
-      <div class="receipt-wrap" id="receiptWrap" style="display:none;">
-        <div class="receipt-stage" id="receiptStage">
-          <div class="receipt" id="receiptCapture"></div>
-        </div>
-        <div class="actions">
-          <button class="act" id="rerollBtn">다시 발급받기</button>
-          <button class="act primary" id="receiptDownloadBtn">영수증 다운로드</button>
-        </div>
-      </div>
- 
       <div class="cta-box">
         <h4>선택한 책 바로 만나보기</h4>
         <div id="ctaList"><div class="cta-empty">아직 고른 책이 없어요</div></div>
@@ -1028,53 +958,58 @@
     </div>
   </div>
 </div>
- 
-<!-- PC 푸터 -->
+
+<!-- PC 푸터 (원래 소스) -->
 <div class="pc-only">
 <div id="yesFooter">
-    <div id="footerWrap">
-        <div class="yFootTop">
-            <ul id="yMnuLi" class="yFootMnuLi">
-                <li><a href="https://company.yes24.com/" target="_blank" class="bgFooter fMnu_corp">회사소개</a></li>
-                <li><a href="https://www.yes24.com/notice/privacypolicy.aspx" class="bgFooter fMnu_priv"><strong>개인정보처리방침</strong></a></li>
-                <li><a href="https://www.yes24.com/campaign/00_corp/store/store_gangNam.aspx" class="bgFooter fMnu_used">매장안내</a></li>
-            </ul>
+        <div id="toolBtn" class="recentMaxH absBot">
+            <div class="toolBtnRow">
+                <a class="sclTopBtn" href="javascript:void(0);" onclick="pgGoTop();"><span class="ico"><img src="https://image.yes24.com/sysimage/renew/common/ico_top.svg" border="0" alt="맨위로"></span></a>
+            </div>
         </div>
-        <div class="yFootCon">
-            <dl class="yFootAddr">
-                <dt><a href="https://www.yes24.com/Main/default.aspx"><em class="fLogo bgFooter">&nbsp;</em></a><em class="bgFooter fCName">예스이십사(주)</em></dt>
-                <dd>
-                    <address>
-                        <span class="addrRow">대표 : 김석환, 최세라</span>
-                        <span class="addrRow">주소 : 서울시 영등포구 은행로 11, 5층~6층(여의도동,일신빌딩)</span>
-                        <p class="txt_copyright">Copyright ⓒ YES24 Corp. All Rights Reserved.</p>
-                    </address>
-                </dd>
-            </dl>
+        <div id="footerWrap">
+            <div class="yFootTop">
+                <ul id="yMnuLi" class="yFootMnuLi">
+                    <li><a href="https://company.yes24.com/" target="_blank" class="bgFooter fMnu_corp">회사소개</a></li>
+                    <li><a href="https://www.yes24.com/notice/privacypolicy.aspx" class="bgFooter fMnu_priv"><strong>개인정보처리방침</strong></a></li>
+                    <li><a href="https://www.yes24.com/campaign/00_corp/store/store_gangNam.aspx" class="bgFooter fMnu_used">매장안내</a></li>
+                </ul>
+            </div>
+            <div class="yFootCon">
+                <dl class="yFootAddr">
+                    <dt><a href="https://www.yes24.com/Main/default.aspx"><em class="fLogo bgFooter">&nbsp;</em></a><em class="bgFooter fCName">예스이십사(주)</em></dt>
+                    <dd>
+                        <address>
+                            <span class="addrRow">대표 : 김석환, 최세라</span>
+                            <span class="addrRow">주소 : 서울시 영등포구 은행로 11, 5층~6층(여의도동,일신빌딩)</span>
+                            <p class="txt_copyright">Copyright ⓒ YES24 Corp. All Rights Reserved.</p>
+                        </address>
+                    </dd>
+                </dl>
+            </div>
         </div>
-    </div>
 </div>
 </div>
 
-<!-- 모바일 푸터 -->
+<!-- 모바일 푸터 (원래 소스) -->
 <div class="mobile-only">
 <div id="yesWrap">
-    <footer>
-        <div id="footer" class="tBarOn">
-            <div class="footCorp">
-                <div class="corpLnk">
-                    <span class="lnkSet"><a href="https://m.yes24.com/Momo/Member/agree.aspx">이용약관</a></span>
-                    <span class="lnkSet"><a href="https://m.yes24.com/Momo/Member/clause_privacy.aspx"><strong>개인정보처리방침</strong></a></span>
+        <footer>
+            <div id="footer" class="tBarOn">
+                <div class="footCorp">
+                    <div class="corpLnk">
+                        <span class="lnkSet"><a href="https://m.yes24.com/Momo/Member/agree.aspx">이용약관</a></span>
+                        <span class="lnkSet"><a href="https://m.yes24.com/Momo/Member/clause_privacy.aspx"><strong>개인정보처리방침</strong></a></span>
+                    </div>
+                </div>
+                <div class="footCopy">
+                    <p>Copyright © YES24 Corp. All Rights Reserved.</p>
                 </div>
             </div>
-            <div class="footCopy">
-                <p>Copyright © YES24 Corp. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
+        </footer>
 </div>
 </div>
- 
+
 <script>
 // ==========================================
 // 1. 노벨문학상 모의고사 (O/X) 스크립트
@@ -1313,231 +1248,126 @@ quizShareBtn.addEventListener("click", shareQuizResult);
 
 
 // ==========================================
-// 2. 나의 북킷리스트 이벤트 스크립트
+// 2. 나의 인생책갈피 스크립트 (원래 소스)
 // ==========================================
-const CATS = {
-  done:   { label:"올해 안에 읽어볼 책",   tag:"올해목표" },
-  future: { label:"단 한 권의 책",   tag:"인생작" },
-  bucket: { label:"제일 읽기 어려운 책",       tag:"도전" }
-};
-const books = [
-  {id:1, title:"빌러비드", author:"토니 모리슨", edition:"116", category:"done", tagline:"고통과 존엄을 동시에 문장에 새긴 이야기꾼", cover:"https://image.yes24.com/goods/12531144/XL", url:"https://www.yes24.com/product/goods/12531144", fx:50, fy:50},
-  {id:2, title:"단순한 열정", author:"아니 에르노", edition:"099", category:"done", tagline:"자신의 삶을 가장 정직하게 해부한 기록자", cover:"https://image.yes24.com/goods/7977274/XL", url:"https://www.yes24.com/product/goods/7977274", fx:50, fy:50},
-  {id:3, title:"노인과 바다", author:"어니스트 헤밍웨이", edition:"091", category:"done", tagline:"짧은 문장으로 가장 깊은 것을 말한 사람", cover:"https://image.yes24.com/goods/6179070/XL", url:"https://www.yes24.com/product/goods/6179070", fx:50, fy:50},
-  {id:4, title:"작은 것들의 신", author:"아룬다티 로이", edition:"135", category:"bucket", tagline:"침묵하는 것들을 위해 목소리를 낸 작가", cover:"https://image.yes24.com/goods/24191259/XL", url:"https://www.yes24.com/product/goods/24191259", fx:50, fy:50},
-  {id:5, title:"속죄", author:"이언 매큐언", edition:"223", category:"bucket", tagline:"일상의 균열을 정교하게 그려낸 이야기꾼", cover:"https://image.yes24.com/goods/117663050/XL", url:"https://www.yes24.com/product/goods/117663050", fx:50, fy:50},
-  {id:6, title:"데미안", author:"헤르만 헤세", edition:"101", category:"done", tagline:"자기 자신에게로 향하는 길을 평생 그린 작가", cover:"https://image.yes24.com/goods/8156036/XL", url:"https://www.yes24.com/product/goods/8156036", fx:50, fy:50},
-  {id:7, title:"숨그네", author:"헤르타 뮐러", edition:"031", category:"done", tagline:"언어로 억압에 맞선 사람", cover:"https://image.yes24.com/goods/3849134/XL", url:"https://www.yes24.com/product/goods/3849134", fx:50, fy:50},
-  {id:8, title:"어두운 상점들의 거리", author:"파트릭 모디아노", edition:"040", category:"done", tagline:"기억과 상실의 지도를 그리는 작가", cover:"https://image.yes24.com/goods/3849110/XL", url:"https://www.yes24.com/product/goods/3849110", fx:50, fy:50},
-  {id:9, title:"루시", author:"저메이카 킨케이드", edition:"203", category:"future", tagline:"식민의 기억을 담담히 되짚는 목소리", cover:"https://image.yes24.com/goods/104804340/XL", url:"https://www.yes24.com/product/goods/104804340", fx:50, fy:50},
-  {id:10, title:"디어 라이프", author:"앨리스 먼로", edition:"113", category:"done", tagline:"평범한 삶 속 비범한 순간을 포착한 단편의 대가", cover:"https://image.yes24.com/goods/11252909/XL", url:"https://www.yes24.com/product/goods/11252909", fx:50, fy:50}
-];
- 
-const MAX = 3;
-const EMPTY_LABELS = [
-  "올해 안에<br>읽어볼 책",
-  "인생 단 한 번은<br>읽어야 할 책",
-  "제일 읽기<br>어려운 책"
-];
+const books = [  {id:1, title:"빌러비드", author:"토니 모리슨", edition:"116", cover:"https://image.yes24.com/goods/12531144/XL", url:"https://www.yes24.com/product/goods/12531144", fx:50, fy:50},  {id:2, title:"단순한 열정", author:"아니 에르노", edition:"099", cover:"https://image.yes24.com/goods/7977274/XL", url:"https://www.yes24.com/product/goods/7977274", fx:50, fy:50},  {id:3, title:"노인과 바다", author:"어니스트 헤밍웨이", edition:"091", cover:"https://image.yes24.com/goods/6179070/XL", url:"https://www.yes24.com/product/goods/6179070", fx:50, fy:50},  {id:4, title:"작은 것들의 신", author:"아룬다티 로이", edition:"135", cover:"https://image.yes24.com/goods/24191259/XL", url:"https://www.yes24.com/product/goods/24191259", fx:50, fy:50},  {id:5, title:"속죄", author:"이언 매큐언", edition:"223", cover:"https://image.yes24.com/goods/117663050/XL", url:"https://www.yes24.com/product/goods/117663050", fx:50, fy:50},  {id:6, title:"데미안", author:"헤르만 헤세", edition:"101", cover:"https://image.yes24.com/goods/8156036/XL", url:"https://www.yes24.com/product/goods/8156036", fx:50, fy:50},  {id:7, title:"숨그네", author:"헤르타 뮐러", edition:"031", cover:"https://image.yes24.com/goods/3849134/XL", url:"https://www.yes24.com/product/goods/3849134", fx:50, fy:50},  {id:8, title:"어두운 상점들의 거리", author:"파트릭 모디아노", edition:"040", cover:"https://image.yes24.com/goods/3849110/XL", url:"https://www.yes24.com/product/goods/3849110", fx:50, fy:50},  {id:9, title:"루시", author:"저메이카 킨케이드", edition:"203", cover:"https://image.yes24.com/goods/104804340/XL", url:"https://www.yes24.com/product/goods/104804340", fx:50, fy:50},  {id:10, title:"디어 라이프", author:"앨리스 먼로", edition:"113", cover:"https://image.yes24.com/goods/11252909/XL", url:"https://www.yes24.com/product/goods/11252909", fx:50, fy:50}];
+const MAX = 4;
 let selected = [];
- 
 const grid = document.getElementById('grid');
 const bookmarkRow = document.getElementById('bookmarkRow');
 const counter = document.getElementById('counter');
 const ctaList = document.getElementById('ctaList');
-
+const downloadBtn = document.getElementById('downloadBtn');
 const completeMsg = document.getElementById('completeMsg');
-const issueReceiptBtn = document.getElementById('issueReceiptBtn');
-const receiptWrap = document.getElementById('receiptWrap');
-const receiptStage = document.getElementById('receiptStage');
-const receiptCapture = document.getElementById('receiptCapture');
-const rerollBtn = document.getElementById('rerollBtn');
-const receiptDownloadBtn = document.getElementById('receiptDownloadBtn');
- 
-function renderGrid(){
-  grid.innerHTML = '';
-  books.forEach(book => {
-    const isSelected = !!selected.find(b => b.id === book.id);
-    const order = isSelected ? selected.findIndex(b => b.id === book.id) + 1 : null;
+
+function renderGrid(){  
+  grid.innerHTML = '';  
+  books.forEach(book => {    
+    const isSelected = !!selected.find(b => b.id === book.id);    
+    const order = isSelected ? selected.findIndex(b => b.id === book.id) + 1 : null;    
     const disabled = !isSelected && selected.length >= MAX;
- 
-    const card = document.createElement('div');
-    card.className = 'card' + (isSelected ? ' selected' : '') + (disabled ? ' disabled' : '');
-    card.innerHTML = `
-      <div class="cover-box">
-        <img src="${book.cover}" alt="${book.title}" loading="lazy">
-        <div class="tap-hint">탭해서<br>캡처하기</div>
-        <div class="stamp">대출<br>완료</div>
-        <div class="order-badge" title="탭하면 제외">${order || ''}</div>
-        <div class="focus-mark" style="left:${book.fx}%;top:${book.fy}%;"></div>
-      </div>
-      <div class="meta">
-        <div class="t">${book.title}</div>
-        <div class="a">${book.author}</div>
-      </div>
-    `;
-    const coverBox = card.querySelector('.cover-box');
+
+    const card = document.createElement('div');    
+    card.className = 'card' + (isSelected ? ' selected' : '') + (disabled ? ' disabled' : '');    
+    card.innerHTML = `      
+      <div class="cover-box">        
+        <img src="${book.cover}" alt="${book.title}" loading="lazy">        
+        <div class="tap-hint">탭해서<br>캡처하기</div>        
+        <div class="stamp">대출<br>완료</div>        
+        <div class="order-badge" title="탭하면 제외">${order || ''}</div>        
+        <div class="focus-mark" style="left:${book.fx}%;top:${book.fy}%;"></div>      
+      </div>      
+      <div class="meta">        
+        <div class="t">${book.title}</div>        
+        <div class="a">${book.author}</div>      
+      </div>    `;    
+    const coverBox = card.querySelector('.cover-box');    
     const orderBadge = card.querySelector('.order-badge');
- 
-    coverBox.addEventListener('click', (e) => {
-      if(disabled) return;
-      const rect = coverBox.getBoundingClientRect();
-      const x = Math.max(0, Math.min(100, ((e.clientX - rect.left) / rect.width) * 100));
-      const y = Math.max(0, Math.min(100, ((e.clientY - rect.top) / rect.height) * 100));
-      book.fx = x; book.fy = y;
-      if(!selected.find(b => b.id === book.id)){
-        selected.push(book);
-      }
-      renderAll();
+
+    coverBox.addEventListener('click', (e) => {      
+      if(disabled) return;      
+      const rect = coverBox.getBoundingClientRect();      
+      const x = Math.max(0, Math.min(100, ((e.clientX - rect.left) / rect.width) * 100));      
+      const y = Math.max(0, Math.min(100, ((e.clientY - rect.top) / rect.height) * 100));      
+      book.fx = x; book.fy = y;      
+      if(!selected.find(b => b.id === book.id)){        
+        selected.push(book);      
+      }      
+      renderAll();    
     });
- 
-    orderBadge.addEventListener('click', (e) => {
-      e.stopPropagation();
-      selected = selected.filter(b => b.id !== book.id);
-      renderAll();
+
+    orderBadge.addEventListener('click', (e) => {      
+      e.stopPropagation();      
+      selected = selected.filter(b => b.id !== book.id);      
+      renderAll();    
     });
- 
-    grid.appendChild(card);
+
+    grid.appendChild(card);  
   });
 }
- 
-function renderBookmarks(){
-  bookmarkRow.innerHTML = '';
-  for(let i=0;i<MAX;i++){
-    const b = selected[i];
-    const bm = document.createElement('div');
-    if(b){
-      bm.className = 'shelf-book';
-      bm.innerHTML = `
-        <div class="art"><img src="${b.cover}" alt="${b.title}" style="object-position:${b.fx}% ${b.fy}%;"></div>
-        <div class="spine"></div>
-        <div class="pages"></div>
-        <div class="edition">세계문학전집 ${b.edition}</div>
-        <div class="title-bar"><div class="ttl">${b.title}</div></div>
-      `;
-    } else {
-      bm.className = 'shelf-book empty';
-      bm.innerHTML = `<div class="placeholder">${EMPTY_LABELS[i]}</div>`;
-    }
-    bookmarkRow.appendChild(bm);
-  }
-  const done = selected.length === MAX;
-  completeMsg.textContent = done ? `${MAX} / ${MAX} · COMPLETE` : `${selected.length} / ${MAX} · IN PROGRESS`;
-  completeMsg.style.color = done ? '#B3392B' : '#8a7f63';
 
-  issueReceiptBtn.disabled = !done;
-  if(!done){ receiptWrap.style.display = 'none'; }
+function renderBookmarks(){  
+  bookmarkRow.innerHTML = '';  
+  for(let i=0;i<MAX;i++){    
+    const b = selected[i];    
+    const bm = document.createElement('div');    
+    if(b){      
+      bm.className = 'shelf-book';      
+      bm.innerHTML = `        
+        <div class="art"><img src="${b.cover}" alt="${b.title}" style="object-position:${b.fx}% ${b.fy}%;"></div>        
+        <div class="spine"></div>        
+        <div class="edition">세계문학전집 ${b.edition}</div>        
+        <div class="title-bar"><div class="ttl">${b.title}</div></div>      `;    
+    } else {      
+      bm.className = 'shelf-book empty';      
+      bm.innerHTML = `<div class="placeholder">0${i+1}<br>표지를<br>탭해보세요</div>`;    
+    }    
+    bookmarkRow.appendChild(bm);  
+  }  
+  const done = selected.length === MAX;  
+  completeMsg.textContent = done ? '4 / 4 · COMPLETE' : `${selected.length} / 4 · IN PROGRESS`;  
+  completeMsg.style.color = done ? '#000' : '#888';  
+  downloadBtn.disabled = !done;
 }
- 
-function renderCounter(){
+
+function renderCounter(){  
   counter.textContent = `${selected.length} / ${MAX} 권 선택됨`;
 }
- 
-function renderCta(){
-  if(selected.length === 0){
-    ctaList.innerHTML = '<div class="cta-empty">아직 고른 책이 없어요</div>';
-    return;
-  }
-  ctaList.innerHTML = selected.map(b => `
-    <div class="cta-item">
-      <span>${b.title}</span>
-      <a href="${b.url}" target="_blank" rel="noopener">보러가기 →</a>
-    </div>
-  `).join('');
+
+function renderCta(){  
+  if(selected.length === 0){    
+    ctaList.innerHTML = '<div class="cta-empty">아직 고른 책이 없어요</div>';    
+    return;  
+  }  
+  ctaList.innerHTML = selected.map(b => `    
+    <div class="cta-item">      
+      <span>${b.title}</span>      
+      <a href="${b.url}" target="_blank" rel="noopener">보러가기 →</a>    
+    </div>  `).join('');
 }
- 
-function renderAll(){
-  renderGrid();
-  renderBookmarks();
-  renderCounter();
+
+function renderAll(){  
+  renderGrid();  
+  renderBookmarks();  
+  renderCounter();  
   renderCta();
 }
- 
-document.getElementById('resetBtn').addEventListener('click', () => {
-  selected = [];
-  books.forEach(b => { b.fx = 50; b.fy = 50; });
-  receiptWrap.style.display = 'none';
+
+document.getElementById('resetBtn').addEventListener('click', () => {  
+  selected = [];  
+  books.forEach(b => { b.fx = 50; b.fy = 50; });  
   renderAll();
 });
- 
-function fmtDateTime(){
-  const d = new Date();
-  const p = n => String(n).padStart(2,'0');
-  return `${d.getFullYear()}.${p(d.getMonth()+1)}.${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`;
-}
- 
-function buildDiaryLine(){
-  const counts = {done:0, future:0, bucket:0};
-  selected.forEach(b => counts[b.category]++);
-  const parts = Object.keys(counts)
-    .filter(k => counts[k] > 0)
-    .map(k => `${CATS[k].label} ${counts[k]}권`);
-  return parts.join(' · ');
-}
- 
-function renderReceipt(){
-  const receiptNo = Math.floor(1000 + Math.random()*9000);
-  const pick = selected[Math.floor(Math.random()*selected.length)];
- 
-  const itemsHtml = selected.map(b => `
-    <div class="r-item">
-      <span class="name">${b.title}</span>
-      <span class="tag">${CATS[b.category].tag}</span>
-    </div>
-  `).join('');
- 
-  receiptCapture.innerHTML = `
-    <div class="r-badge">YES24 · NOBEL SEASON</div>
-    <div class="r-line r-center r-bold">나의 북킷리스트</div>
-    <div class="r-line r-center r-small">발급일시 ${fmtDateTime()} · No.${receiptNo}</div>
-    <div class="r-dashed"></div>
-    ${itemsHtml}
-    <div class="r-dashed"></div>
-    <div class="r-total">
-      <div class="r-row"><span>총 ${MAX}권</span><span>북킷리스트 완성</span></div>
-      <div class="r-row r-small"><span>구성</span><span>${buildDiaryLine()}</span></div>
-      <div class="r-row r-small r-italic"><span>오늘의 작가</span><span>${pick.author}</span></div>
-    </div>
-    <div class="r-line r-small" style="margin-top:6px;">"${pick.tagline}"</div>
-    <div class="r-dashed"></div>
-    <div class="r-line r-center r-small">이 영수증, 실제 구매에도 써보세요</div>
-    <div class="r-barcode"></div>
-    <div class="r-no">${receiptNo} ${receiptNo} ${receiptNo}</div>
-  `;
-  receiptWrap.style.display = 'flex';
-}
- 
-issueReceiptBtn.addEventListener('click', () => {
-  if(issueReceiptBtn.disabled) return;
-  renderReceipt();
-  receiptWrap.scrollIntoView({behavior:'smooth', block:'center'});
-});
- 
-rerollBtn.addEventListener('click', () => {
-  renderReceipt();
-});
- 
-receiptDownloadBtn.addEventListener('click', () => {
-  html2canvas(receiptStage, {backgroundColor:null, scale:2}).then(canvas => {
-    const link = document.createElement('a');
-    link.download = '나의_북킷리스트_영수증.png';
-    link.href = canvas.toDataURL('image/png');
-    link.click();
+
+downloadBtn.addEventListener('click', () => {  
+  if(downloadBtn.disabled) return;  
+  html2canvas(bookmarkRow, {backgroundColor:'#ffffff', scale:2}).then(canvas => {    
+    const link = document.createElement('a');    
+    link.download = '나의_인생책갈피.png';    
+    link.href = canvas.toDataURL('image/png');    
+    link.click();  
   });
 });
-
-let currentSlide = 0;
-const totalSlides = 3;
-function changeSlide(direction){
-  const slides = document.querySelectorAll('#slider-container .slide');
-  slides[currentSlide].classList.remove('opacity-100', 'z-10');
-  slides[currentSlide].classList.add('opacity-0', 'z-0');
-  currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-  slides[currentSlide].classList.remove('opacity-0', 'z-0');
-  slides[currentSlide].classList.add('opacity-100', 'z-10');
-  document.getElementById('currentSlideNum').textContent = String(currentSlide + 1).padStart(2, '0');
-}
-setInterval(() => changeSlide(1), 4000);
 
 renderAll();
 </script>
