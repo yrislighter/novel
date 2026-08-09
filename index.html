@@ -83,22 +83,22 @@
       overflow: hidden !important;
   }
 
-  /* 사진 히어로 밴드 - 복구된 노벨 메달 정상 base64 이미지 */
-  .heroPhoto {
-      width: 100% !important;
-      min-height: clamp(460px, 62vh, 640px) !important;
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: center !important;
-      justify-content: flex-start !important;
-      text-align: center !important;
-      padding: 15% 24px 0 !important;
-      background:
-          linear-gradient(180deg, rgba(4,8,18,0.6) 0%, rgba(4,8,18,0.05) 35%, rgba(4,8,18,0.05) 65%, rgba(4,8,18,0.55) 100%),
-          url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEBLAEsAAD/7ShuUGhvdG9zaG9wIDMuMAA4QklNA+0AAAAAABABLAAAAAEAAQEsAAAAAQABOEJJTQQEAAAAAABJHAFaAAMbJUccAgAAAgAEHAI3AAgyMDI1MDQyOBwCPAALMTY0NTQzKzAxMDAcAj4ACDIwMjUwNDI4HAI/AAsxNjQ1NDMrMDEwMAA4QklNBAwAAAAAJ8MAAAABAAAAqwAAAQAAAAIEAAIEAAAAJ6cAGAAB/9j/2wCEAAYEBAQFBAYFBQYJBgUGCQsIBgYICwwKCgsKCgwQDAwMDAwMEAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwBBwcHDQwNGBAQGBQODg4UFA4ODg4UEQwMDAwMEREMDAwMDAwRDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDP/dAAQAFv/uAA5BZG9iZQBkwAAAAAH/wAARCAEAAKsDABEAAREBAhEB/8QBogAAAAcBAQEBAQAAAAAAAAAABAUDAgYBAAcICQoLAQACAgMBAQEBAQAAAAAAAAABAAIDBAUGBwgJCgsQAAIBAwMCBAIGBwMEAgYCcwECAxEEAAUhEjFBUQYTYSJxgRQykaEHFbFCI8FS0eEzFmLwJHKC8SVDNFOSorJjc8I1RCeTo7M2F1RkdMPS4ggmgwkKGBmElEVGpLRW01UoGvLj88TU5PRldYWVpbXF1eX1ZnaGlqa2xtbm9jdHV2d3h5ent8fX5/c4SFhoeIiYqLjI2Oj4KTlJWWl5iZmpucnZ6fkqOkpaanqKmqq6ytrq+hEAAgIBAgMFBQQFBgQIAwNtAQACEQMEIRIxQQVRE2EiBnGBkTKhsfAUwdHhI0IVUmJy8TMkNEOCFpJTJaJjssIHc9I14kSDF1STCAkKGBkmNkUaJ2R0VTfyo7PDKCnT4/OElKS0xNTk9GV1hZWltcXV5fVGVmZ2hpamtsbW5vZHV2d3h5ent8fX5/c4SFhoeIiYqLjI2Oj4OUlZaXmJmam5ydnp+So6SlpqeoqaqrrK2ur6/9oADAMBAEAPwDy7F9jLIsJKZ/vfpyHVl0VmGxywsApwdW+WRgyk3P0XGaIqifZXJxYlSH9/DTkOrPoqzD922TlyYR5rbb7J+eRxpmsj/vz9OAc2R5KwHwufbJ97BdGP3RPzwx5IlzULf+9yuHNnPkqXH919OTnyYw5rrcfu1+eHHyRPmsb/eoZE/UyH0uuui/M45FxrJR+7j+nIy5BMeZVpRSI/IZOXJhHmttx+6PzwQ5JnzdT/Sh9H6sT9SR9KIplrW//9Dy9D9jLI8muSkf736ciebMcld/sn5ZYeTWFO26t8shBlN1x+zjNYK0Y+BcnHkxKin+9H0nID6mR5Ks/Ddtlk+TGPNba/YPzyONM1if70H5nIj6mR5KxH7qQ+2WdC19QvQUg+jDH6UHmoWorKcrx82yfJfdf3Q+eSycmMOa+2H7pfnksfJjPmpkf6XkT9TIfS1edV+nBlTjWzD4Yh7YJcgmPVWuBSI/IZOfJhDm1bD9x9OOPks+bQH+mf5+GD+NP8ACiaZa1P/0fL8P93lsOTXLmpN/ffTkDzZDkiHHwn5ZYeTAKVr9pvlkcbKbrn9nHIsFaMfAmTjyYSUY/8Aek/M5AfUzP0q1wP3bZZPkwhzWWn2G+YyOLknIpja5+nIfxM/4UQw/cSfLLehauoVKUt/9jkh9LH+JDWYrIcqxc23JyXXf92vzw5eTHHzVrYfuUyeMbMcnNSA/B05D+Nl/Ctvftr9ODLzTi5NTj4oR7Yz6Jh1VrsUiP0ZPJyYY+brUf6P9OOPkuTmtQVvTkf40/IqmXNT//S8vwf3eWw5Ncuam/9/DTkDzZDkiHHwH5ZaeTWOalafab5ZDHzZ5OTrsU4/ThyIxq8Q/dpk4cmEuahEP9KPzOVx+pnL6Ve6/umyzJyYY+ayzH7tvmMGLknJzUZNrg/PK5fU2DkiX/AN5nP+fXLT9Jah9QVXFLc/6uTI9LAH1IawFZTlOHm25eTd79hfmcll5Ixc1e2H7lMsxjZryHdSQVvmysfW2H6FO9/vQP8+uRzc04uTdwP3sI9h+vDPmFhyKreikR+jJ5eTDFzXWo/BGHz/jhx/SjIfUsiH+ntkB9bI/QiqZc1P/0/MFv/dHLYcmqfNSl/v/AKRkZfUzjyRUg+A/LLTyahzUbIfG3yyvFzZ5OTrwfZ+nDlRjREA/dJlkOTCfNQhH+ln5nK4/U2S+lWux+6b6MsycmvHzW2Q/dN88GHknLzQ8+1w3zyqf1NsOSKf/AhiE') !important;
-      background-size: cover !important;
-      background-position: center !important;
-  }
+ /* 사진 히어로 밴드 - 신규 노벨문학상 배경 이미지 적용 */
+.heroPhoto {
+    width: 100% !important;
+    min-height: clamp(460px, 62vh, 640px) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    text-align: center !important;
+    padding: 15% 24px 0 !important;
+    background:
+        linear-gradient(180deg, rgba(4,8,18,0.6) 0%, rgba(4,8,18,0.05) 35%, rgba(4,8,18,0.05) 65%, rgba(4,8,18,0.55) 100%),
+        url('https://image.yes24.com/momo/TopCate7125/MidCate006/712457360.png') !important;
+    background-size: cover !important;
+    background-position: center !important;
+}
 
   .custom-title-area, 
   .nobelTop .topMsg, 
