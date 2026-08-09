@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026 노벨문학상 북킷리스트 | YES24</title>
+<title>나만의 북킷리스트 | YES24</title>
 
 <!-- YES24 실제 헤더/푸터 스타일시트 (PC + 모바일) -->
 <link rel="stylesheet" type="text/css" href="https://image.yes24.com/sysimage/yesUI/yesCom.css?v=20260720">
@@ -29,6 +29,7 @@
 <!-- 폰트: 상단 히어로 타이틀 전용 세리프 -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600&display=swap">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>	
 
 <style>
   /* 헤더/푸터 여백 제거 */
@@ -37,21 +38,21 @@
 
   /* 블랙 & 화이트 테마 컬러 변수 */
   :root {
-    --paper: #ffffff;          
-    --ink: #111111;            
-    --green: #333333;          
-    --green-deep: #000000;     
-    --red: #000000;            
+    --paper: #ffffff;      
+    --ink: #111111;        
+    --green: #333333;      
+    --green-deep: #000000; 
+    --red: #000000;        
     --gold: #d4af37;
     --gold-deep: #A9822F;
     --ivory-base: #F1ECDF;
     --ivory-glow: #FBF8F0;
-    --card: #f9f9f9;           
-    --line: #e0e0e0;         
+    --card: #f9f9f9;       
+    --line: #e0e0e0;       
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; background: #ffffff; }
-
+  
   /* 전역 폰트 통일 */
   body, button, input, select, textarea, h1, h2, h3, h4, p, span, div {
       font-family: 'Pretendard', sans-serif !important;
@@ -67,7 +68,7 @@
   }
 
   /* ------------------------------------------------------------------
-     1. 노벨문학상 상단 영역 - 사진 히어로 밴드 + 하단 아이보리 패널 (원래 소스)
+     1. 노벨문학상 상단 영역 - 사진 히어로 밴드 + 하단 아이보리 패널
      ------------------------------------------------------------------ */
   .nobelTop {
       display: flex !important;
@@ -80,7 +81,7 @@
       overflow: hidden !important;
   }
 
-  /* 원본 이미지 복구 */
+  /* 사진 히어로 밴드 - 노벨 메달 원본 base64 수록 */
   .heroPhoto {
       width: 100% !important;
       min-height: clamp(460px, 62vh, 640px) !important;
@@ -92,7 +93,7 @@
       padding: 15% 24px 0 !important;
       background:
           linear-gradient(180deg, rgba(4,8,18,0.6) 0%, rgba(4,8,18,0.05) 35%, rgba(4,8,18,0.05) 65%, rgba(4,8,18,0.55) 100%),
-          url('https://image.yes24.com/images/00_Event/2025/nobel/nobel.jpg') !important;
+          url('data:image/jpeg;base64,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') !important;
       background-size: cover !important;
       background-position: center !important;
   }
@@ -293,7 +294,7 @@
   .yesEveAlertLi li .bl_rnd { display: none !important; }
 
   /* ------------------------------------------------------------------
-     2. 중간 굿즈 소개 영역 (원래 소스)
+     2. 중간 굿즈 소개 영역
      ------------------------------------------------------------------ */
   .nobelBot {
       background-color: #F8F6F0 !important;
@@ -336,7 +337,7 @@
   }
 
   /* ------------------------------------------------------------------
-     3. 노벨문학상 모의고사 (O/X 퀴즈) 전용 스타일 (중간 영역)
+     3. 노벨문학상 모의고사 (O/X 퀴즈) 전용 스타일 (중간 영역 배치)
      ------------------------------------------------------------------ */
   .quiz-section {
       background: #F1ECDF;
@@ -504,7 +505,7 @@
   }
 
   /* ------------------------------------------------------------------
-     4. 하단 인생책갈피 이벤트 영역 - 하얀색 배경 (원래 소스)
+     4. 하단 '나만의 북킷리스트 만들기' 및 영수증 이벤트 영역
      ------------------------------------------------------------------ */
   .event-page {
     background: #ffffff;
@@ -675,11 +676,47 @@
   .cta-item:last-child { border-bottom: none; padding-bottom: 0; }
   .cta-item a { color: var(--ink); text-decoration: none; font-weight: 700; white-space: nowrap; background: #fff; padding: 4px 10px; border-radius: 4px; border: 1px solid #ccc; font-size: 11px;}
   .cta-item a:hover { background: #e0e0e0; }
+  .receipt-wrap{margin:24px auto 28px;display:flex;flex-direction:column;align-items:center;gap:14px;}
+  .receipt-stage{
+    background:radial-gradient(circle at 50% 15%, #e8e8e8, #bdbdbd 150%);
+    border-radius:16px;padding:38px 22px 30px;display:flex;justify-content:center;
+  }
+  .receipt{
+    width:270px;max-width:100%;background:#ffffff;color:var(--ink);
+    padding:22px 22px 18px;position:relative;box-shadow:0 20px 34px rgba(0,0,0,0.28);
+  }
+  .receipt::before,.receipt::after{
+    content:"";position:absolute;left:0;right:0;height:11px;
+    background-size:22px 22px;background-repeat:repeat-x;
+  }
+  .receipt::before{top:-10px;background-image:radial-gradient(circle at 11px 11px, #ffffff 10.5px, transparent 11px);}
+  .receipt::after{bottom:-10px;background-image:radial-gradient(circle at 11px 0px, #ffffff 10.5px, transparent 11px);}
+  .r-badge{
+    display:block;width:fit-content;margin:2px auto 14px;background:var(--ink);color:#fff;
+    font-weight:700;font-size:11px;letter-spacing:0.06em;padding:6px 16px;border-radius:3px 3px 9px 9px;
+  }
+  .r-line{font-size:11px;line-height:1.7;}
+  .r-center{text-align:center;}
+  .r-bold{font-weight:700;}
+  .r-small{font-size:9.5px;color:#888;}
+  .r-italic{font-style:italic;}
+  .r-dashed{border-top:1.5px dashed #ddd;margin:12px 0;}
+  .r-row{display:flex;justify-content:space-between;gap:8px;font-size:11px;padding:3px 0;}
+  .r-item{display:flex;justify-content:space-between;gap:10px;font-size:11px;padding:4px 0;}
+  .r-item .name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .r-item .tag{white-space:nowrap;color:var(--gold-deep);font-weight:700;font-size:10px;}
+  .r-total{padding-top:2px;}
+  .r-total .r-row:first-child{font-weight:700;font-size:12.5px;}
+  .r-barcode{
+    height:38px;margin:16px 4px 4px;
+    background:repeating-linear-gradient(90deg,#111 0 1px, transparent 1px 3px, #111 3px 5px, transparent 5px 6px, #111 6px 9px, transparent 9px 12px, #111 12px 13px, transparent 13px 16px);
+  }
+  .r-no{font-size:9px;text-align:center;letter-spacing:0.15em;color:#888;margin-top:4px;}
 </style>
 </head>
 <body>
 
-<!-- PC 헤더 (원래 소스) -->
+<!-- PC 헤더 -->
 <div class="pc-only">
 <div id="yesHeaderArea">
     <div id="yHeader">
@@ -752,7 +789,7 @@
 </div>
 </div>
 
-<!-- 모바일 헤더 (원래 소스) -->
+<!-- 모바일 헤더 -->
 <div class="mobile-only">
 <div id="yesWrap">
     <div id="yHdWrap" class="subMod">
@@ -835,8 +872,8 @@
     
     <div class="nobelBotSec secCon0101">
         <div class="tit_txtGrp">
-            <div class="txt_tit">노벨문학상 특별 굿즈<br/>나의 인생책갈피</div>
-            <div class="txt_des">전세계가 주목하는 노벨문학상,<br/>빛나는 작품들의 표지를 엮어<br/>나만의 책갈피를 완성해보세요.</div>
+            <div class="txt_tit">노벨문학상 특별 굿즈<br/>2027 캘린더</div>
+            <div class="txt_des">전세계가 주목하는 노벨문학상,<br/>역대 노벨문학상을 받은 작가들을 담은<br/>특별한 2027 캘린더를 공개합니다.</div>
         </div>
     </div>
 </div>
@@ -924,24 +961,24 @@
   </div>
 </section>
 
-<!-- 4. 하단 인생책갈피 이벤트 콘텐츠 (원래 소스) -->
+<!-- 4. 하단 '나만의 북킷리스트 만들기' 및 영수증 이벤트 영역 -->
 <div class="event-page">
   <div class="wrap">
     <header class="evt-head">
-      <div class="eyebrow">NOBEL SEASON · READING RECORD CARD</div>
-      <h1>나만의 인생책갈피 만들기</h1>
-      <p>표지에서 마음에 드는 장면을 직접 짚어보세요. 탭한 부분만 오려내 책 제목과 함께<br>진짜 책갈피 모양으로 완성해드려요.</p>
-      <div class="counter" id="counter">0 / 4 권 선택됨</div>
+      <div class="eyebrow">NOBEL SEASON · MY BUCKET LIST</div>
+      <h1 class="txt_tit" style="font-size: clamp(26px, 5vw, 36px) !important; font-weight: 800 !important; color: #222 !important; line-height: 1.4 !important; margin-bottom: 15px !important;">나만의 북킷리스트 만들기</h1>
+      <p>마음에 드는 책을 직접 골라보세요. 탭한 부분만 오려내 책 제목과 함께<br>나만의 북킷리스트로 완성해드려요.</p>
+      <div class="counter" id="counter">0 / 3 권 선택됨</div>
     </header>
 
     <div class="shelf-title">이 책들 중에서 골라보세요 <span>TAP THE ART TO CAPTURE</span></div>
-    <div class="shelf-hint">표지의 원하는 부분을 탭하면 그 장면이 책갈피에 담겨요. 다시 탭하면 캡처 위치를 바꿀 수 있어요.</div>
+    <div class="shelf-hint">표지의 원하는 부분을 탭하면 그 장면이 북킷리스트에 담겨요. 다시 탭하면 캡처 위치를 바꿀 수 있어요.</div>
     <div class="grid" id="grid"></div>
 
     <div class="preview-section">
       <div class="preview-head">
-        <h2>나의 인생책갈피</h2>
-        <span id="completeMsg">0 / 4 · IN PROGRESS</span>
+        <h2>나의 북킷리스트</h2>
+        <span id="completeMsg">0 / 3 · IN PROGRESS</span>
       </div>
       <div class="shelf-display">
         <div id="bookmarkRow"></div>
@@ -949,8 +986,19 @@
       </div>
       <div class="actions">
         <button class="act" id="resetBtn">다시 고르기</button>
-        <button class="act primary" id="downloadBtn" disabled>이미지로 저장</button>
+        <button class="act" id="issueReceiptBtn" disabled>영수증 발급받기</button>
       </div>
+
+      <div class="receipt-wrap" id="receiptWrap" style="display:none;">
+        <div class="receipt-stage" id="receiptStage">
+          <div class="receipt" id="receiptCapture"></div>
+        </div>
+        <div class="actions">
+          <button class="act" id="rerollBtn">다시 발급받기</button>
+          <button class="act primary" id="receiptDownloadBtn">영수증 다운로드</button>
+        </div>
+      </div>
+
       <div class="cta-box">
         <h4>선택한 책 바로 만나보기</h4>
         <div id="ctaList"><div class="cta-empty">아직 고른 책이 없어요</div></div>
@@ -959,7 +1007,7 @@
   </div>
 </div>
 
-<!-- PC 푸터 (원래 소스) -->
+<!-- PC 푸터 -->
 <div class="pc-only">
 <div id="yesFooter">
         <div id="toolBtn" class="recentMaxH absBot">
@@ -991,7 +1039,7 @@
 </div>
 </div>
 
-<!-- 모바일 푸터 (원래 소스) -->
+<!-- 모바일 푸터 -->
 <div class="mobile-only">
 <div id="yesWrap">
         <footer>
@@ -1012,7 +1060,7 @@
 
 <script>
 // ==========================================
-// 1. 노벨문학상 모의고사 (O/X) 스크립트
+// 1. 노벨문학상 모의고사 (O/X 퀴즈) 스크립트
 // ==========================================
 const QUIZ_QUESTIONS = [
   {
@@ -1248,124 +1296,217 @@ quizShareBtn.addEventListener("click", shareQuizResult);
 
 
 // ==========================================
-// 2. 나의 인생책갈피 스크립트 (원래 소스)
+// 2. 나만의 북킷리스트 및 영수증 이벤트 스크립트
 // ==========================================
-const books = [  {id:1, title:"빌러비드", author:"토니 모리슨", edition:"116", cover:"https://image.yes24.com/goods/12531144/XL", url:"https://www.yes24.com/product/goods/12531144", fx:50, fy:50},  {id:2, title:"단순한 열정", author:"아니 에르노", edition:"099", cover:"https://image.yes24.com/goods/7977274/XL", url:"https://www.yes24.com/product/goods/7977274", fx:50, fy:50},  {id:3, title:"노인과 바다", author:"어니스트 헤밍웨이", edition:"091", cover:"https://image.yes24.com/goods/6179070/XL", url:"https://www.yes24.com/product/goods/6179070", fx:50, fy:50},  {id:4, title:"작은 것들의 신", author:"아룬다티 로이", edition:"135", cover:"https://image.yes24.com/goods/24191259/XL", url:"https://www.yes24.com/product/goods/24191259", fx:50, fy:50},  {id:5, title:"속죄", author:"이언 매큐언", edition:"223", cover:"https://image.yes24.com/goods/117663050/XL", url:"https://www.yes24.com/product/goods/117663050", fx:50, fy:50},  {id:6, title:"데미안", author:"헤르만 헤세", edition:"101", cover:"https://image.yes24.com/goods/8156036/XL", url:"https://www.yes24.com/product/goods/8156036", fx:50, fy:50},  {id:7, title:"숨그네", author:"헤르타 뮐러", edition:"031", cover:"https://image.yes24.com/goods/3849134/XL", url:"https://www.yes24.com/product/goods/3849134", fx:50, fy:50},  {id:8, title:"어두운 상점들의 거리", author:"파트릭 모디아노", edition:"040", cover:"https://image.yes24.com/goods/3849110/XL", url:"https://www.yes24.com/product/goods/3849110", fx:50, fy:50},  {id:9, title:"루시", author:"저메이카 킨케이드", edition:"203", cover:"https://image.yes24.com/goods/104804340/XL", url:"https://www.yes24.com/product/goods/104804340", fx:50, fy:50},  {id:10, title:"디어 라이프", author:"앨리스 먼로", edition:"113", cover:"https://image.yes24.com/goods/11252909/XL", url:"https://www.yes24.com/product/goods/11252909", fx:50, fy:50}];
-const MAX = 4;
+const CATS = {
+  done:   { label:"인생고전이 된 책",   tag:"인생고전" },
+  future: { label:"인생고전이 될 책",   tag:"미래고전" },
+  bucket: { label:"화제가 된 책",       tag:"화제고전" }
+};
+
+const books = [
+  {id:1, title:"빌러비드", author:"토니 모리슨", edition:"116", category:"done", tagline:"고통과 존엄을 동시에 문장에 새긴 이야기꾼", cover:"https://image.yes24.com/goods/12531144/XL", url:"https://www.yes24.com/product/goods/12531144", fx:50, fy:50},
+  {id:2, title:"단순한 열정", author:"아니 에르노", edition:"099", category:"done", tagline:"자신의 삶을 가장 정직하게 해부한 기록자", cover:"https://image.yes24.com/goods/7977274/XL", url:"https://www.yes24.com/product/goods/7977274", fx:50, fy:50},
+  {id:3, title:"노인과 바다", author:"어니스트 헤밍웨이", edition:"091", category:"done", tagline:"짧은 문장으로 가장 깊은 것을 말한 사람", cover:"https://image.yes24.com/goods/6179070/XL", url:"https://www.yes24.com/product/goods/6179070", fx:50, fy:50},
+  {id:4, title:"작은 것들의 신", author:"아룬다티 로이", edition:"135", category:"bucket", tagline:"침묵하는 것들을 위해 목소리를 낸 작가", cover:"https://image.yes24.com/goods/24191259/XL", url:"https://www.yes24.com/product/goods/24191259", fx:50, fy:50},
+  {id:5, title:"속죄", author:"이언 매큐언", edition:"223", category:"bucket", tagline:"일상의 균열을 정교하게 그려낸 이야기꾼", cover:"https://image.yes24.com/goods/117663050/XL", url:"https://www.yes24.com/product/goods/117663050", fx:50, fy:50},
+  {id:6, title:"데미안", author:"헤르만 헤세", edition:"101", category:"done", tagline:"자기 자신에게로 향하는 길을 평생 그린 작가", cover:"https://image.yes24.com/goods/8156036/XL", url:"https://www.yes24.com/product/goods/8156036", fx:50, fy:50},
+  {id:7, title:"숨그네", author:"헤르타 뮐러", edition:"031", category:"done", tagline:"언어로 억압에 맞선 사람", cover:"https://image.yes24.com/goods/3849134/XL", url:"https://www.yes24.com/product/goods/3849134", fx:50, fy:50},
+  {id:8, title:"어두운 상점들의 거리", author:"파트릭 모디아노", edition:"040", category:"done", tagline:"기억과 상실의 지도를 그리는 작가", cover:"https://image.yes24.com/goods/3849110/XL", url:"https://www.yes24.com/product/goods/3849110", fx:50, fy:50},
+  {id:9, title:"루시", author:"저메이카 킨케이드", edition:"203", category:"future", tagline:"식민의 기억을 담담히 되짚는 목소리", cover:"https://image.yes24.com/goods/104804340/XL", url:"https://www.yes24.com/product/goods/104804340", fx:50, fy:50},
+  {id:10, title:"디어 라이프", author:"앨리스 먼로", edition:"113", category:"done", tagline:"평범한 삶 속 비범한 순간을 포착한 단편의 대가", cover:"https://image.yes24.com/goods/11252909/XL", url:"https://www.yes24.com/product/goods/11252909", fx:50, fy:50}
+];
+
+const MAX = 3;
+const EMPTY_LABELS = [
+  "죽기 전에<br>읽어야 할 책",
+  "평생 한 번은<br>만나야 할 책",
+  "언젠가는<br>읽어야 할 책"
+];
 let selected = [];
+
 const grid = document.getElementById('grid');
 const bookmarkRow = document.getElementById('bookmarkRow');
 const counter = document.getElementById('counter');
 const ctaList = document.getElementById('ctaList');
-const downloadBtn = document.getElementById('downloadBtn');
-const completeMsg = document.getElementById('completeMsg');
 
-function renderGrid(){  
-  grid.innerHTML = '';  
-  books.forEach(book => {    
-    const isSelected = !!selected.find(b => b.id === book.id);    
-    const order = isSelected ? selected.findIndex(b => b.id === book.id) + 1 : null;    
+const completeMsg = document.getElementById('completeMsg');
+const issueReceiptBtn = document.getElementById('issueReceiptBtn');
+const receiptWrap = document.getElementById('receiptWrap');
+const receiptStage = document.getElementById('receiptStage');
+const receiptCapture = document.getElementById('receiptCapture');
+const rerollBtn = document.getElementById('rerollBtn');
+const receiptDownloadBtn = document.getElementById('receiptDownloadBtn');
+
+function renderGrid(){
+  grid.innerHTML = '';
+  books.forEach(book => {
+    const isSelected = !!selected.find(b => b.id === book.id);
+    const order = isSelected ? selected.findIndex(b => b.id === book.id) + 1 : null;
     const disabled = !isSelected && selected.length >= MAX;
 
-    const card = document.createElement('div');    
-    card.className = 'card' + (isSelected ? ' selected' : '') + (disabled ? ' disabled' : '');    
-    card.innerHTML = `      
-      <div class="cover-box">        
-        <img src="${book.cover}" alt="${book.title}" loading="lazy">        
-        <div class="tap-hint">탭해서<br>캡처하기</div>        
-        <div class="stamp">대출<br>완료</div>        
-        <div class="order-badge" title="탭하면 제외">${order || ''}</div>        
-        <div class="focus-mark" style="left:${book.fx}%;top:${book.fy}%;"></div>      
-      </div>      
-      <div class="meta">        
-        <div class="t">${book.title}</div>        
-        <div class="a">${book.author}</div>      
-      </div>    `;    
-    const coverBox = card.querySelector('.cover-box');    
+    const card = document.createElement('div');
+    card.className = 'card' + (isSelected ? ' selected' : '') + (disabled ? ' disabled' : '');
+    card.innerHTML = `
+      <div class="cover-box">
+        <img src="${book.cover}" alt="${book.title}" loading="lazy">
+        <div class="tap-hint">탭해서<br>캡처하기</div>
+        <div class="stamp">대출<br>완료</div>
+        <div class="order-badge" title="탭하면 제외">${order || ''}</div>
+        <div class="focus-mark" style="left:${book.fx}%;top:${book.fy}%;"></div>
+      </div>
+      <div class="meta">
+        <div class="t">${book.title}</div>
+        <div class="a">${book.author}</div>
+      </div>
+    `;
+    const coverBox = card.querySelector('.cover-box');
     const orderBadge = card.querySelector('.order-badge');
 
-    coverBox.addEventListener('click', (e) => {      
-      if(disabled) return;      
-      const rect = coverBox.getBoundingClientRect();      
-      const x = Math.max(0, Math.min(100, ((e.clientX - rect.left) / rect.width) * 100));      
-      const y = Math.max(0, Math.min(100, ((e.clientY - rect.top) / rect.height) * 100));      
-      book.fx = x; book.fy = y;      
-      if(!selected.find(b => b.id === book.id)){        
-        selected.push(book);      
-      }      
-      renderAll();    
+    coverBox.addEventListener('click', (e) => {
+      if(disabled) return;
+      const rect = coverBox.getBoundingClientRect();
+      const x = Math.max(0, Math.min(100, ((e.clientX - rect.left) / rect.width) * 100));
+      const y = Math.max(0, Math.min(100, ((e.clientY - rect.top) / rect.height) * 100));
+      book.fx = x; book.fy = y;
+      if(!selected.find(b => b.id === book.id)){
+        selected.push(book);
+      }
+      renderAll();
     });
 
-    orderBadge.addEventListener('click', (e) => {      
-      e.stopPropagation();      
-      selected = selected.filter(b => b.id !== book.id);      
-      renderAll();    
+    orderBadge.addEventListener('click', (e) => {
+      e.stopPropagation();
+      selected = selected.filter(b => b.id !== book.id);
+      renderAll();
     });
 
-    grid.appendChild(card);  
+    grid.appendChild(card);
   });
 }
 
-function renderBookmarks(){  
-  bookmarkRow.innerHTML = '';  
-  for(let i=0;i<MAX;i++){    
-    const b = selected[i];    
-    const bm = document.createElement('div');    
-    if(b){      
-      bm.className = 'shelf-book';      
-      bm.innerHTML = `        
-        <div class="art"><img src="${b.cover}" alt="${b.title}" style="object-position:${b.fx}% ${b.fy}%;"></div>        
-        <div class="spine"></div>        
-        <div class="edition">세계문학전집 ${b.edition}</div>        
-        <div class="title-bar"><div class="ttl">${b.title}</div></div>      `;    
-    } else {      
-      bm.className = 'shelf-book empty';      
-      bm.innerHTML = `<div class="placeholder">0${i+1}<br>표지를<br>탭해보세요</div>`;    
-    }    
-    bookmarkRow.appendChild(bm);  
-  }  
-  const done = selected.length === MAX;  
-  completeMsg.textContent = done ? '4 / 4 · COMPLETE' : `${selected.length} / 4 · IN PROGRESS`;  
-  completeMsg.style.color = done ? '#000' : '#888';  
-  downloadBtn.disabled = !done;
+function renderBookmarks(){
+  bookmarkRow.innerHTML = '';
+  for(let i=0;i<MAX;i++){
+    const b = selected[i];
+    const bm = document.createElement('div');
+    if(b){
+      bm.className = 'shelf-book';
+      bm.innerHTML = `
+        <div class="art"><img src="${b.cover}" alt="${b.title}" style="object-position:${b.fx}% ${b.fy}%;"></div>
+        <div class="spine"></div>
+        <div class="pages"></div>
+        <div class="edition">세계문학전집 ${b.edition}</div>
+        <div class="title-bar"><div class="ttl">${b.title}</div></div>
+      `;
+    } else {
+      bm.className = 'shelf-book empty';
+      bm.innerHTML = `<div class="placeholder">${EMPTY_LABELS[i]}</div>`;
+    }
+    bookmarkRow.appendChild(bm);
+  }
+  const done = selected.length === MAX;
+  completeMsg.textContent = done ? `${MAX} / ${MAX} · COMPLETE` : `${selected.length} / ${MAX} · IN PROGRESS`;
+  completeMsg.style.color = done ? '#B3392B' : '#8a7f63';
+
+  issueReceiptBtn.disabled = !done;
+  if(!done){ receiptWrap.style.display = 'none'; }
 }
 
-function renderCounter(){  
+function renderCounter(){
   counter.textContent = `${selected.length} / ${MAX} 권 선택됨`;
 }
 
-function renderCta(){  
-  if(selected.length === 0){    
-    ctaList.innerHTML = '<div class="cta-empty">아직 고른 책이 없어요</div>';    
-    return;  
-  }  
-  ctaList.innerHTML = selected.map(b => `    
-    <div class="cta-item">      
-      <span>${b.title}</span>      
-      <a href="${b.url}" target="_blank" rel="noopener">보러가기 →</a>    
-    </div>  `).join('');
+function renderCta(){
+  if(selected.length === 0){
+    ctaList.innerHTML = '<div class="cta-empty">아직 고른 책이 없어요</div>';
+    return;
+  }
+  ctaList.innerHTML = selected.map(b => `
+    <div class="cta-item">
+      <span>${b.title}</span>
+      <a href="${b.url}" target="_blank" rel="noopener">보러가기 →</a>
+    </div>
+  `).join('');
 }
 
-function renderAll(){  
-  renderGrid();  
-  renderBookmarks();  
-  renderCounter();  
+function renderAll(){
+  renderGrid();
+  renderBookmarks();
+  renderCounter();
   renderCta();
 }
 
-document.getElementById('resetBtn').addEventListener('click', () => {  
-  selected = [];  
-  books.forEach(b => { b.fx = 50; b.fy = 50; });  
+document.getElementById('resetBtn').addEventListener('click', () => {
+  selected = [];
+  books.forEach(b => { b.fx = 50; b.fy = 50; });
+  receiptWrap.style.display = 'none';
   renderAll();
 });
 
-downloadBtn.addEventListener('click', () => {  
-  if(downloadBtn.disabled) return;  
-  html2canvas(bookmarkRow, {backgroundColor:'#ffffff', scale:2}).then(canvas => {    
-    const link = document.createElement('a');    
-    link.download = '나의_인생책갈피.png';    
-    link.href = canvas.toDataURL('image/png');    
-    link.click();  
+function fmtDateTime(){
+  const d = new Date();
+  const p = n => String(n).padStart(2,'0');
+  return `${d.getFullYear()}.${p(d.getMonth()+1)}.${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`;
+}
+
+function buildDiaryLine(){
+  const counts = {done:0, future:0, bucket:0};
+  selected.forEach(b => counts[b.category]++);
+  const parts = Object.keys(counts)
+    .filter(k => counts[k] > 0)
+    .map(k => `${CATS[k].label} ${counts[k]}권`);
+  return parts.join(' · ');
+}
+
+function renderReceipt(){
+  const receiptNo = Math.floor(1000 + Math.random()*9000);
+  const pick = selected[Math.floor(Math.random()*selected.length)];
+
+  const itemsHtml = selected.map(b => `
+    <div class="r-item">
+      <span class="name">${b.title}</span>
+      <span class="tag">${CATS[b.category].tag}</span>
+    </div>
+  `).join('');
+
+  receiptCapture.innerHTML = `
+    <div class="r-badge">YES24 · NOBEL SEASON</div>
+    <div class="r-line r-center r-bold">나의 북킷리스트</div>
+    <div class="r-line r-center r-small">발급일시 ${fmtDateTime()} · No.${receiptNo}</div>
+    <div class="r-dashed"></div>
+    ${itemsHtml}
+    <div class="r-dashed"></div>
+    <div class="r-total">
+      <div class="r-row"><span>총 ${MAX}권</span><span>북킷리스트 완성</span></div>
+      <div class="r-row r-small"><span>구성</span><span>${buildDiaryLine()}</span></div>
+      <div class="r-row r-small r-italic"><span>오늘의 작가</span><span>${pick.author}</span></div>
+    </div>
+    <div class="r-line r-small" style="margin-top:6px;">"${pick.tagline}"</div>
+    <div class="r-dashed"></div>
+    <div class="r-line r-center r-small">이 영수증, 실제 구매에도 써보세요</div>
+    <div class="r-barcode"></div>
+    <div class="r-no">${receiptNo} ${receiptNo} ${receiptNo}</div>
+  `;
+  receiptWrap.style.display = 'flex';
+}
+
+issueReceiptBtn.addEventListener('click', () => {
+  if(issueReceiptBtn.disabled) return;
+  renderReceipt();
+  receiptWrap.scrollIntoView({behavior:'smooth', block:'center'});
+});
+
+rerollBtn.addEventListener('click', () => {
+  renderReceipt();
+});
+
+receiptDownloadBtn.addEventListener('click', () => {
+  html2canvas(receiptStage, {backgroundColor:null, scale:2}).then(canvas => {
+    const link = document.createElement('a');
+    link.download = '나의_북킷리스트_영수증.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
   });
 });
 
